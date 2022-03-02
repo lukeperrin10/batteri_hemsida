@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress": "cypress run --record --key f79557d0-f478-46b8-bf5f-a6c03fd7bcda"
   },
   "dependencies": {
     "next": "12.1.0",
@@ -14,6 +15,7 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "cypress": "^9.5.1",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0"
   }
