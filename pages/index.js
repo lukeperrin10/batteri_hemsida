@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <nav>
       <div>
-        <Link href="/kurser">
+        <Link href="/kurser" passRef>
           <a>Kurser</a>
         </Link>
       </div>

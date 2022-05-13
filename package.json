@@ -10,8 +10,10 @@
     "cypress": "cypress run --record --key f79557d0-f478-46b8-bf5f-a6c03fd7bcda"
   },
   "dependencies": {
+    "graphql": "^16.5.0",
+    "graphql-request": "^4.2.0",
     "next": "12.1.0",
-    "react": "17.0.2",
+    "react": "^18.1.0",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
