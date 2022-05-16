@@ -1,3 +1,4 @@
+import React from 'react'
 import Link from 'next/link'
 import getAllCategories from '../lib/get-all-categories'
 import getPageData from '../lib/get-page-data'

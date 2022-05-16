@@ -1,29 +1,7 @@
-import Link from "next/link";
+import React from 'react';
 
+const Home = () => {
+  return <h1>Some content</h1>;
+};
 
-export default function Home() {
-  return (
-    <nav>
-      <div>
-        <Link href="/kurser" passRef>
-          <a>Kurser</a>
-        </Link>
-      </div>
-      <div>
-        <Link href="/kontakt">
-          <a>Kontakt</a>
-        </Link>
-      </div>
-      <div>
-        <Link href="/event">
-          <a>Event</a>
-        </Link>
-      </div>
-      <div>
-        <Link href="/hitta-hit">
-          <a>Hitta hit</a>
-        </Link>
-      </div>
-    </nav>
-  );
-}
+export default Home;
