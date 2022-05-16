@@ -1,18 +1,18 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Card = ({ data }) => {
-  const router = useRouter()
+  const router = useRouter();
 
   switch (router.route) {
     case '/event':
       return (
         <Link href={`/event/${data.slug}`} passHref>
-          <div className='product-card'>
+          <div className='card'>
             <h2>{data.name}</h2>
           </div>
         </Link>
-      )
+      );
 
     default:
       return (
@@ -21,8 +21,8 @@ const Card = ({ data }) => {
             <h2>{data.name}</h2>
           </div>
         </Link>
-      )
+      );
   }
-}
+};
 
-export default Card
+export default Card;

@@ -230,6 +230,12 @@ p {
   }
 }
 
+.layout {
+  display: flex;
+  margin: 10rem 3rem;
+  justify-content: space-between;
+}
+
 .btn-burger {
   position: fixed;
   background-color: transparent;
@@ -329,6 +335,11 @@ p {
 }
 .nav-link--4:hover {
   text-shadow: -1px 0px 30px var(--main-color-3);
+}
+
+.card {
+  min-width: 15rem;
+  min-height: 10rem;
 }
 
 /*# sourceMappingURL=style.css.map */
