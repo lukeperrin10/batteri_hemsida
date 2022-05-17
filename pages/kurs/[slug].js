@@ -2,8 +2,8 @@ import getAllProducts from '../../lib/get-all-product'
 import getProductBySlug from '../../lib/get-product-slug'
 
 const Product = ({ product }) => {
-  let dates = product.dates.map((date) => {
-    return <option>{date}</option>
+  let dates = product.dates.map((date, index) => {
+    return <option key={index}>{date}</option>
   })
 
   return (
