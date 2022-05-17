@@ -6,6 +6,15 @@ const Product = ({ product }) => {
     return <option key={index}>{date}</option>
   })
 
+  let coach = product.courseLeaders.map((variant, index) => {
+    return (
+      <div key={index}>
+        <h3>{variant.name}</h3>
+        <img src={variant.courseLeaderImage.url} alt={variant.name} />
+      </div>
+    )
+  })
+
   return (
     <div>
       <h1>{product.name}</h1>
@@ -16,9 +25,8 @@ const Product = ({ product }) => {
         <br />
         Course Start dates: <select>{dates}</select>
         <br />
-        Course Holder: {product.variants[0].name}
       </p>
-      <img src={product.variants[0].courseLeaderImage.url}></img>
+      {coach}
     </div>
   )
 }
