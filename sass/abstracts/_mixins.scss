@@ -1,0 +1,42 @@
+@mixin whiteToColor {
+  color: #fff;
+  transition: color 0.3s ease-in-out;
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == fold-phone {
+    @media only screen and (max-width: 22.5em) {    // 360px
+      @content;
+    }
+  }
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5em) {    // 600px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {     // 900px
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {     // 1200px
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == small-desk {     // 1485px
+    @media only screen and (max-width: 92.9em) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop {     // 1200px -> 1800px
+    @media only screen and (max-width: 112.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {  // 1800px
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
