@@ -1,41 +1,80 @@
-@mixin whiteToColor {
-  color: #fff;
-  transition: color 0.3s ease-in-out;
-}
-
 @mixin respond($breakpoint) {
-  @if $breakpoint == fold-phone {
-    @media only screen and (max-width: 22.5em) {    // 360px
+  @if $breakpoint == phone-S {
+    @media only screen and (max-width: 20em) {
+      // 320px
       @content;
     }
   }
-  @if $breakpoint == phone {
-    @media only screen and (max-width: 37.5em) {    // 600px
+  @if $breakpoint == phone-M {
+    @media only screen and (max-width: 23.438em) {
+      // 375px
       @content;
     }
   }
-  @if $breakpoint == tab-port {     // 900px
+  @if $breakpoint == phone-L {
+    @media only screen and (max-width: 32.75em) {
+      // 524px
+      @content;
+    }
+  }
+  @if $breakpoint == phone-XL {
+    @media only screen and (max-width: 37.5em) {
+      // 600px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    // 900px
     @media only screen and (max-width: 56.25em) {
       @content;
     }
   }
-  @if $breakpoint == tab-land {     // 1200px
+  @if $breakpoint == laptop-M {
+    // 1200px
     @media only screen and (max-width: 75em) {
       @content;
     }
   }
-  @if $breakpoint == small-desk {     // 1485px
-    @media only screen and (max-width: 92.9em) {
+  @if $breakpoint == laptop-L {
+    // 1400px
+    @media only screen and (max-width: 87.5em) {
       @content;
     }
   }
-  @if $breakpoint == desktop {     // 1200px -> 1800px
+  @if $breakpoint == desktop-S {
+    // 1640px
+    @media only screen and (max-width: 102.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop-M {
+    // 1750px
     @media only screen and (max-width: 112.5em) {
       @content;
     }
   }
-  @if $breakpoint == big-desktop {  // 1800px
-    @media only screen and (min-width: 112.5em) {
+  @if $breakpoint == desktop-L {
+    // 2000px
+    @media only screen and (max-width: 125em) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop-XL {
+    // 2600px
+    @media only screen and (max-width: 162.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop-3K {
+    // 3000px
+    @media only screen and (max-width: 187.5em) {
+      @content;
+    }
+  }
+  @if $breakpoint == desktop-4K {
+    // 3600px
+    // 3840px
+    @media only screen and (min-width: 187.5em) {
       @content;
     }
   }
