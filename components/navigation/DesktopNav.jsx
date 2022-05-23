@@ -1,37 +1,35 @@
-import React, { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import Image from 'next/image'
-import Link from 'next/link'
-import MobNav from './MobNav'
-
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
+import Link from 'next/link';
+import MobNav from './MobNav';
 
 const DesktopNav = () => {
-  const [mobNav, setMobNav] = useState(false)
-  const Toggle = () => setMobNav(!mobNav)
-  const [scrollY, setScrollY] = useState(0)
-  const router = useRouter()
+  const [mobNav, setMobNav] = useState(false);
+  const Toggle = () => setMobNav(!mobNav);
+  const [scrollY, setScrollY] = useState(0);
+  const router = useRouter();
 
-  const location = router.asPath
-  const homeActive = ['/'].includes(location) ? 'active' : ''
-  const propertiesActive = ['/fastigheter'].includes(location) ? 'active' : ''
-  const aboutActive = ['/om-oss'].includes(location) ? 'active' : ''
-  const contactActive = ['/kontakta-oss'].includes(location) ? 'active' : ''
+  const location = router.asPath;
+  const homeActive = ['/'].includes(location) ? 'active' : '';
+  const kurserActive = ['/kurser'].includes(location) ? 'active' : '';
+  const contactActive = ['/kontakta-oss'].includes(location) ? 'active' : '';
 
   const logit = () => {
-    setScrollY(window.pageYOffset)
-  }
+    setScrollY(window.pageYOffset);
+  };
 
   useEffect(() => {
     const watchScroll = () => {
-      window.addEventListener('scroll', logit)
-    }
-    watchScroll()
+      window.addEventListener('scroll', logit);
+    };
+    watchScroll();
     return () => {
-      window.removeEventListener('scroll', logit)
-    }
-  })
+      window.removeEventListener('scroll', logit);
+    };
+  });
 
-  const isScrolled = scrollY >= 10 ? 'scrolled' : ''
+  const isScrolled = scrollY >= 10 ? 'scrolled' : '';
   return (
     <div className={`navbar ${isScrolled}`}>
       <div className='navbar__image'>
@@ -64,14 +62,7 @@ const DesktopNav = () => {
         </div>
         <div className='navbar__links--link'>
           <Link href='/kurser' passHref>
-            <a className={`navbar__links--a ${propertiesActive}`}>
-             Kurser
-            </a>
-          </Link>
-        </div>
-        <div className='navbar__links--link'>
-          <Link href='/event' passHref>
-            <a className={`navbar__links--a ${aboutActive}`}>Event</a>
+            <a className={`navbar__links--a ${kurserActive}`}>Kurser</a>
           </Link>
         </div>
         <div className='navbar__links--link'>
@@ -81,7 +72,7 @@ const DesktopNav = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DesktopNav
+export default DesktopNav;

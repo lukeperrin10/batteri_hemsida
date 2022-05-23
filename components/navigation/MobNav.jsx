@@ -40,13 +40,6 @@ const MobNav = ({ show, close }) => {
                 </Link>
               </div>
               <div className='mob-nav__links--link'>
-                <Link href='/event' passHref>
-                  <a className='mob-nav__links--a' onClick={() => close()}>
-                    Event
-                  </a>
-                </Link>
-              </div>
-              <div className='mob-nav__links--link'>
                 <Link href='/kontakta-oss' passHref>
                   <a className='mob-nav__links--a' onClick={() => close()}>
                     Kontakt
