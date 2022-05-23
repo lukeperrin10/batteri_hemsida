@@ -1,0 +1,9 @@
+.categories {
+  display: flex;
+  justify-content: center;
+
+  &__card {
+    width: 30rem;
+    margin: 15rem 5rem;
+  }
+}

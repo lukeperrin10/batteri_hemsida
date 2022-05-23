@@ -10,7 +10,6 @@ const CategoryPage = ({ category }) => {
       <div key={slug}>
         <Link href={`/kurs/${data.slug}`} passHref>
           <h3>{data.name}</h3>
-        
         </Link>
       </div>
     )

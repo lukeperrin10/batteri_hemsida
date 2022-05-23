@@ -1,11 +1,9 @@
+import { useEffect, useState } from 'react'
 import getAllProducts from '../../lib/get-all-product'
 import getProductBySlug from '../../lib/get-product-slug'
+import HopHelper from '../../modules/helper'
 
 const Product = ({ product }) => {
-  let dates = product.dates.map((date, index) => {
-    return <option key={index}>{date}</option>
-  })
-
   let coach = product.courseLeaders.map((variant, index) => {
     return (
       <div key={index}>
@@ -23,7 +21,8 @@ const Product = ({ product }) => {
         <br />
         {product.price} SEK
         <br />
-        Course Start dates: <select>{dates}</select>
+        Course Start dates:{' '}
+        <select>{HopHelper.addCourseDuration(product)}</select>
         <br />
       </p>
       {coach}
