@@ -1,42 +1,47 @@
 import React from 'react'
 import { styled } from '../stitches.config'
 
-const Text = styled('p', {
-  fontFamily: '$system',
-  color: '$hiContrast',
+const Button = styled('button', {
+  borderRadius: '9999px',
+  paddingX: '50px',
+  paddingY: '10px',
+  '&:hover': {
+    backgroundColor: 'lightgray',
+  },
 
   variants: {
     size: {
       1: {
-        fontSize: '$1',
+        fontSize: '$5',
       },
       2: {
-        fontSize: '$2',
-      },
-      3: {
-        fontSize: '$3',
-      },
+        fontSize: '$10',
+      }
     },
+    variant: {
+      blue: {
+        backgroundColor: "$blue",
+        color: "$white"
+      },
+      grey: {
+        backgroundColor: "$greyBg",
+        color: "$white"
+      }
+    }
   },
-})
 
-const Button = styled('button', {
-  backgroundColor: 'gainsboro',
-  borderRadius: '9999px',
-  fontSize: '2rem',
-  padding: '1rem 1.5rem',
-  '&:hover': {
-    backgroundColor: 'lightgray',
-  },
+  defaultVariants: {
+    variant: "blue",
+    size: 1
+  }
 })
 
 const Home = () => {
   return (
     <>
-      <Text as='h1' size='1'>
-        Some content
-      </Text>
       <Button>Button</Button>
+      <Button variant="grey" size="1" >Button</Button>
+      <Button variant="blue" size={{ '@bp1': '2'}}>Button</Button>
     </>
   )
 }

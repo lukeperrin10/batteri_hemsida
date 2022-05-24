@@ -1,13 +1,22 @@
 // import '../styles/style.css'
-import { globalStyles } from '../stitches.config'
+import { globalStyles, styled } from '../stitches.config'
 import Nav from '../components/navigation/Nav'
+
+const Container = styled('div', {
+  display: 'flex',
+  maxWidth: '1920px',
+  justifyContent: "center",
+  marginX: 'auto',
+})
 
 function MyApp({ Component, pageProps }) {
   globalStyles()
   return (
     <>
       <Nav />
-      <Component {...pageProps} />
+      <Container>
+        <Component {...pageProps} />
+      </Container>
     </>
   )
 }
