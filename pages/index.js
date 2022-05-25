@@ -1,5 +1,15 @@
 import React from 'react'
+import Link from 'next/link'
+
 import { styled } from '../stitches.config'
+import Card from '../components/Card'
+import getPageData from '../lib/get-page-data'
+import getAllCategories from '../lib/get-all-categories'
+
+const CategoriesBox = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+})
 
 const Button = styled('button', {
   borderRadius: '9999px',
@@ -16,34 +26,58 @@ const Button = styled('button', {
       },
       2: {
         fontSize: '$10',
-      }
+      },
     },
     variant: {
       blue: {
-        backgroundColor: "$blue",
-        color: "$white"
+        backgroundColor: '$blue',
+        color: '$white',
       },
       grey: {
-        backgroundColor: "$greyBg",
-        color: "$white"
-      }
-    }
+        backgroundColor: '$greyBg',
+        color: '$white',
+      },
+    },
   },
 
   defaultVariants: {
-    variant: "blue",
-    size: 1
-  }
+    variant: 'blue',
+    size: 1,
+  },
 })
 
-const Home = () => {
+const Home = ({ categories }) => {
   return (
     <>
-      <Button>Button</Button>
-      <Button variant="grey" size="1" >Button</Button>
-      <Button variant="blue" size={{ '@bp1': '2'}}>Button</Button>
+      {/* <Button>Button</Button>
+      <Button variant='grey' size='1'>
+        Button
+      </Button>
+      <Button variant='blue' size={{ '@bp1': '2' }}>
+        Button
+      </Button> */}
+      <CategoriesBox>
+        {categories.map((category, slug) => {
+          return (
+            <Link href={`/kurser/${category.slug}`} key={slug} passHref>
+              <Card data={category} className='courses' />
+            </Link>
+          )
+        })}
+      </CategoriesBox>
     </>
   )
 }
 
 export default Home
+
+export async function getStaticProps({ locale }) {
+  const { categories } = await getAllCategories({ locale })
+  const pageData = await getPageData({ locale })
+  return {
+    props: {
+      ...pageData,
+      categories,
+    },
+  }
+}

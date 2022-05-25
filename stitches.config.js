@@ -4,28 +4,28 @@ export const { styled, getCssText } = createStitches({
   theme: {
     fonts: {
       system: 'system-ui',
+      openSans: 'Open Sans',
     },
     colors: {
-      blackBg: "#232323",
-      greyBg: "#343434",
-      whiteBg: "##FAFCFF",
-      blueBg: "#EBF3F6",
+      blackBg: '#232323',
+      greyBg: '#343434',
+      whiteBg: '##FAFCFF',
+      blueBg: '#EBF3F6',
 
-      white: "#fff",
-      black: "#000",
+      white: '#fff',
+      black: '#000',
 
-      blueLight: "#456691",
-      blue: "#2A6BD2",
-      blueDark: "#2866C9",
-      blueLink: "##009DFF",
+      blueLight: '#456691',
+      blue: '#2A6BD2',
+      blueDark: '#2866C9',
+      blueLink: '##009DFF',
 
-      pink: "#DD16E5",
+      pink: '#DD16E5',
 
-      Id: "#FF1C5C",
-      Ai: "#FF6F0B",
-      Ps: "#00A5FE",
-      Ae: "#000046"
-
+      Id: '#FF1C5C',
+      Ai: '#FF6F0B',
+      Ps: '#00A5FE',
+      Ae: '#000046',
     },
     fontSizes: {
       1: '12px',
@@ -41,6 +41,11 @@ export const { styled, getCssText } = createStitches({
       11: '36px',
       12: '42px',
     },
+    fontWeights: {
+      reg: '400',
+      semi: '600',
+      bold: '700',
+    },
   },
   media: {
     bp1: '(min-width: 360px)',
@@ -54,27 +59,29 @@ export const { styled, getCssText } = createStitches({
   utils: {
     paddingX: (value) => ({
       paddingLeft: value,
-      paddingRight: value
+      paddingRight: value,
     }),
     paddingY: (value) => ({
       paddingTop: value,
-      paddingBottom: value
+      paddingBottom: value,
     }),
     marginX: (value) => ({
       marginLeft: value,
-      marginRight: value
+      marginRight: value,
     }),
     marginY: (value) => ({
       marginTop: value,
-      marginBottom: value
+      marginBottom: value,
     }),
     linearGradient: (value) => ({
       backgroundImage: `linear-gradient(${value})`,
     }),
+    square: (value) => ({
+      width: value,
+      height: value,
+    }),
   },
-  conditions: {
-    
-  }
+  conditions: {},
 })
 
 export const globalStyles = globalCss({
@@ -83,6 +90,8 @@ export const globalStyles = globalCss({
     padding: 0,
     boxSizing: 'border-box',
     color: '$black',
-    backgroundColor: "$whiteBg"
+    backgroundColor: '$whiteBg',
+    fontFamily: '$openSans',
+    fontWeight: '$reg'
   },
 })
