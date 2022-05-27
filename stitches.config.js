@@ -94,4 +94,5 @@ export const globalStyles = globalCss({
     fontFamily: '$openSans',
     fontWeight: '$reg'
   },
+
 })

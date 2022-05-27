@@ -7,8 +7,18 @@ import getPageData from '../lib/get-page-data'
 import getAllCategories from '../lib/get-all-categories'
 
 const CategoriesBox = styled('div', {
+  maxWidth: 1920,
   display: 'flex',
-  flexDirection: 'column',
+  variants: {
+    variant: {
+      mobile: { flexDirection: 'column' },
+      desktop: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+      },
+    },
+  },
 })
 
 const Button = styled('button', {
@@ -56,7 +66,7 @@ const Home = ({ categories }) => {
       <Button variant='blue' size={{ '@bp1': '2' }}>
         Button
       </Button> */}
-      <CategoriesBox>
+      <CategoriesBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         {categories.map((category, slug) => {
           return (
             <Link href={`/kurser/${category.slug}`} key={slug} passHref>

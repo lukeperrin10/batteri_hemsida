@@ -7,15 +7,31 @@ const CardContent = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'flex-end',
-  paddingBottom: 33,
-  paddingX: 25,
-  paddingTop: 25,
-  width: 319,
-  height: 374,
-  marginY: '14px',
   position: 'relative',
   '&:hover': {
     cursor: 'pointer',
+  },
+
+  variants: {
+    variant: {
+      mobile: {
+        width: 319,
+        height: 374,
+        paddingX: 25,
+        paddingTop: 25,
+        paddingBottom: 33,
+        marginY: '14px',
+      },
+
+      desktop: {
+        width: 530,
+        height: 618,
+        paddingX: 34,
+        paddingTop: 34,
+        paddingBottom: 55,
+        margin: '40px',
+      },
+    },
   },
 })
 
@@ -52,8 +68,20 @@ const ImageBox = styled('div', {
   right: 0,
   left: 0,
   bottom: 0,
-  width: 319,
-  height: 374,
+
+
+  variants: {
+    variant: {
+      mobile:{
+        width: 319,
+        height: 374,
+      },
+      desktop:{
+        width: 530,
+        height: 618,
+      },
+    }
+  }
 })
 
 const Card = ({ data, className }) => {
@@ -61,13 +89,15 @@ const Card = ({ data, className }) => {
     <>
       <Link href={`/kurser/${data.slug}`} passHref>
         <CardContent
-          css={{linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%` }}>
+          variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
+          css={{
+            linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
+          }}>
           <ImageBox>
             <Image
               src={data.image?.url ? data.image?.url : '/batteri.svg'}
               alt={data.name}
-              height={374}
-              width={319}
+              layout='fill'
             />
           </ImageBox>
           <LogoIcon>
