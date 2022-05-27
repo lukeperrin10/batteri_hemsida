@@ -17,17 +17,6 @@ const CardContent = styled('div', {
   '&:hover': {
     cursor: 'pointer',
   },
-  // linearGradient: '0deg, $Ps 10%, transparent 80%',
-  variants: {
-    variant: {
-      Ps: {
-        linearGradient: '0deg, $Ps 10%, transparent 80%',
-      },
-      Ai: {
-        linearGradient: '0deg, $Ai 10%, transparent 80%',
-      },
-    },
-  },
 })
 
 const LogoIcon = styled('div', {
@@ -71,7 +60,8 @@ const Card = ({ data, className }) => {
   return (
     <>
       <Link href={`/kurser/${data.slug}`} passHref>
-        <CardContent variant={data.gradientColor?.name}>
+        <CardContent
+          css={{linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%` }}>
           <ImageBox>
             <Image
               src={data.image?.url ? data.image?.url : '/batteri.svg'}
