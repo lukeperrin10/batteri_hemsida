@@ -93,11 +93,13 @@ const Card = ({ data, className }) => {
           css={{
             linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
           }}>
-          <ImageBox>
+          <ImageBox  >
             <Image
-              src={data.image?.url ? data.image?.url : '/batteri.svg'}
+              src={data.isWide ? data.wideImage?.url : data.image?.url}
               alt={data.name}
               layout='fill'
+              // width={319}
+              // height={374}
             />
           </ImageBox>
           <LogoIcon>
