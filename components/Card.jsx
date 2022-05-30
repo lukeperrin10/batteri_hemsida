@@ -83,40 +83,69 @@ const ImageBox = styled('div', {
   },
 })
 
-const Card = ({ data, image, wideImage, logo }) => {
+const Card = ({ data }) => {
   const windowSize = useWindowSize()
   const router = useRouter()
+  const {
+    slug,
+    gradientColor,
+    isWide,
+    image,
+    wideImage,
+    name,
+    logo,
+    description,
+  } = data
   switch (router.route) {
     case '/kurser/[slug]':
       return (
         <>
-          <Link href={`/kurs/${data.slug}`} passHref>
+          <Link href={`/kurs/${slug}`} passHref>
             <CardContent
               variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
               css={{
-                linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
-              }}
-            >
+                linearGradient: `0deg, ${gradientColor?.color.hex} 10%, transparent 80%`,
+                width:
+                  isWide === true && windowSize.width >= 1140
+                    ? 1140
+                    : isWide !== true && windowSize.width >= 1140
+                    ? 530
+                    : windowSize.width <= 1139 && windowSize.width >= 750
+                    ? 530
+                    : 319,
+                height: windowSize.width >= 750 ? 618 : 374,
+              }}>
               <ImageBox>
                 <Image
-                  src={data.isWide ? wideImage.url : image.url}
-                  alt={data.name}
-                  layout='fill'
-                  // width={319}
-                  // height={374}
+                  src={
+                    isWide && windowSize.width >= 1140
+                      ? wideImage?.url
+                      : image?.url
+                  }
+                  alt={name}
+                  width={
+                    isWide && windowSize.width >= 1140
+                      ? 1140
+                      : isWide !== true && windowSize.width >= 1140
+                      ? 530
+                      : windowSize.width <= 1139 && windowSize.width >= 750
+                      ? 530
+                      : 319
+                  }
+                  height={windowSize.width >= 750 ? 618 : 374}
                 />
               </ImageBox>
               <LogoIcon>
                 <Image
-                  src={logo.url ? logo.url : '/batteri.svg'}
-                  alt={data.name}
+                  src={logo?.url ? logo?.url : '/batteri.svg'}
+                  alt={name}
                   height={54}
                   width={54}
                 />
               </LogoIcon>
               <Divider />
-              <Title>{data.name}</Title>
-              <Description>{data.description}</Description>
+              <Title>{name}</Title>
+              <Description>{description}</Description>
             </CardContent>
           </Link>
         </>
@@ -125,34 +154,53 @@ const Card = ({ data, image, wideImage, logo }) => {
     default:
       return (
         <>
-          <Link href={`/kurser/${data.slug}`} passHref>
-         <CardContent
-          variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
-          css={{
-            linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
-            width: data.isWide === true && windowSize.width >= 1140 ? 1140 : data.isWide !== true && windowSize.width >= 1140 ? 530 : windowSize.width <= 1139 && windowSize.width >= 750 ? 530 : 319,
-            height: windowSize.width >= 750 ? 618 : 374,
-          }}>
-          <ImageBox>
-            <Image
-              src={data.isWide && windowSize.width >= 1140 ? data.wideImage?.url : data.image?.url }
-              alt={data.name}
-              width={data.isWide && windowSize.width >= 1140 ? 1140 : data.isWide !== true && windowSize.width >= 1140 ? 530 : windowSize.width <= 1139 && windowSize.width >= 750 ? 530 : 319}
-              height={windowSize.width >= 750 ? 618 : 374}
-            />
-          </ImageBox>
-          <LogoIcon>
-            <Image
-              src={data.logo?.url ? data.logo?.url : '/batteri.svg'}
-              alt={data.name}
-              height={54}
-              width={54}
-            />
-          </LogoIcon>
-          <Divider />
-          <Title>{data.name}</Title>
-          <Description>{data.description}</Description>
-        </CardContent>
+          <Link href={`/kurser/${slug}`} passHref>
+            <CardContent
+              variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
+              css={{
+                linearGradient: `0deg, ${gradientColor?.color.hex} 10%, transparent 80%`,
+                width:
+                  isWide === true && windowSize.width >= 1140
+                    ? 1140
+                    : isWide !== true && windowSize.width >= 1140
+                    ? 530
+                    : windowSize.width <= 1139 && windowSize.width >= 750
+                    ? 530
+                    : 319,
+                height: windowSize.width >= 750 ? 618 : 374,
+              }}>
+              <ImageBox>
+                <Image
+                  src={
+                    isWide && windowSize.width >= 1140
+                      ? wideImage?.url
+                      : image?.url
+                  }
+                  alt={name}
+                  width={
+                    isWide && windowSize.width >= 1140
+                      ? 1140
+                      : isWide !== true && windowSize.width >= 1140
+                      ? 530
+                      : windowSize.width <= 1139 && windowSize.width >= 750
+                      ? 530
+                      : 319
+                  }
+                  height={windowSize.width >= 750 ? 618 : 374}
+                />
+              </ImageBox>
+              <LogoIcon>
+                <Image
+                  src={logo?.url ? logo?.url : '/batteri.svg'}
+                  alt={name}
+                  height={54}
+                  width={54}
+                />
+              </LogoIcon>
+              <Divider />
+              <Title>{name}</Title>
+              <Description>{description}</Description>
+            </CardContent>
           </Link>
         </>
       )

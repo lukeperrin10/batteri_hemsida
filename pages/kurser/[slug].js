@@ -6,21 +6,9 @@ import getCategoryBySlug from '../../lib/get-category-slug'
 import Card from '../../components/Card'
 
 const CategoryPage = ({ category }) => {
-  debugger
   return (
     <>
-      {category.products?.map((data) => {
-        return (
-          <div>
-            <Card
-              data={data}
-              image={data.images?.[0]}
-              wideImage={data.wideImage?.[0]}
-              logo={data.logo?.[0]}
-            />
-          </div>
-        )
-      })}
+      <Card data={category} />
     </>
   )
 }
