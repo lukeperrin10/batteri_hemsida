@@ -83,13 +83,50 @@ const ImageBox = styled('div', {
   },
 })
 
-const Card = ({ data, className }) => {
+const Card = ({ data, image, wideImage, logo }) => {
   const windowSize = useWindowSize()
+  const router = useRouter()
+  switch (router.route) {
+    case '/kurser/[slug]':
+      return (
+        <>
+          <Link href={`/kurs/${data.slug}`} passHref>
+            <CardContent
+              variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
+              css={{
+                linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
+              }}
+            >
+              <ImageBox>
+                <Image
+                  src={data.isWide ? wideImage.url : image.url}
+                  alt={data.name}
+                  layout='fill'
+                  // width={319}
+                  // height={374}
+                />
+              </ImageBox>
+              <LogoIcon>
+                <Image
+                  src={logo.url ? logo.url : '/batteri.svg'}
+                  alt={data.name}
+                  height={54}
+                  width={54}
+                />
+              </LogoIcon>
+              <Divider />
+              <Title>{data.name}</Title>
+              <Description>{data.description}</Description>
+            </CardContent>
+          </Link>
+        </>
+      )
 
-  return (
-    <>
-      <Link href={`/kurser/${data.slug}`} passHref>
-        <CardContent
+    default:
+      return (
+        <>
+          <Link href={`/kurser/${data.slug}`} passHref>
+         <CardContent
           variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
           css={{
             linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
@@ -116,9 +153,10 @@ const Card = ({ data, className }) => {
           <Title>{data.name}</Title>
           <Description>{data.description}</Description>
         </CardContent>
-      </Link>
-    </>
-  )
+          </Link>
+        </>
+      )
+  }
 }
 
 export default Card
