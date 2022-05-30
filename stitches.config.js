@@ -52,7 +52,7 @@ export const { styled, getCssText } = createStitches({
     bp2: '(min-width: 425px)',
     bp3: '(min-width: 750px)',
     bp4: '(min-width: 1000px)',
-    bp5: '(min-width: 1000px)',
+    bp5: '(min-width: 1140px)',
     bp6: '(min-width: 1440px)',
     bp7: '(min-width: 1920px)',
   },
