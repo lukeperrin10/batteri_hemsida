@@ -3,23 +3,19 @@ import Link from 'next/link'
 import getAllCategories from '../../lib/get-all-categories'
 import getPageData from '../../lib/get-page-data'
 import getCategoryBySlug from '../../lib/get-category-slug'
+import Card from '../../components/Card'
 
 const CategoryPage = ({ category }) => {
-  let courses = category.products.map((data, slug) => {
-    return (
-      <div key={slug}>
-        <Link href={`/kurs/${data.slug}`} passHref>
-          <h3>{data.name}</h3>
-        </Link>
-      </div>
-    )
-  })
-
   return (
-    <div>
-      <h1>{`${category.name}`}</h1>
-      <div>{courses}</div>
-    </div>
+    <>
+      {category.products?.map((data) => {
+        return (
+          <div>
+            <Card data={data} image={data.images?.[0]} />
+          </div>
+        )
+      })}
+    </>
   )
 }
 

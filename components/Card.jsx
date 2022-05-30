@@ -69,54 +69,93 @@ const ImageBox = styled('div', {
   left: 0,
   bottom: 0,
 
-
   variants: {
     variant: {
-      mobile:{
+      mobile: {
         width: 319,
         height: 374,
       },
-      desktop:{
+      desktop: {
         width: 530,
         height: 618,
       },
-    }
-  }
+    },
+  },
 })
 
-const Card = ({ data, className }) => {
-  return (
-    <>
-      <Link href={`/kurser/${data.slug}`} passHref>
-        <CardContent
-          variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
-          css={{
-            linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
-          }}>
-          <ImageBox  >
-            <Image
-              src={data.isWide ? data.wideImage?.url : data.image?.url}
-              alt={data.name}
-              layout='fill'
-              // width={319}
-              // height={374}
-            />
-          </ImageBox>
-          <LogoIcon>
-            <Image
-              src={data.logo?.url ? data.logo?.url : '/batteri.svg'}
-              alt={data.name}
-              height={54}
-              width={54}
-            />
-          </LogoIcon>
-          <Divider />
-          <Title>{data.name}</Title>
-          <Description>{data.description}</Description>
-        </CardContent>
-      </Link>
-    </>
-  )
+const Card = ({ data, image }) => {
+  const router = useRouter()
+  switch (router.route) {
+    case '/kurser/[slug]':
+      return (
+        <>
+          <Link href={`/kurs/${data.slug}`} passHref>
+            <CardContent
+              variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
+              css={{
+                linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
+              }}
+            >
+              <ImageBox>
+                <Image
+                  src={image.url}
+                  alt={data.name}
+                  layout='fill'
+                  // width={319}
+                  // height={374}
+                />
+              </ImageBox>
+              <LogoIcon>
+                <Image
+                  src={data.logo?.url ? data.logo?.url : '/batteri.svg'}
+                  alt={data.name}
+                  height={54}
+                  width={54}
+                />
+              </LogoIcon>
+              <Divider />
+              <Title>{data.name}</Title>
+              <Description>{data.description}</Description>
+            </CardContent>
+          </Link>
+        </>
+      )
+
+    default:
+      return (
+        <>
+          <Link href={`/kurser/${data.slug}`} passHref>
+            <CardContent
+              variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
+              css={{
+                linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
+              }}
+            >
+              <ImageBox>
+                <Image
+                  src={data.isWide ? data.wideImage?.url : data.image?.url}
+                  alt={data.name}
+                  layout='fill'
+                  // width={319}
+                  // height={374}
+                />
+              </ImageBox>
+              <LogoIcon>
+                <Image
+                  src={data.logo?.url ? data.logo?.url : '/batteri.svg'}
+                  alt={data.name}
+                  height={54}
+                  width={54}
+                />
+              </LogoIcon>
+              <Divider />
+              <Title>{data.name}</Title>
+              <Description>{data.description}</Description>
+            </CardContent>
+          </Link>
+        </>
+      )
+  }
 }
 
 export default Card
