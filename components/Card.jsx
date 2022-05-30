@@ -11,6 +11,16 @@ const CardContent = styled('div', {
   justifyContent: 'flex-end',
   position: 'relative',
 
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 1,
+  },
+
   variants: {
     variant: {
       mobile: {
@@ -28,16 +38,6 @@ const CardContent = styled('div', {
         paddingTop: 34,
         paddingBottom: 55,
         transition: 'all 200ms',
-
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          zIndex: 1,
-        },
 
         '&:hover': {
           cursor: 'pointer',
@@ -169,9 +169,6 @@ const Card = ({ data }) => {
             <CardContent
               variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
               css={{
-                '&::before': {
-                  linearGradient: `0deg, ${gradientColor?.color.hex} 10%, transparent 80%`,
-                },
                 width:
                   isWide === true && windowSize.width >= 1140
                     ? 1140
@@ -181,6 +178,9 @@ const Card = ({ data }) => {
                     ? 530
                     : 319,
                 height: windowSize.width >= 750 ? 618 : 374,
+                '&::before': {
+                  linearGradient: `0deg, ${gradientColor?.color.hex} 10%, transparent 80%`,
+                },
               }}>
               <ImageBox>
                 <Image
@@ -232,10 +232,6 @@ const Card = ({ data }) => {
             <CardContent
               variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
               css={{
-                '&::before': {
-                  linearGradient: `0deg, ${gradientColor?.color.hex} 10%, transparent 80%`,
-                },
-
                 width:
                   isWide === true && windowSize.width >= 1140
                     ? 1140
@@ -245,10 +241,13 @@ const Card = ({ data }) => {
                     ? 530
                     : 319,
                 height: windowSize.width >= 750 ? 618 : 374,
+                '&::before': {
+                  linearGradient: `0deg, ${gradientColor?.color.hex} 10%, transparent 80%`,
+                },
               }}>
               <ImageBox>
                 <Image
-                   priority
+                  priority
                   src={
                     isWide && windowSize.width >= 1140
                       ? wideImage?.url
@@ -269,7 +268,7 @@ const Card = ({ data }) => {
               </ImageBox>
               <LogoIcon variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
                 <Image
-                   priority
+                  priority
                   src={logo?.url ? logo?.url : '/batteri.svg'}
                   alt={name}
                   height={74}
