@@ -10,9 +10,6 @@ const CardContent = styled('div', {
   flexDirection: 'column',
   justifyContent: 'flex-end',
   position: 'relative',
-  '&:hover': {
-    cursor: 'pointer',
-  },
 
   variants: {
     variant: {
@@ -30,6 +27,27 @@ const CardContent = styled('div', {
         paddingX: 34,
         paddingTop: 34,
         paddingBottom: 55,
+        transition: 'all 200ms',
+
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 1,
+        },
+
+        '&:hover': {
+          cursor: 'pointer',
+          dropShadow: '0 0 10px black',
+          transform: 'scale(1.02)',
+        },
+
+        '@media (prefers-reduced-motion)': {
+          transition: 'none',
+        },
       },
     },
   },
@@ -53,7 +71,8 @@ const LogoIcon = styled('div', {
 
 const Divider = styled('div', {
   backgroundColor: '$white',
-  
+  zIndex: 2,
+
   variants: {
     variant: {
       mobile: {
@@ -71,6 +90,7 @@ const Divider = styled('div', {
 const Title = styled('h2', {
   fontWeight: '$semi',
   color: '$white',
+  zIndex: 2,
 
   variants: {
     variant: {
@@ -88,6 +108,8 @@ const Title = styled('h2', {
 
 const Description = styled('p', {
   color: '$white',
+  zIndex: 2,
+
   variants: {
     variant: {
       mobile: {
@@ -147,7 +169,9 @@ const Card = ({ data }) => {
             <CardContent
               variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
               css={{
-                linearGradient: `0deg, ${gradientColor?.color.hex} 10%, transparent 80%`,
+                '&::before': {
+                  linearGradient: `0deg, ${gradientColor?.color.hex} 10%, transparent 80%`,
+                },
                 width:
                   isWide === true && windowSize.width >= 1140
                     ? 1140
@@ -186,7 +210,7 @@ const Card = ({ data }) => {
                   height={74}
                 />
               </LogoIcon>
-              <Divider  variant={{ '@initial': 'mobile', '@bp3': 'desktop' }} />
+              <Divider variant={{ '@initial': 'mobile', '@bp3': 'desktop' }} />
               <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
                 {name}
               </Title>
@@ -206,7 +230,10 @@ const Card = ({ data }) => {
             <CardContent
               variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
               css={{
-                linearGradient: `0deg, ${gradientColor?.color.hex} 10%, transparent 80%`,
+                '&::before': {
+                  linearGradient: `0deg, ${gradientColor?.color.hex} 10%, transparent 80%`,
+                },
+
                 width:
                   isWide === true && windowSize.width >= 1140
                     ? 1140
@@ -245,7 +272,7 @@ const Card = ({ data }) => {
                   width={74}
                 />
               </LogoIcon>
-              <Divider  variant={{ '@initial': 'mobile', '@bp3': 'desktop' }} />
+              <Divider variant={{ '@initial': 'mobile', '@bp3': 'desktop' }} />
               <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
                 {name}
               </Title>

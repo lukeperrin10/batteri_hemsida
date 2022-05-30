@@ -1,4 +1,4 @@
-import { createStitches, globalCss } from '@stitches/react'
+import { createStitches, globalCss, keyframes } from '@stitches/react'
 
 export const { styled, getCssText } = createStitches({
   theme: {
@@ -75,6 +75,9 @@ export const { styled, getCssText } = createStitches({
     }),
     linearGradient: (value) => ({
       backgroundImage: `linear-gradient(${value})`,
+    }),
+    dropShadow: (value) => ({
+      filter: `drop-shadow(${value})`,
     }),
     square: (value) => ({
       width: value,
