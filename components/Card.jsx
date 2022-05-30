@@ -36,29 +36,72 @@ const CardContent = styled('div', {
 })
 
 const LogoIcon = styled('div', {
-  square: 54,
   alignSelf: 'flex-end',
   marginBottom: 'auto',
+
+  variants: {
+    variant: {
+      mobile: {
+        square: 54,
+      },
+      desktop: {
+        square: 74,
+      },
+    },
+  },
 })
 
 const Divider = styled('div', {
-  width: '78px',
-  height: '4px',
   backgroundColor: '$white',
+  
+  variants: {
+    variant: {
+      mobile: {
+        width: '78px',
+        height: '3px',
+      },
+      desktop: {
+        width: '128px',
+        height: '5px',
+      },
+    },
+  },
 })
 
 const Title = styled('h2', {
-  fontSize: '$2',
   fontWeight: '$semi',
   color: '$white',
-  marginTop: 21,
+
+  variants: {
+    variant: {
+      mobile: {
+        fontSize: '$2',
+        marginTop: 21,
+      },
+      desktop: {
+        fontSize: '$7',
+        marginTop: 34,
+      },
+    },
+  },
 })
 
 const Description = styled('p', {
-  fontSize: '$1',
   color: '$white',
-  marginTop: 16,
-  marginRight: 38,
+  variants: {
+    variant: {
+      mobile: {
+        fontSize: '$1',
+        marginTop: 16,
+        marginRight: 38,
+      },
+      desktop: {
+        fontSize: '$5',
+        marginTop: 28,
+        marginRight: 60,
+      },
+    },
+  },
 })
 
 const ImageBox = styled('div', {
@@ -135,17 +178,22 @@ const Card = ({ data }) => {
                   height={windowSize.width >= 750 ? 618 : 374}
                 />
               </ImageBox>
-              <LogoIcon>
+              <LogoIcon variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
                 <Image
                   src={logo?.url ? logo?.url : '/batteri.svg'}
                   alt={name}
-                  height={54}
-                  width={54}
+                  width={74}
+                  height={74}
                 />
               </LogoIcon>
-              <Divider />
-              <Title>{name}</Title>
-              <Description>{description}</Description>
+              <Divider  variant={{ '@initial': 'mobile', '@bp3': 'desktop' }} />
+              <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+                {name}
+              </Title>
+              <Description
+                variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+                {description}
+              </Description>
             </CardContent>
           </Link>
         </>
@@ -189,17 +237,22 @@ const Card = ({ data }) => {
                   height={windowSize.width >= 750 ? 618 : 374}
                 />
               </ImageBox>
-              <LogoIcon>
+              <LogoIcon variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
                 <Image
                   src={logo?.url ? logo?.url : '/batteri.svg'}
                   alt={name}
-                  height={54}
-                  width={54}
+                  height={74}
+                  width={74}
                 />
               </LogoIcon>
-              <Divider />
-              <Title>{name}</Title>
-              <Description>{description}</Description>
+              <Divider  variant={{ '@initial': 'mobile', '@bp3': 'desktop' }} />
+              <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+                {name}
+              </Title>
+              <Description
+                variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+                {description}
+              </Description>
             </CardContent>
           </Link>
         </>
