@@ -189,6 +189,7 @@ const Card = ({ data }) => {
                       ? wideImage?.url
                       : image?.url
                   }
+                  priority
                   alt={name}
                   width={
                     isWide && windowSize.width >= 1140
@@ -208,6 +209,7 @@ const Card = ({ data }) => {
                   alt={name}
                   width={74}
                   height={74}
+                  priority
                 />
               </LogoIcon>
               <Divider variant={{ '@initial': 'mobile', '@bp3': 'desktop' }} />
@@ -246,6 +248,7 @@ const Card = ({ data }) => {
               }}>
               <ImageBox>
                 <Image
+                   priority
                   src={
                     isWide && windowSize.width >= 1140
                       ? wideImage?.url
@@ -266,6 +269,7 @@ const Card = ({ data }) => {
               </ImageBox>
               <LogoIcon variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
                 <Image
+                   priority
                   src={logo?.url ? logo?.url : '/batteri.svg'}
                   alt={name}
                   height={74}

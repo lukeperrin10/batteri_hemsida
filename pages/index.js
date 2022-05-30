@@ -27,6 +27,9 @@ const CategoriesBox = styled('div', {
     },
   },
 })
+const ATag = styled('a', {
+  textDecoration: 'none',
+})
 
 const Home = ({ categories }) => {
   return (
@@ -35,7 +38,9 @@ const Home = ({ categories }) => {
         {categories.map((category, slug) => {
           return (
             <Link href={`/kurser/${category.slug}`} key={slug} passHref>
-              <Card data={category} className='courses' />
+              <ATag>
+                <Card data={category} className='courses' />
+              </ATag>
             </Link>
           )
         })}
