@@ -83,7 +83,7 @@ const ImageBox = styled('div', {
   },
 })
 
-const Card = ({ data, image }) => {
+const Card = ({ data, image, wideImage, logo }) => {
   const router = useRouter()
   switch (router.route) {
     case '/kurser/[slug]':
@@ -98,7 +98,7 @@ const Card = ({ data, image }) => {
             >
               <ImageBox>
                 <Image
-                  src={image.url}
+                  src={data.isWide ? wideImage.url : image.url}
                   alt={data.name}
                   layout='fill'
                   // width={319}
@@ -107,7 +107,7 @@ const Card = ({ data, image }) => {
               </ImageBox>
               <LogoIcon>
                 <Image
-                  src={data.logo?.url ? data.logo?.url : '/batteri.svg'}
+                  src={logo.url ? logo.url : '/batteri.svg'}
                   alt={data.name}
                   height={54}
                   width={54}
