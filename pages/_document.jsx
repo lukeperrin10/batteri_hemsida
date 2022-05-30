@@ -15,7 +15,7 @@ export default class Document extends NextDocument {
           <link
             rel='preconnect'
             href='https://fonts.gstatic.com'
-            crossOrigin></link>
+            crossOrigin='true'></link>
           <link
             href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap'
             rel='stylesheet'></link>

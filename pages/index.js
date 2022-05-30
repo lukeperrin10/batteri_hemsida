@@ -7,65 +7,30 @@ import getPageData from '../lib/get-page-data'
 import getAllCategories from '../lib/get-all-categories'
 
 const CategoriesBox = styled('div', {
+  width: '100vw',
   maxWidth: 1920,
   display: 'flex',
+  alignItems: 'center',
+
   variants: {
     variant: {
-      mobile: { flexDirection: 'column' },
+      mobile: {
+        flexDirection: 'column',
+        rowGap: 14,
+      },
       desktop: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',
+        gap: 80,
       },
     },
-  },
-})
-
-const Button = styled('button', {
-  borderRadius: '9999px',
-  paddingX: '50px',
-  paddingY: '10px',
-  '&:hover': {
-    backgroundColor: 'lightgray',
-  },
-
-  variants: {
-    size: {
-      1: {
-        fontSize: '$5',
-      },
-      2: {
-        fontSize: '$10',
-      },
-    },
-    variant: {
-      blue: {
-        backgroundColor: '$blue',
-        color: '$white',
-      },
-      grey: {
-        backgroundColor: '$greyBg',
-        color: '$white',
-      },
-    },
-  },
-
-  defaultVariants: {
-    variant: 'blue',
-    size: 1,
   },
 })
 
 const Home = ({ categories }) => {
   return (
     <>
-      {/* <Button>Button</Button>
-      <Button variant='grey' size='1'>
-        Button
-      </Button>
-      <Button variant='blue' size={{ '@bp1': '2' }}>
-        Button
-      </Button> */}
       <CategoriesBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         {categories.map((category, slug) => {
           return (

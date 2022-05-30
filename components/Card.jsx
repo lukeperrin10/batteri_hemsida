@@ -2,6 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { styled } from '../stitches.config'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
+import useWindowSize from '../modules/windowSize'
 
 const CardContent = styled('div', {
   display: 'flex',
@@ -20,7 +22,6 @@ const CardContent = styled('div', {
         paddingX: 25,
         paddingTop: 25,
         paddingBottom: 33,
-        marginY: '14px',
       },
 
       desktop: {
@@ -29,7 +30,6 @@ const CardContent = styled('div', {
         paddingX: 34,
         paddingTop: 34,
         paddingBottom: 55,
-        margin: '40px',
       },
     },
   },
@@ -84,6 +84,7 @@ const ImageBox = styled('div', {
 })
 
 const Card = ({ data, image, wideImage, logo }) => {
+  const windowSize = useWindowSize()
   const router = useRouter()
   switch (router.route) {
     case '/kurser/[slug]':
@@ -125,33 +126,33 @@ const Card = ({ data, image, wideImage, logo }) => {
       return (
         <>
           <Link href={`/kurser/${data.slug}`} passHref>
-            <CardContent
-              variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
-              css={{
-                linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
-              }}
-            >
-              <ImageBox>
-                <Image
-                  src={data.isWide ? data.wideImage?.url : data.image?.url}
-                  alt={data.name}
-                  layout='fill'
-                  // width={319}
-                  // height={374}
-                />
-              </ImageBox>
-              <LogoIcon>
-                <Image
-                  src={data.logo?.url ? data.logo?.url : '/batteri.svg'}
-                  alt={data.name}
-                  height={54}
-                  width={54}
-                />
-              </LogoIcon>
-              <Divider />
-              <Title>{data.name}</Title>
-              <Description>{data.description}</Description>
-            </CardContent>
+         <CardContent
+          variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
+          css={{
+            linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
+            width: data.isWide === true && windowSize.width >= 1140 ? 1140 : data.isWide !== true && windowSize.width >= 1140 ? 530 : windowSize.width <= 1139 && windowSize.width >= 750 ? 530 : 319,
+            height: windowSize.width >= 750 ? 618 : 374,
+          }}>
+          <ImageBox>
+            <Image
+              src={data.isWide && windowSize.width >= 1140 ? data.wideImage?.url : data.image?.url }
+              alt={data.name}
+              width={data.isWide && windowSize.width >= 1140 ? 1140 : data.isWide !== true && windowSize.width >= 1140 ? 530 : windowSize.width <= 1139 && windowSize.width >= 750 ? 530 : 319}
+              height={windowSize.width >= 750 ? 618 : 374}
+            />
+          </ImageBox>
+          <LogoIcon>
+            <Image
+              src={data.logo?.url ? data.logo?.url : '/batteri.svg'}
+              alt={data.name}
+              height={54}
+              width={54}
+            />
+          </LogoIcon>
+          <Divider />
+          <Title>{data.name}</Title>
+          <Description>{data.description}</Description>
+        </CardContent>
           </Link>
         </>
       )
@@ -159,45 +160,3 @@ const Card = ({ data, image, wideImage, logo }) => {
 }
 
 export default Card
-
-// const Card = ({ data, className }) => {
-// const router = useRouter()
-
-// switch (router.route) {
-//   case '/event':
-//     return (
-//       <Link href={`/event/${data.slug}`} passHref>
-//         <div className={`${className}__card`}>
-//           <h2>{data.name}</h2>
-//         </div>
-//       </Link>
-//     )
-
-//   default:
-//     return (
-//       <Link href={`/kurser/${data.slug}`} passHref>
-//         <div className={`${className}__card`}>
-//           <h2>{data.name}</h2>
-//         </div>
-//       </Link>
-//     )
-// }
-
-{
-  /* <>
-<CardBox>
-  <CourseCard>
-    <ImageBox>
-      <Image src='/girl.webp' width={319} height={374} alt='borgir' />
-    </ImageBox>
-    <p>hdwjwdjwdiw</p>
-  </CourseCard>
-  <CourseCard>
-    <ImageBox>
-      <Image src='/girl.webp' width={319} height={374} alt='goat' />
-    </ImageBox>
-    <p>hdwjwdjwdiw</p>
-  </CourseCard>
-</CardBox>
-</> */
-}
