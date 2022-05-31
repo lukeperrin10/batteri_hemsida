@@ -10,6 +10,7 @@ const CardContent = styled('div', {
   flexDirection: 'column',
   justifyContent: 'flex-end',
   position: 'relative',
+  
 
   '&::before': {
     content: '""',

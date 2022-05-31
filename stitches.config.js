@@ -83,6 +83,9 @@ export const { styled, getCssText } = createStitches({
       width: value,
       height: value,
     }),
+    pillShape: () => ({
+      borderRadius: 90000,
+    }),
   },
   conditions: {},
 })

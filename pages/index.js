@@ -17,12 +17,14 @@ const CategoriesBox = styled('div', {
       mobile: {
         flexDirection: 'column',
         rowGap: 14,
+        marginTop: '80vh',
       },
       desktop: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',
         gap: 80,
+        marginTop: 500,
       },
     },
   },
