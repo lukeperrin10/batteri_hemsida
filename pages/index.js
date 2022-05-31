@@ -5,26 +5,25 @@ import { styled } from '../stitches.config'
 import Card from '../components/Card'
 import getPageData from '../lib/get-page-data'
 import getAllCategories from '../lib/get-all-categories'
+import IndexHero from '../components/IndexHero'
 
 const CategoriesBox = styled('div', {
   width: '100vw',
   maxWidth: 1920,
   display: 'flex',
-  alignItems: 'center',
 
   variants: {
     variant: {
       mobile: {
         flexDirection: 'column',
+        alignItems: 'center',
         rowGap: 14,
-        marginTop: '80vh',
       },
       desktop: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',
         gap: 80,
-        marginTop: 500,
       },
     },
   },
@@ -36,12 +35,13 @@ const ATag = styled('a', {
 const Home = ({ categories }) => {
   return (
     <>
+      <IndexHero />
       <CategoriesBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         {categories.map((category, slug) => {
           return (
             <Link href={`/kurser/${category.slug}`} key={slug} passHref>
               <ATag>
-                <Card data={category} className='courses' />
+                <Card data={category} />
               </ATag>
             </Link>
           )

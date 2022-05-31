@@ -1,13 +1,13 @@
 // import '../styles/style.css'
 import { globalStyles, styled } from '../stitches.config'
 import Nav from '../components/navigation/Nav'
-import Hero from '../components/Hero'
 
 const Container = styled('div', {
   display: 'flex',
-  maxWidth: '1920px',
-  justifyContent: "center",
-  marginX: 'auto',
+  width: '100vw',
+  justifyContent: 'center',
+  flexDirection: 'column',
+  alignItems: 'center',
 })
 
 function MyApp({ Component, pageProps }) {
@@ -16,7 +16,6 @@ function MyApp({ Component, pageProps }) {
     <>
       <Nav />
       <Container>
-        <Hero />
         <Component {...pageProps} />
       </Container>
     </>

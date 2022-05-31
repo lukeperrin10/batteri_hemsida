@@ -98,7 +98,12 @@ export const globalStyles = globalCss({
     color: '$black',
     backgroundColor: '$whiteBg',
     fontFamily: '$openSans',
-    fontWeight: '$reg'
+    fontWeight: '$reg',
+    
   },
+
+  'body': {
+    overflowX: 'hidden',
+  }
 
 })

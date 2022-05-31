@@ -2,8 +2,22 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { styled } from '../stitches.config'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
 import useWindowSize from '../modules/windowSize'
+
+
+const CardBox = styled('div', {
+ display: 'flex',
+  variants: {
+    variant: {
+      mobile: {
+        
+      },
+      desktop: {
+    
+      },
+    },
+  },
+})
 
 const CardContent = styled('div', {
   display: 'flex',
@@ -38,7 +52,7 @@ const CardContent = styled('div', {
         paddingX: 34,
         paddingTop: 34,
         paddingBottom: 55,
-        transition: 'all 200ms',
+        transition: 'filter 200ms, transform 200ms',
 
         '&:hover': {
           cursor: 'pointer',

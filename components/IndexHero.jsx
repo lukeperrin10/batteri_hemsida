@@ -3,16 +3,32 @@ import Link from 'next/link'
 import { styled } from '../stitches.config'
 import React from 'react'
 
+const Hero = styled('div', {
+  maxWidth: '2560px',
+  variants: {
+    variant: {
+      mobile: {
+        height: '100vh',
+      },
+      desktop: {
+        height: 621,
+      },
+    },
+  },
+})
+
 const ImageBox = styled('div', {
-  position: 'absolute',
+  position: 'relative',
   zIndex: '-1',
   top: 0,
   right: 0,
   left: 0,
   bottom: 0,
-  width: '100vw',
+  width:'100vw',
+  maxWidth: '2560px',
   display: 'flex',
   alignItems: 'center',
+  overflowX: 'hidden',
 
   '&::before': {
     content: '""',
@@ -23,32 +39,26 @@ const ImageBox = styled('div', {
     bottom: 0,
     zIndex: 1,
   },
-
-  variants: {
-    variant: {
-      mobile: {
-        height: '100vh',
-        paddingLeft: 21,
-      },
-      desktop: {
-        height: 621,
-        paddingLeft: 226,
-      },
-    },
-  },
 })
 
 const Content = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  square: '100%',
+  height: '100%',
+  width: '90%',
   zIndex: '2',
 
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        height: '100vh',
+        marginLeft: 21,
+      },
+      desktop: {
+        height: 621,
+        marginLeft: '5%',
+      },
     },
   },
 })
@@ -67,31 +77,33 @@ const LogoIcon = styled('div', {
 })
 
 const Title = styled('h1', {
-  position: 'relative',
-  zIndex: '500',
-  color: 'red',
+  color: '$white',
+  marginTop: 40,
+  marginBottom: 60,
+  fontWeight: '$semi',
+
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        fontSize: '$4',
+        lineHeight: 1.4,
+        maxWidth: 400,
+      },
+      desktop: {
+        fontSize: '$7',
+        maxWidth: 500,
+      },
     },
   },
 })
-const Description = styled('p', {
-  position: 'relative',
-  zIndex: '500',
-  color: 'red',
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
+
+const BoldText = styled('span', {
+  color: '$white',
+  fontWeight: '$bold',
 })
 
 const LinkContainer = styled('div', {
   display: 'flex',
-
   variants: {
     variant: {
       mobile: {
@@ -126,6 +138,12 @@ const Button = styled('a', {
       },
       desktop: {
         padding: '20px 35px',
+
+        '&:hover': {
+          cursor: 'pointer',
+          dropShadow: '0 0 10px black',
+          transform: 'scale(1.02)',
+        },
       },
     },
   },
@@ -139,14 +157,19 @@ const MostPopular = styled('a', {
       },
       desktop: {
         padding: '20px 35px',
+        '&:hover': {
+          cursor: 'pointer',
+          dropShadow: '0 0 10px black',
+          transform: 'scale(1.02)',
+        },
       },
     },
   },
 })
 
-const Hero = () => {
+const IndexHero = () => {
   return (
-    <>
+    <Hero>
       <ImageBox
         variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
         css={{
@@ -155,13 +178,16 @@ const Hero = () => {
           },
         }}>
         <Image src='/wideAi.webp' alt='' layout='fill' objectFit='cover' />
-        <Content>
+        <Content variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           <LogoIcon>
             <Image src='/wideAi.webp' alt='' width={75} height={75} />
           </LogoIcon>
-          <Description>
-            Sveriges mest erfarna kursutbildare inom Adobe Creative Suit.
-          </Description>
+          <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+            Sveriges mest erfarna kursutbildare inom{' '}
+            <BoldText css={{ fontWeight: '$bold' }}>
+              Adobe Creative Suit.
+            </BoldText>
+          </Title>
           <LinkContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
             <Link href={`/kurs/popular`} passHref>
               <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
@@ -174,8 +200,8 @@ const Hero = () => {
           </LinkContainer>
         </Content>
       </ImageBox>
-    </>
+    </Hero>
   )
 }
 
-export default Hero
+export default IndexHero
