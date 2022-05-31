@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { styled } from '../stitches.config'
-import React from 'react'
+import useWindowSize from '../modules/windowSize'
 
 const Hero = styled('div', {
   maxWidth: '2560px',
@@ -176,6 +176,7 @@ const MostPopular = styled('a', {
 })
 
 const IndexHero = () => {
+  const windowSize = useWindowSize()
   return (
     <Hero>
       <ImageBox
@@ -185,10 +186,20 @@ const IndexHero = () => {
             linearGradient: `0deg, transparent 10%, black 80%`,
           },
         }}>
-        <Image src='/wideAi.webp' alt='' layout='fill' objectFit='cover' />
+        <Image
+          src={
+            windowSize.width >= 750
+              ? '/index-hero.webp'
+              : '/index-hero-mob.webp'
+          }
+          alt=''
+          layout='fill'
+          objectFit='cover'
+          priority
+        />
         <Content variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           <LogoIcon>
-            <Image src='/wideAi.webp' alt='' width={75} height={75} />
+            <Image src='/batteri.svg' alt='' width={75} height={75} priority />
           </LogoIcon>
           <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
             Sveriges mest erfarna kursutbildare inom{' '}
