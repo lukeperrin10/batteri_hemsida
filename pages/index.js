@@ -2,9 +2,9 @@ import React from 'react'
 import Link from 'next/link'
 
 import { styled } from '../stitches.config'
-import Card from '../components/Card'
 import getPageData from '../lib/get-page-data'
 import getAllCategories from '../lib/get-all-categories'
+import Card from '../components/Card'
 import IndexHero from '../components/IndexHero'
 
 const CategoriesBox = styled('div', {

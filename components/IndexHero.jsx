@@ -19,12 +19,12 @@ const Hero = styled('div', {
 
 const ImageBox = styled('div', {
   position: 'relative',
-  zIndex: '-1',
+  zIndex: '0',
   top: 0,
   right: 0,
   left: 0,
   bottom: 0,
-  width:'100vw',
+  width: '100vw',
   maxWidth: '2560px',
   display: 'flex',
   alignItems: 'center',
@@ -47,7 +47,7 @@ const Content = styled('div', {
   justifyContent: 'center',
   height: '100%',
   width: '90%',
-  zIndex: '2',
+  zIndex: 2,
 
   variants: {
     variant: {
@@ -77,7 +77,6 @@ const LogoIcon = styled('div', {
 })
 
 const Title = styled('h1', {
-  color: '$white',
   marginTop: 40,
   marginBottom: 60,
   fontWeight: '$semi',
@@ -98,12 +97,12 @@ const Title = styled('h1', {
 })
 
 const BoldText = styled('span', {
-  color: '$white',
   fontWeight: '$bold',
 })
 
 const LinkContainer = styled('div', {
   display: 'flex',
+  zIndex: 2,
   variants: {
     variant: {
       mobile: {
@@ -124,42 +123,51 @@ const Button = styled('a', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  color: '$white',
   backgroundColor: '$blueDark',
   pillShape: true,
   fontSize: '$4',
   fontWeight: '$semi',
   textDecoration: 'none',
+  transition: 'transform 200ms',
+  '@media (prefers-reduced-motion)': {
+    transition: 'none',
+  },
 
   variants: {
     variant: {
       mobile: {
         padding: '15px 32px',
       },
+
       desktop: {
         padding: '20px 35px',
-
         '&:hover': {
           cursor: 'pointer',
-          dropShadow: '0 0 10px black',
+          backgroundColor: '$blue',
           transform: 'scale(1.02)',
         },
       },
     },
   },
 })
+
 const MostPopular = styled('a', {
-  color: '$white',
+  transition: 'transform 200ms',
+
+  '@media (prefers-reduced-motion)': {
+    transition: 'none',
+  },
+
   variants: {
     variant: {
       mobile: {
-        padding: '15px 32px',
+        fontSize: '$2',
       },
       desktop: {
-        padding: '20px 35px',
+        fontSize: '$3',
+
         '&:hover': {
           cursor: 'pointer',
-          dropShadow: '0 0 10px black',
           transform: 'scale(1.02)',
         },
       },
@@ -195,7 +203,10 @@ const IndexHero = () => {
               </Button>
             </Link>
             <Link href={`/kurs/popular`} passHref>
-              <MostPopular>Mest populära kurser 2022</MostPopular>
+              <MostPopular
+                variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+                Mest populära kurser 2022
+              </MostPopular>
             </Link>
           </LinkContainer>
         </Content>

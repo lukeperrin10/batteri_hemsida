@@ -4,27 +4,11 @@ import { styled } from '../stitches.config'
 import { useRouter } from 'next/router'
 import useWindowSize from '../modules/windowSize'
 
-
-const CardBox = styled('div', {
- display: 'flex',
-  variants: {
-    variant: {
-      mobile: {
-        
-      },
-      desktop: {
-    
-      },
-    },
-  },
-})
-
 const CardContent = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'flex-end',
   position: 'relative',
-  
 
   '&::before': {
     content: '""',
@@ -34,6 +18,10 @@ const CardContent = styled('div', {
     right: 0,
     bottom: 0,
     zIndex: 1,
+  },
+
+  '@media (prefers-reduced-motion)': {
+    transition: 'none',
   },
 
   variants: {
@@ -58,10 +46,6 @@ const CardContent = styled('div', {
           cursor: 'pointer',
           dropShadow: '0 0 10px black',
           transform: 'scale(1.02)',
-        },
-
-        '@media (prefers-reduced-motion)': {
-          transition: 'none',
         },
       },
     },
