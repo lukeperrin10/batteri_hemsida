@@ -1,7 +1,63 @@
-import React from 'react';
+import React from 'react'
+import Link from 'next/link'
 
-const Home = () => {
-  return <h1>Some content</h1>;
-};
+import { styled } from '../stitches.config'
+import Card from '../components/Card'
+import getPageData from '../lib/get-page-data'
+import getAllCategories from '../lib/get-all-categories'
 
-export default Home;
+const CategoriesBox = styled('div', {
+  width: '100vw',
+  maxWidth: 1920,
+  display: 'flex',
+  alignItems: 'center',
+
+  variants: {
+    variant: {
+      mobile: {
+        flexDirection: 'column',
+        rowGap: 14,
+      },
+      desktop: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        gap: 80,
+      },
+    },
+  },
+})
+const ATag = styled('a', {
+  textDecoration: 'none',
+})
+
+const Home = ({ categories }) => {
+  return (
+    <>
+      <CategoriesBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+        {categories.map((category, slug) => {
+          return (
+            <Link href={`/kurser/${category.slug}`} key={slug} passHref>
+              <ATag>
+                <Card data={category} className='courses' />
+              </ATag>
+            </Link>
+          )
+        })}
+      </CategoriesBox>
+    </>
+  )
+}
+
+export default Home
+
+export async function getStaticProps({ locale }) {
+  const { categories } = await getAllCategories({ locale })
+  const pageData = await getPageData({ locale })
+  return {
+    props: {
+      ...pageData,
+      categories,
+    },
+  }
+}
