@@ -6,7 +6,7 @@ import getCategoryBySlug from '../../lib/get-category-slug'
 import Card from '../../components/Card'
 
 const CategoryPage = ({ category }) => {
-  return category.products?.map((product) => {
+  return category.products?.map((product, index) => {
     const course_image = product.images[0]
     const course_wideImage = product.wideImage[0]
 
@@ -20,7 +20,7 @@ const CategoryPage = ({ category }) => {
       logo: product.logo,
       description: product.description,
     }
-    return <Card data={course_data} />
+    return <Card data={course_data} key={index} />
   })
 }
 
