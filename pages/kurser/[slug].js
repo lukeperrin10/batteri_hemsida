@@ -7,15 +7,12 @@ import Card from '../../components/Card'
 
 const CategoryPage = ({ category }) => {
   return category.products?.map((product, index) => {
-    const course_image = product.images[0]
-    const course_wideImage = product.wideImage[0]
-
     const course_data = {
       slug: product.slug,
       gradientColor: product.gradientColor,
       isWide: product.isWide,
-      image: course_image,
-      wideImage: course_wideImage,
+      image: product.images[0],
+      wideImage: product.wideImage[0],
       name: product.name,
       logo: product.logo,
       description: product.description,
