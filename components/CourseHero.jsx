@@ -1,0 +1,192 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { styled } from '../stitches.config'
+import useWindowSize from '../modules/windowSize'
+
+const Hero = styled('div', {
+  maxWidth: '2560px',
+  variants: {
+    variant: {
+      mobile: {
+        height: '100vh',
+      },
+      desktop: {
+        height: 621,
+      },
+    },
+  },
+})
+
+const ImageBox = styled('div', {
+  position: 'relative',
+  zIndex: '0',
+  top: 0,
+  right: 0,
+  left: 0,
+  bottom: 0,
+  width: '100vw',
+  maxWidth: '2560px',
+  display: 'flex',
+  alignItems: 'center',
+  overflowX: 'hidden',
+
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 1,
+  },
+})
+
+const Content = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  height: '100%',
+  width: '90%',
+  zIndex: 2,
+
+  variants: {
+    variant: {
+      mobile: {
+        height: '100vh',
+        marginLeft: 21,
+      },
+      desktop: {
+        height: 621,
+        marginLeft: '5%',
+      },
+    },
+  },
+})
+
+const LogoIcon = styled('div', {
+  variants: {
+    variant: {
+      mobile: {
+        square: 54,
+      },
+      desktop: {
+        square: 74,
+      },
+    },
+  },
+})
+
+const Title = styled('h1', {
+  marginTop: 40,
+  marginBottom: 60,
+  fontWeight: '$semi',
+
+  variants: {
+    variant: {
+      mobile: {
+        fontSize: '$4',
+        lineHeight: 1.4,
+        maxWidth: 400,
+      },
+      desktop: {
+        fontSize: '$7',
+        maxWidth: 500,
+      },
+    },
+  },
+})
+
+const SubTitle = styled('h2', {
+  fontWeight: '$semi',
+  marginBottom: 8,
+  variants: {
+    variant: {
+      mobile: {
+        fontSize: '$4',
+        lineHeight: 1.4,
+        maxWidth: 400,
+      },
+      desktop: {
+        fontSize: '$7',
+        maxWidth: 700,
+      },
+    },
+  },
+})
+
+const Button = styled('a', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '$blueDark',
+  pillShape: true,
+  fontSize: '$4',
+  fontWeight: '$semi',
+  textDecoration: 'none',
+  transition: 'transform 200ms',
+  '@media (prefers-reduced-motion)': {
+    transition: 'none',
+  },
+
+  variants: {
+    variant: {
+      mobile: {
+        padding: '15px 32px',
+      },
+
+      desktop: {
+        padding: '20px 35px',
+        '&:hover': {
+          cursor: 'pointer',
+          backgroundColor: '$blue',
+          transform: 'scale(1.02)',
+        },
+      },
+    },
+  },
+})
+
+const CourseHero = ({ data }) => {
+  const {name, images, wideImage, subTitle, gradientColor} = data
+  const windowSize = useWindowSize()
+  return (
+    <Hero>
+      <ImageBox
+        variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
+        css={{
+          '&::before': {
+            linearGradient: `${
+              windowSize.width >= 750 ? '270deg' : '0deg'
+            }, transparent 10%, ${gradientColor?.color.hex} 80%`,
+          },
+        }}>
+        <Image
+          src={
+            windowSize.width >= 750
+              ? wideImage.url
+              : images?.[0].url
+          }
+          alt=''
+          layout='fill'
+          objectFit='cover'
+          priority
+        />
+        <Content variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+          <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+            {name}
+          </Title>
+          <SubTitle>
+            {subTitle}
+          </SubTitle>
+          <Link href={`/kurser`} passHref>
+            <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+              Hitta din kurs
+            </Button>
+          </Link>
+        </Content>
+      </ImageBox>
+    </Hero>
+  )
+}
+
+export default CourseHero
