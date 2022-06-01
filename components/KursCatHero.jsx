@@ -144,11 +144,12 @@ const KursCatHero = () => {
           <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
             Kurs kategorier
           </Title>
-          <SubTitle  variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>Vi erbjuder kurser, event och distansutbildningar</SubTitle>
-          <Description  variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            inom områdena
-            text, copywriting, foto, grafisk design, publicering, webb,
-            UX-design, video och audio.
+          <SubTitle variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+            Vi erbjuder kurser, event och distansutbildningar
+          </SubTitle>
+          <Description variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+            inom områdena text, copywriting, foto, grafisk design, publicering,
+            webb, UX-design, video och audio.
           </Description>
         </Content>
       </ImageBox>
