@@ -118,23 +118,23 @@ const Description = styled('p', {
   },
 })
 
-const KursCatHero = () => {
+const CategoryHero = ({ data }) => {
+  const { name, description, gradientColor, image, wideImage, subTitleLength } =
+    data
   const windowSize = useWindowSize()
+  const subTitle = description.split(' ').slice(0, subTitleLength).join(' ')
+  const desc = description.split(' ').slice(subTitleLength, -1).join(' ')
   return (
     <Hero>
       <ImageBox
         variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
         css={{
           '&::before': {
-            linearGradient: `0deg, transparent 10%, black 80%`,
+            linearGradient: `270deg, transparent 10%, ${gradientColor?.color.hex} 80%`,
           },
         }}>
         <Image
-          src={
-            windowSize.width >= 750
-              ? '/index-hero.webp'
-              : '/index-hero-mob.webp'
-          }
+          src={windowSize.width >= 750 ? wideImage?.url : image?.url}
           alt=''
           layout='fill'
           objectFit='cover'
@@ -142,14 +142,13 @@ const KursCatHero = () => {
         />
         <Content variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            Kurs kategorier
+            {name}
           </Title>
           <SubTitle variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            Vi erbjuder kurser, event och distansutbildningar
+            {subTitle}
           </SubTitle>
           <Description variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            inom områdena text, copywriting, foto, grafisk design, publicering,
-            webb, UX-design, video och audio.
+            {desc}
           </Description>
         </Content>
       </ImageBox>
@@ -157,4 +156,4 @@ const KursCatHero = () => {
   )
 }
 
-export default KursCatHero
+export default CategoryHero

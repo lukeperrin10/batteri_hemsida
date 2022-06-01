@@ -183,7 +183,7 @@ const IndexHero = () => {
         variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
         css={{
           '&::before': {
-            linearGradient: `0deg, transparent 10%, black 80%`,
+            linearGradient: `270deg, transparent 10%, black 80%`,
           },
         }}>
         <Image

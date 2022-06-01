@@ -3,12 +3,12 @@ import Link from 'next/link'
 import getAllCategories from '../lib/get-all-categories'
 import getPageData from '../lib/get-page-data'
 import Card from '../components/Card'
-import KursCatHero from '../components/KursCatHero'
+import CategoriesHero from '../components/CategoriesHero'
 
 const Kurser = ({ categories }) => {
   return (
     <>
-      <KursCatHero />
+      <CategoriesHero />
       {categories.map((category, slug) => {
         return (
           <Link href={`/kurser/${category.slug}`} key={slug} passHref>
