@@ -16,7 +16,7 @@ const Product = ({ product }) => {
   })
 
   return (
-    <div>
+    <>
       <CourseHero data={product} />
       <h1>{product.name}</h1>
       <p>
@@ -29,7 +29,7 @@ const Product = ({ product }) => {
         <br />
       </p>
       {coach}
-    </div>
+    </>
   )
 }
 

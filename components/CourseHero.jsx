@@ -63,33 +63,20 @@ const Content = styled('div', {
   },
 })
 
-const LogoIcon = styled('div', {
-  variants: {
-    variant: {
-      mobile: {
-        square: 54,
-      },
-      desktop: {
-        square: 74,
-      },
-    },
-  },
-})
-
 const Title = styled('h1', {
-  marginTop: 40,
-  marginBottom: 60,
-  fontWeight: '$semi',
+  fontWeight: '$bold',
 
   variants: {
     variant: {
       mobile: {
-        fontSize: '$4',
+        marginBottom: 34,
+        fontSize: '$6',
         lineHeight: 1.4,
         maxWidth: 400,
       },
       desktop: {
-        fontSize: '$7',
+        marginBottom: 44,
+        fontSize: '$12',
         maxWidth: 500,
       },
     },
@@ -98,15 +85,16 @@ const Title = styled('h1', {
 
 const SubTitle = styled('h2', {
   fontWeight: '$semi',
-  marginBottom: 8,
   variants: {
     variant: {
       mobile: {
-        fontSize: '$4',
+        marginBottom: 42,
+        fontSize: '$3',
         lineHeight: 1.4,
         maxWidth: 400,
       },
       desktop: {
+        marginBottom: 44,
         fontSize: '$7',
         maxWidth: 700,
       },
@@ -115,9 +103,7 @@ const SubTitle = styled('h2', {
 })
 
 const Button = styled('a', {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
+  alignSelf: 'flex-start',
   backgroundColor: '$blueDark',
   pillShape: true,
   fontSize: '$4',
@@ -131,11 +117,11 @@ const Button = styled('a', {
   variants: {
     variant: {
       mobile: {
-        padding: '15px 32px',
+        padding: '15px 45px',
       },
 
       desktop: {
-        padding: '20px 35px',
+        padding: '15px 65px',
         '&:hover': {
           cursor: 'pointer',
           backgroundColor: '$blue',
@@ -147,7 +133,7 @@ const Button = styled('a', {
 })
 
 const CourseHero = ({ data }) => {
-  const {name, images, wideImage, subTitle, gradientColor} = data
+  const { name, images, wideImage, subTitle, gradientColor } = data
   const windowSize = useWindowSize()
   return (
     <Hero>
@@ -161,11 +147,7 @@ const CourseHero = ({ data }) => {
           },
         }}>
         <Image
-          src={
-            windowSize.width >= 750
-              ? wideImage.url
-              : images?.[0].url
-          }
+          src={windowSize.width >= 750 ? wideImage.url : images?.[0].url}
           alt=''
           layout='fill'
           objectFit='cover'
@@ -175,12 +157,12 @@ const CourseHero = ({ data }) => {
           <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
             {name}
           </Title>
-          <SubTitle>
+          <SubTitle variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
             {subTitle}
           </SubTitle>
-          <Link href={`/kurser`} passHref>
+          <Link href={`#`} passHref>
             <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-              Hitta din kurs
+              Boka kurs
             </Button>
           </Link>
         </Content>
