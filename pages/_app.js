@@ -4,9 +4,10 @@ import Nav from '../components/navigation/Nav'
 
 const Container = styled('div', {
   display: 'flex',
-  maxWidth: '1920px',
-  justifyContent: "center",
-  marginX: 'auto',
+  width: '100vw',
+  justifyContent: 'center',
+  flexDirection: 'column',
+  alignItems: 'center',
 })
 
 function MyApp({ Component, pageProps }) {

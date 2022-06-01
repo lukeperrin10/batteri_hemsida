@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { styled } from '../stitches.config'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
 import useWindowSize from '../modules/windowSize'
 
 const CardContent = styled('div', {
@@ -21,6 +20,10 @@ const CardContent = styled('div', {
     zIndex: 1,
   },
 
+  '@media (prefers-reduced-motion)': {
+    transition: 'none',
+  },
+
   variants: {
     variant: {
       mobile: {
@@ -37,16 +40,12 @@ const CardContent = styled('div', {
         paddingX: 34,
         paddingTop: 34,
         paddingBottom: 55,
-        transition: 'all 200ms',
+        transition: 'filter 200ms, transform 200ms',
 
         '&:hover': {
           cursor: 'pointer',
           dropShadow: '0 0 10px black',
           transform: 'scale(1.02)',
-        },
-
-        '@media (prefers-reduced-motion)': {
-          transition: 'none',
         },
       },
     },
