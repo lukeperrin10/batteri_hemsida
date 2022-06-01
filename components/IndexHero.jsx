@@ -204,7 +204,7 @@ const IndexHero = () => {
           <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
             Sveriges mest erfarna kursutbildare inom{' '}
             <BoldText css={{ fontWeight: '$bold' }}>
-              Adobe Creative Suit.
+              Adobe Creative Suite.
             </BoldText>
           </Title>
           <LinkContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
