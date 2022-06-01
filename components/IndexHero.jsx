@@ -208,7 +208,7 @@ const IndexHero = () => {
             </BoldText>
           </Title>
           <LinkContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            <Link href={`/kurs/popular`} passHref>
+            <Link href={`/kurser`} passHref>
               <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
                 Hitta din kurs
               </Button>

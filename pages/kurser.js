@@ -7,19 +7,18 @@ import KursCatHero from '../components/KursCatHero'
 
 const Kurser = ({ categories }) => {
   return (
-    <div>
+    <>
       <KursCatHero />
       {categories.map((category, slug) => {
         return (
           <Link href={`/kurser/${category.slug}`} key={slug} passHref>
-            <Card data={category}/>
+            <Card data={category} />
           </Link>
         )
       })}
-    </div>
+    </>
   )
 }
-
 export default Kurser
 
 export async function getStaticProps({ locale }) {

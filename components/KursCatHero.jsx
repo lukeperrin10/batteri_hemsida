@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { styled } from '../stitches.config'
 import useWindowSize from '../modules/windowSize'
 
