@@ -130,11 +130,13 @@ const CategoryHero = ({ data }) => {
         variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
         css={{
           '&::before': {
-            linearGradient: `${windowSize.width >= 750 ? '270deg' : '0deg'}, transparent 10%, ${gradientColor?.color.hex} 80%`,
+            linearGradient: `${
+              windowSize.width >= 750 ? '270deg' : '0deg'
+            }, transparent 10%, ${gradientColor?.color.hex} 80%`,
           },
         }}>
         <Image
-          src={windowSize.width >= 750 ? wideImage?.url : image?.url}
+          src={windowSize.width >= 750 ? wideImage.url : image.url}
           alt=''
           layout='fill'
           objectFit='cover'

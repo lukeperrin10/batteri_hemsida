@@ -126,7 +126,9 @@ const CategoriesHero = () => {
         variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
         css={{
           '&::before': {
-            linearGradient: `${windowSize.width >= 750 ? '270deg' : '0deg'}, transparent 10%, black 80%`,
+            linearGradient: `${
+              windowSize.width >= 750 ? '270deg' : '0deg'
+            }, transparent 10%, black 80%`,
           },
         }}>
         <Image
