@@ -5,6 +5,7 @@ export const { styled, getCssText } = createStitches({
     fonts: {
       system: 'system-ui',
       openSans: 'Open Sans',
+      roboto: 'Roboto'
     },
     colors: {
       blackBg: '#232323',
