@@ -30,14 +30,17 @@ const NavContainerInner = styled('div', {
   justifyContent: 'space-between',
   alignItems: 'center',
   margin: 'auto',
-  paddingX: 180,
+
   variants: {
     variant: {
       mobile: {
-        height: 89,
+        paddingX: 0,
+      },
+      bp4: {
+        paddingX: 20,
       },
       desktop: {
-        height: 106,
+        paddingX: 80,
       },
     },
   },
@@ -145,7 +148,12 @@ const DesktopNav = () => {
   // const isScrolled = scrollY >= 10 ? 'scrolled' : '';
   return (
     <NavContainerOuter>
-      <NavContainerInner variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+      <NavContainerInner
+        variant={{
+          '@initial': 'mobile',
+          '@bp3': 'bp4',
+          '@bp4': 'desktop',
+        }}>
         <NavImageContainer>
           <Link href='/' passHref>
             <a>
