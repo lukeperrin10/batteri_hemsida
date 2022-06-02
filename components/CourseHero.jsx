@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { styled } from '../stitches.config'
 import useWindowSize from '../modules/windowSize'
 
@@ -84,15 +85,16 @@ const Title = styled('h1', {
 
 const SubTitle = styled('h2', {
   fontWeight: '$semi',
-  marginBottom: 8,
   variants: {
     variant: {
       mobile: {
-        fontSize: '$4',
+        marginBottom: 42,
+        fontSize: '$3',
         lineHeight: 1.4,
         maxWidth: 400,
       },
       desktop: {
+        marginBottom: 44,
         fontSize: '$7',
         maxWidth: 700,
       },
@@ -100,30 +102,39 @@ const SubTitle = styled('h2', {
   },
 })
 
-const Description = styled('p', {
-  fontWeight: '$reg',
+const Button = styled('a', {
+  alignSelf: 'flex-start',
+  backgroundColor: '$blueDark',
+  pillShape: true,
+  fontSize: '$4',
+  fontWeight: '$semi',
+  textDecoration: 'none',
+  transition: 'transform 200ms',
+  '@media (prefers-reduced-motion)': {
+    transition: 'none',
+  },
+
   variants: {
     variant: {
       mobile: {
-        fontSize: '$3',
-        lineHeight: 1.4,
-        maxWidth: 400,
+        padding: '15px 45px',
       },
+
       desktop: {
-        fontSize: '$3',
-        maxWidth: 500,
-        lineHeight: 1.34,
+        padding: '15px 65px',
+        '&:hover': {
+          cursor: 'pointer',
+          backgroundColor: '$blue',
+          transform: 'scale(1.02)',
+        },
       },
     },
   },
 })
 
-const CategoryHero = ({ data }) => {
-  const { name, description, gradientColor, image, wideImage, subTitleLength } =
-    data
+const CourseHero = ({ data }) => {
+  const { name, images, wideImage, subTitle, gradientColor } = data
   const windowSize = useWindowSize()
-  const subTitle = description.split(' ').slice(0, subTitleLength).join(' ')
-  const desc = description.split(' ').slice(subTitleLength, -1).join(' ')
   return (
     <Hero>
       <ImageBox
@@ -136,7 +147,7 @@ const CategoryHero = ({ data }) => {
           },
         }}>
         <Image
-          src={windowSize.width >= 750 ? wideImage.url : image.url}
+          src={windowSize.width >= 750 ? wideImage.url : images?.[0].url}
           alt=''
           layout='fill'
           objectFit='cover'
@@ -149,13 +160,15 @@ const CategoryHero = ({ data }) => {
           <SubTitle variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
             {subTitle}
           </SubTitle>
-          <Description variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            {desc}
-          </Description>
+          <Link href={`#`} passHref>
+            <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+              Boka kurs
+            </Button>
+          </Link>
         </Content>
       </ImageBox>
     </Hero>
   )
 }
 
-export default CategoryHero
+export default CourseHero

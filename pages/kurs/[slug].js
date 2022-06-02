@@ -1,20 +1,27 @@
-import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import CourseHero from '../../components/CourseHero'
 import getAllProducts from '../../lib/get-all-product'
 import getProductBySlug from '../../lib/get-product-slug'
 import HopHelper from '../../modules/helper'
 
 const Product = ({ product }) => {
-  let coach = product.courseLeaders.map((variant, index) => {
+  const coach = product.courseLeaders.map((variant, index) => {
     return (
       <div key={index}>
         <h3>{variant.name}</h3>
-        <img src={variant.courseLeaderImage.url} alt={variant.name} />
+        <Image
+          src={variant.courseLeaderImage.url}
+          alt={variant.name}
+          height={280}
+          width={280}
+        />
       </div>
     )
   })
 
   return (
     <div>
+      <CourseHero data={product} />
       <h1>{product.name}</h1>
       <p>
         {product.description}
@@ -37,7 +44,9 @@ export async function getStaticPaths() {
   paths = [
     ...paths,
     ...products.map((product) => ({
-      params: { slug: product.slug },
+      params: {
+        slug: product.slug,
+      },
     })),
   ]
 
@@ -56,5 +65,4 @@ export async function getStaticProps({ params }) {
     },
   }
 }
-
 export default Product

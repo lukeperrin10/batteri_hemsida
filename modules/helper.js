@@ -49,8 +49,8 @@ const HopHelper = {
     let options = startDate.map(function (e, i) {
       return [e, endDate[i]].join(' - ')
     })
-    return options.map((option) => {
-      return <option>{option}</option>
+    return options.map((option, index) => {
+      return <option key={index} >{option}</option>
     })
   },
 }
