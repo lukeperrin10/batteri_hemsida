@@ -12,7 +12,9 @@ const Kurser = ({ categories }) => {
       {categories.map((category, slug) => {
         return (
           <Link href={`/kurser/${category.slug}`} key={slug} passHref>
-            <Card data={category} />
+            <a>
+              <Card data={category} />
+            </a>
           </Link>
         )
       })}
