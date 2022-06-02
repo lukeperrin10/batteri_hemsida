@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { styled } from '../stitches.config'
 import useWindowSize from '../modules/windowSize'
 
@@ -63,24 +62,29 @@ const Content = styled('div', {
   },
 })
 
-const LogoIcon = styled('div', {
+const Title = styled('h1', {
+  marginTop: 40,
+  marginBottom: 60,
+  fontWeight: '$bold',
+
   variants: {
     variant: {
       mobile: {
-        square: 54,
+        fontSize: '$6',
+        lineHeight: 1.4,
+        maxWidth: 400,
       },
       desktop: {
-        square: 74,
+        fontSize: '$12',
+        maxWidth: 500,
       },
     },
   },
 })
 
-const Title = styled('h1', {
-  marginTop: 40,
-  marginBottom: 60,
+const SubTitle = styled('h2', {
   fontWeight: '$semi',
-
+  marginBottom: 8,
   variants: {
     variant: {
       mobile: {
@@ -90,92 +94,31 @@ const Title = styled('h1', {
       },
       desktop: {
         fontSize: '$7',
-        maxWidth: 500,
+        maxWidth: 700,
       },
     },
   },
 })
 
-const BoldText = styled('span', {
-  fontWeight: '$bold',
-})
-
-const LinkContainer = styled('div', {
-  display: 'flex',
-  zIndex: 2,
+const Description = styled('p', {
+  fontWeight: '$reg',
   variants: {
     variant: {
       mobile: {
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        rowGap: 20,
-      },
-      desktop: {
-        columnGap: 29,
-        flexDirection: 'row',
-        alignItems: 'center',
-      },
-    },
-  },
-})
-
-const Button = styled('a', {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: '$blueDark',
-  pillShape: true,
-  fontSize: '$4',
-  fontWeight: '$semi',
-  textDecoration: 'none',
-  transition: 'transform 200ms',
-  '@media (prefers-reduced-motion)': {
-    transition: 'none',
-  },
-
-  variants: {
-    variant: {
-      mobile: {
-        padding: '15px 32px',
-      },
-
-      desktop: {
-        padding: '20px 35px',
-        '&:hover': {
-          cursor: 'pointer',
-          backgroundColor: '$blue',
-          transform: 'scale(1.02)',
-        },
-      },
-    },
-  },
-})
-
-const MostPopular = styled('a', {
-  transition: 'transform 200ms',
-
-  '@media (prefers-reduced-motion)': {
-    transition: 'none',
-  },
-
-  variants: {
-    variant: {
-      mobile: {
-        fontSize: '$2',
+        fontSize: '$3',
+        lineHeight: 1.4,
+        maxWidth: 400,
       },
       desktop: {
         fontSize: '$3',
-
-        '&:hover': {
-          cursor: 'pointer',
-          transform: 'scale(1.02)',
-        },
+        maxWidth: 500,
+        lineHeight: 1.34,
       },
     },
   },
 })
 
-const IndexHero = () => {
+const CategoriesHero = () => {
   const windowSize = useWindowSize()
   return (
     <Hero>
@@ -200,32 +143,20 @@ const IndexHero = () => {
           priority
         />
         <Content variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-          <LogoIcon>
-            <Image src='/batteri.svg' alt='' width={75} height={75} priority />
-          </LogoIcon>
           <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            Sveriges mest erfarna kursutbildare inom{' '}
-            <BoldText css={{ fontWeight: '$bold' }}>
-              Adobe Creative Suite.
-            </BoldText>
+            Kurs kategorier
           </Title>
-          <LinkContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            <Link href={`/kurser`} passHref>
-              <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-                Hitta din kurs
-              </Button>
-            </Link>
-            <Link href={`/kurs/popular`} passHref>
-              <MostPopular
-                variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-                Mest populära kurser 2022
-              </MostPopular>
-            </Link>
-          </LinkContainer>
+          <SubTitle variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+            Vi erbjuder kurser, event och distansutbildningar
+          </SubTitle>
+          <Description variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+            inom områdena text, copywriting, foto, grafisk design, publicering,
+            webb, UX-design, video och audio.
+          </Description>
         </Content>
       </ImageBox>
     </Hero>
   )
 }
 
-export default IndexHero
+export default CategoriesHero
