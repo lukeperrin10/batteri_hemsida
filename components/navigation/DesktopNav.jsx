@@ -8,8 +8,6 @@ import { styled } from '../../stitches.config'
 const NavContainerOuter = styled('div', {
   backgroundColor: '$blackBg',
   width: '100wv',
-  // display: 'flex',
-  // justifyContent: 'center',
   variants: {
     variant: {
       mobile: {
@@ -27,7 +25,6 @@ const NavContainerInner = styled('div', {
   maxWidth: '2560px',
   display: 'flex',
   alignSelf: 'center',
-  justifyContent: 'space-between',
   alignItems: 'center',
   margin: 'auto',
 
@@ -35,9 +32,11 @@ const NavContainerInner = styled('div', {
     variant: {
       mobile: {
         paddingX: 0,
+        justifyContent: 'center',
       },
       bp4: {
-        paddingX: 20,
+        paddingX: 30,
+        justifyContent: 'space-between',
       },
       desktop: {
         paddingX: 80,
@@ -154,7 +153,7 @@ const DesktopNav = () => {
           '@bp3': 'bp4',
           '@bp4': 'desktop',
         }}>
-        <NavImageContainer>
+        <NavImageContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           <Link href='/' passHref>
             <a>
               <ImageBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
