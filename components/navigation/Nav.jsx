@@ -118,10 +118,6 @@ const CustomLink = styled('a', {
   },
 
   variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
     active: {
       true: {
         borderBottom: 'solid $whiteBg 2px',
@@ -138,7 +134,7 @@ const MobileNavContainer = styled('div', {
     variant: {
       mobile: {
         position: 'fixed',
-        top: 'calc(100vh - 46px)',
+        top: 'calc(100vh - 100px)',
         height: 46,
         backgroundColor: '$greyBg',
         width: '100vw',
@@ -199,9 +195,18 @@ const HorizontalDivider = styled('div', {
   },
 })
 
+const MobNavImageContainer = styled('div', {
+  backgroundColor: '$greyBg',
+  marginTop: -1,
+  display: 'flex',
+  justifyContent: 'center',
+  paddingTop: 5,
+  paddingBottom: 18,
+})
+
 const Nav = () => {
   const router = useRouter()
-  const location = router.asPath 
+  const location = router.asPath
   const kurserActive =
     ['/kurser'].includes(location) || ['/kurs'].includes(location)
       ? 'true'
@@ -294,6 +299,19 @@ const Nav = () => {
             <CustomLink active={`${forForetagActive}`}>För företag</CustomLink>
           </Link>
         </MobileLinkContainer>
+        <MobNavImageContainer>
+          <Link href='/' passHref>
+            <a>
+              <Image
+                priority
+                src='/batteri.svg'
+                alt='batteri logo'
+                height={33}
+                width={120}
+              />
+            </a>
+          </Link>
+        </MobNavImageContainer>
       </MobileNavContainer>
     </>
   )
