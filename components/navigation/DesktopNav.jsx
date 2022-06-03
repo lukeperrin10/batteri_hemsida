@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 // import MobNav from './MobNav';
 import { styled } from '../../stitches.config'
+import BackIcon from './BackIcon'
 
 const NavContainerOuter = styled('div', {
   backgroundColor: '$blackBg',
@@ -77,20 +78,6 @@ const ImageBox = styled('div', {
   },
 })
 
-const LinkContainer = styled('div', {
-  variants: {
-    variant: {
-      mobile: {
-        display: 'none',
-      },
-      desktop: {
-        display: 'flex',
-        columnGap: 50,
-      },
-    },
-  },
-})
-
 const NavText = styled('p', {
   fontSize: '$3',
   variants: {
@@ -108,6 +95,20 @@ const NavText = styled('p', {
   },
 })
 
+const LinkContainer = styled('div', {
+  variants: {
+    variant: {
+      mobile: {
+        display: 'none',
+      },
+      desktop: {
+        display: 'flex',
+        columnGap: 50,
+      },
+    },
+  },
+})
+
 const CustomLink = styled('a', {
   fontSize: '$3',
   textDecoration: 'none',
@@ -115,6 +116,74 @@ const CustomLink = styled('a', {
     variant: {
       mobile: {},
       desktop: {},
+    },
+  },
+})
+
+const MobileNavContainer = styled('div', {
+  variants: {
+    variant: {
+      mobile: {
+        position: 'fixed',
+        // display: 'flex',
+        // justifyContent: 'center',
+        top: 'calc(100vh - 46px)',
+        height: 46,
+        backgroundColor: '$greyBg',
+        width: '100vw',
+        zIndex: 9999999,
+      },
+      desktop: {
+        display: 'none',
+      },
+    },
+  },
+})
+
+const MobileLinkContainer = styled('div', {
+  variants: {
+    variant: {
+      mobile: {
+        position: 'relative',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100%',
+        columnGap: 50,
+      },
+      desktop: {
+        display: 'none',
+      },
+    },
+  },
+})
+
+const MobileBack = styled('a', {
+  variants: {
+    variant: {
+      mobile: {
+        position: 'absolute',
+        top: 14,
+        left: 20,
+      },
+      desktop: {
+        display: 'none',
+      },
+    },
+  },
+})
+
+const HorizontalDivider = styled('div', {
+  variants: {
+    variant: {
+      mobile: {
+        height: 23,
+        width: 1,
+        backgroundColor: '$whiteBg',
+      },
+      desktop: {
+        display: 'none',
+      },
     },
   },
 })
@@ -146,53 +215,85 @@ const DesktopNav = () => {
 
   // const isScrolled = scrollY >= 10 ? 'scrolled' : '';
   return (
-    <NavContainerOuter>
-      <NavContainerInner
+    <>
+      <NavContainerOuter>
+        <NavContainerInner
+          variant={{
+            '@initial': 'mobile',
+            '@bp3': 'bp4',
+            '@bp4': 'desktop',
+          }}>
+          <NavImageContainer
+            variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+            <Link href='/' passHref>
+              <a>
+                <ImageBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+                  <Image
+                    priority
+                    placeholder='empty'
+                    src='/batteri.svg'
+                    layout='fill'
+                    as='img/svg'
+                    alt='Batteri logo'
+                  />
+                </ImageBox>
+              </a>
+            </Link>
+            <NavText
+              variant={{
+                '@initial': 'mobile',
+                '@bp3': 'smallDesktop',
+                '@bp6': 'desktop',
+              }}>
+              Design, Kod & Videoutbildning
+            </NavText>
+          </NavImageContainer>
+          <LinkContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+            <Link href='/kurser' passHref>
+              <CustomLink>Kurser</CustomLink>
+            </Link>
+            <Link href='/' passHref>
+              <CustomLink>För Företag</CustomLink>
+            </Link>
+            <Link href='/' passHref>
+              <CustomLink>Hitta Hit</CustomLink>
+            </Link>
+            <Link href='/kontakta-oss' passHref>
+              <CustomLink>Kontakt</CustomLink>
+            </Link>
+          </LinkContainer>
+        </NavContainerInner>
+      </NavContainerOuter>
+      <MobileNavContainer
         variant={{
           '@initial': 'mobile',
-          '@bp3': 'bp4',
-          '@bp4': 'desktop',
+          '@bp3': 'desktop',
         }}>
-        <NavImageContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+        <MobileLinkContainer
+          variant={{
+            '@initial': 'mobile',
+            '@bp3': 'desktop',
+          }}>
           <Link href='/' passHref>
-            <a>
-              <ImageBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-                <Image
-                  priority
-                  placeholder='empty'
-                  src='/batteri.svg'
-                  layout='fill'
-                  as='img/svg'
-                  alt='Batteri logo'
-                />
-              </ImageBox>
-            </a>
+            <MobileBack variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+              <BackIcon />
+            </MobileBack>
           </Link>
-          <NavText
-            variant={{
-              '@initial': 'mobile',
-              '@bp3': 'smallDesktop',
-              '@bp6': 'desktop',
-            }}>
-            Design, Kod & Videoutbildning
-          </NavText>
-        </NavImageContainer>
-        <LinkContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           <Link href='/kurser' passHref>
             <CustomLink>Kurser</CustomLink>
           </Link>
+          <HorizontalDivider
+            variant={{
+              '@initial': 'mobile',
+              '@bp3': 'desktop',
+            }}
+          />
           <Link href='/' passHref>
-            <CustomLink>För Företag</CustomLink>
+            <CustomLink>För företag</CustomLink>
           </Link>
-          <Link href='/' passHref>
-            <CustomLink>Hitta Hit</CustomLink>
-          </Link>
-          <Link href='/kontakta-oss' passHref>
-            <CustomLink>Kontakt</CustomLink>
-          </Link>
-        </LinkContainer>
-      </NavContainerInner>
-    </NavContainerOuter>
+        </MobileLinkContainer>
+      </MobileNavContainer>
+    </>
   )
 }
 
