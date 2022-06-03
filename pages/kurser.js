@@ -29,6 +29,10 @@ const CategoriesBox = styled('div', {
   },
 })
 
+const ATag = styled('a', {
+  textDecoration: 'none',
+})
+
 const Kurser = ({ categories }) => {
   return (
     <>
@@ -37,9 +41,9 @@ const Kurser = ({ categories }) => {
         {categories.map((category, slug) => {
           return (
             <Link href={`/kurser/${category.slug}`} key={slug} passHref>
-              <a>
+              <ATag>
                 <Card data={category} />
-              </a>
+              </ATag>
             </Link>
           )
         })}
