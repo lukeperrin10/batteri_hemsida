@@ -5,11 +5,12 @@ export const { styled, getCssText } = createStitches({
     fonts: {
       system: 'system-ui',
       openSans: 'Open Sans',
+      roboto: 'Roboto'
     },
     colors: {
       blackBg: '#232323',
       greyBg: '#343434',
-      whiteBg: '##FAFCFF',
+      whiteBg: '#FAFCFF',
       blueBg: '#EBF3F6',
 
       white: '#fff',
@@ -96,7 +97,6 @@ export const globalStyles = globalCss({
     padding: 0,
     boxSizing: 'border-box',
     color: '$white',
-    backgroundColor: '$whiteBg',
     fontFamily: '$openSans',
     fontWeight: '$reg',
     
