@@ -137,8 +137,8 @@ const MobileNavContainer = styled('div', {
   variants: {
     variant: {
       mobile: {
-        position: 'fixed',
-        top: 'calc(100vh - 92px)',
+        position: 'sticky',
+        top: 'calc(100vh - 46px)',
         height: 46,
         backgroundColor: '$greyBg',
         width: '100vw',
