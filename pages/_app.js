@@ -1,6 +1,6 @@
 // import '../styles/style.css'
 import { globalStyles, styled } from '../stitches.config'
-import DesktopNav from '../components/navigation/Nav'
+import Nav from '../components/navigation/Nav'
 
 const Container = styled('div', {
   display: 'flex',
@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
   globalStyles()
   return (
     <>
-      <DesktopNav />
+      <Nav />
       <Container>
         <Component {...pageProps} />
       </Container>
