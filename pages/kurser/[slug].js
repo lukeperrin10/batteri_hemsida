@@ -43,7 +43,7 @@ const CategoryPage = ({ category }) => {
           wideImage: product.wideImage[0],
           name: product.name,
           logo: product.logo,
-          description: product.description,
+          description: product.shortDescription,
         }
         return <Card data={course_data} key={index} />
       })}
