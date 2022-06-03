@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { styled } from '../../stitches.config'
-import BackIcon from './BackIcon'
+import BackIcon from './ BackIcon'
 
 const NavContainerOuter = styled('div', {
   backgroundColor: '$blackBg',
