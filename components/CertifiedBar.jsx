@@ -5,7 +5,7 @@ import { styled } from '../stitches.config'
 const CertifiedBoxOuter = styled('div', {
   backgroundColor: '$greyBg',
   width: '100vw',
-  marginY: 58,
+  marginTop: 58,
 })
 
 const CertifiedBoxInner = styled('div', {

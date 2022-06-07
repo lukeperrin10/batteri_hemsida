@@ -7,6 +7,7 @@ import getAllCategories from '../lib/get-all-categories'
 import Card from '../components/Card'
 import IndexHero from '../components/IndexHero'
 import CertifiedBar from '../components/CertifiedBar'
+import Testimonials from '../components/Testimonials'
 
 const CategoriesBox = styled('div', {
   width: '100vw',
@@ -49,6 +50,7 @@ const Home = ({ categories }) => {
         })}
       </CategoriesBox>
       <CertifiedBar />
+      <Testimonials />
     </>
   )
 }
