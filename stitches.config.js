@@ -19,7 +19,7 @@ export const { styled, getCssText } = createStitches({
       blueLight: '#456691',
       blue: '#2A6BD2',
       blueDark: '#2866C9',
-      blueLink: '##009DFF',
+      blueLink: '#009DFF',
 
       pink: '#DD16E5',
 
