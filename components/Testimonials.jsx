@@ -2,6 +2,8 @@ import React from 'react'
 import { styled } from '../stitches.config'
 
 const TestimonialsContainer = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
   width: '100vw',
   backgroundColor: '$blueBg',
   paddingTop: 85,
@@ -13,47 +15,64 @@ const TestimonialsContainer = styled('div', {
   },
 })
 const TestimonialsInnerContainer = styled('div', {
-  maxWidth: '2560px',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        overflow: 'hidden',
+        maxWidth: '100vw',
+      },
+      desktop: {
+        maxWidth: '2560px',
+      },
     },
   },
 })
 const Title = styled('p', {
   color: '$blueLight',
+  fontWeight: '$semi',
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        fontSize: '$3',
+      },
+      desktop: {
+        fontSize: '$7',
+      },
     },
   },
 })
 const CardsContainer = styled('div', {
   display: 'flex',
+  // position: 'absolute',
   justifyContent: 'center',
   marginY: 123,
-  columnGap: 110,
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        columnGap: 27,
+      },
+      desktop: {
+        columnGap: '4vw',
+      },
     },
   },
 })
 const TestimonialCard = styled('div', {
   display: 'flex',
-  width: 380,
-  height: 482,
   linearGradient: '-45deg, $blue 0%, $pink 80%',
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        width: 291,
+        height: 371,
+      },
+      desktop: {
+        width: 380,
+        height: 482,
+      },
     },
     gradDir: {
       bluePink: {
@@ -69,12 +88,30 @@ const TestimonialCard = styled('div', {
 const Testimonials = () => {
   return (
     <TestimonialsContainer>
-      <TestimonialsInnerContainer>
-        <Title>Några citat från tidiage kursdeltagare</Title>
-        <CardsContainer>
-          <TestimonialCard gradDir="bluePink" ></TestimonialCard>
-          <TestimonialCard gradDir="pinkBlue" ></TestimonialCard>
-          <TestimonialCard gradDir="bluePink" ></TestimonialCard>
+      <TestimonialsInnerContainer
+        variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+        <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+          Några citat från tidiage kursdeltagare
+        </Title>
+        <CardsContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+          <TestimonialCard
+            gradDir='bluePink'
+            variant={{
+              '@initial': 'mobile',
+              '@bp3': 'desktop',
+            }}></TestimonialCard>
+          <TestimonialCard
+            gradDir='pinkBlue'
+            variant={{
+              '@initial': 'mobile',
+              '@bp3': 'desktop',
+            }}></TestimonialCard>
+          <TestimonialCard
+            gradDir='bluePink'
+            variant={{
+              '@initial': 'mobile',
+              '@bp3': 'desktop',
+            }}></TestimonialCard>
         </CardsContainer>
       </TestimonialsInnerContainer>
     </TestimonialsContainer>

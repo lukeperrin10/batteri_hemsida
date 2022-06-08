@@ -8,6 +8,7 @@ import Card from '../components/Card'
 import IndexHero from '../components/IndexHero'
 import CertifiedBar from '../components/CertifiedBar'
 import Testimonials from '../components/Testimonials'
+import Carousel from '../components/Carousel'
 
 const CategoriesBox = styled('div', {
   width: '100vw',
@@ -50,7 +51,8 @@ const Home = ({ categories }) => {
         })}
       </CategoriesBox>
       <CertifiedBar />
-      <Testimonials />
+      {/* <Testimonials /> */}
+      <Carousel />
     </>
   )
 }
