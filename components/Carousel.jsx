@@ -3,6 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react'
 import useWindowSize from '../modules/windowSize'
 
 import { styled } from '../stitches.config'
+import Image from 'next/image'
 
 const TestimonialsContainer = styled('div', {
   display: 'flex',
@@ -29,7 +30,6 @@ const Title = styled('p', {
       },
       desktop: {
         fontSize: '$7',
-        marginBottom: 123,
       },
     },
   },
@@ -44,10 +44,13 @@ const Embla = styled('div', {
     variant: {
       mobile: {
         width: '100vw',
+        marginTop: 46,
+        marginBottom: 25,
       },
       desktop: {
         maxWidth: '1560px',
         justifyContent: 'center',
+        marginY: 123,
       },
     },
   },
@@ -72,7 +75,9 @@ const EmblaContainer = styled('div', {
 
 const EmblaSlide = styled('div', {
   display: 'flex',
+  flexDirection: 'column',
   position: 'relative',
+  justifyContent: 'center',
   linearGradient: '-45deg, $blue 0%, $pink 80%',
   variants: {
     variant: {
@@ -80,6 +85,8 @@ const EmblaSlide = styled('div', {
         marginX: '4%',
         flex: '0 0 291px',
         height: 371,
+        paddingBottom: 15,
+        paddingX: 22,
       },
       mobile: {
         marginX: '4%',
@@ -90,6 +97,7 @@ const EmblaSlide = styled('div', {
         marginX: '12%',
         flex: '0 0 380px',
         height: 482,
+        padding: 30,
       },
       desktop: {
         marginX: 'auto',
@@ -108,9 +116,69 @@ const EmblaSlide = styled('div', {
   },
 })
 
+const ImageContainer = styled('div', {
+  display: 'flex',
+  width: '100%',
+  height: '50%',
+  justifyContent: 'center',
+  variants: {
+    variant: {
+      mobile: {},
+      desktop: {},
+    },
+  },
+})
+const ContentContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',
+  height: '50%',
+  justifyContent: 'flex-start',
+  variants: {
+    variant: {
+      mobile: {},
+      desktop: {},
+    },
+  },
+})
+
+const Divider = styled('span', {
+  border: 'solid white 2px',
+  width: '33%',
+  height: 0,
+  variants: {
+    variant: {
+      mobile: {},
+      desktop: {},
+    },
+  },
+})
+const Name = styled('h3', {
+  marginY: 20,
+  fontSize: '$3',
+  fontWeight: '$semi',
+  variants: {
+    variant: {
+      mobile: {},
+      desktop: {},
+    },
+  },
+})
+const Review = styled('p', {
+  fontSize: '$2',
+  fontWeight: '$reg',
+  lineHeight: 1.5,
+  variants: {
+    variant: {
+      mobile: {},
+      desktop: {},
+    },
+  },
+})
+
 const Carousel = () => {
   const windowSize = useWindowSize()
-  const [viewportRef, embla] = useEmblaCarousel({
+  const [viewportRef] = useEmblaCarousel({
     loop: true,
     skipSnaps: false,
   })
@@ -132,7 +200,18 @@ const Carousel = () => {
               '@bp3': 'smallDesktop',
               '@bp6': 'desktop',
             }}>
-            Slide 1
+            <ImageContainer>
+              <Image src='/batteri.svg' alt='' width={201} height={47} />
+            </ImageContainer>
+            <ContentContainer>
+              <Divider />
+              <Name>Johan DePaoli, Art Director</Name>
+              <Review>
+                “Batteri har väl sammansatta utbildningar som ger inspiration i
+                det dagliga arbetet. Lärarna kommer från arbetslivet och har
+                stött på samma problem som jag själv”
+              </Review>
+            </ContentContainer>
           </EmblaSlide>
           <EmblaSlide
             gradDir='pinkBlue'
@@ -142,7 +221,16 @@ const Carousel = () => {
               '@bp3': 'smallDesktop',
               '@bp6': 'desktop',
             }}>
-            Slide 2
+            <ImageContainer>
+              <Image src='/batteri.svg' alt='' width={201} height={47} />
+            </ImageContainer>
+            <ContentContainer>
+              <Divider />
+              <Name>Karin Ekh </Name>
+              <Review>
+              “Batteri har gedigen utbildning som ger färdigheter både i teorin och i praktiken. Dessutom är kursens innehåll kopplat till verkligheten med lösningar som kommer till användning i det dagliga arbetet.”
+              </Review>
+            </ContentContainer>
           </EmblaSlide>
           <EmblaSlide
             gradDir='bluePink'
@@ -152,7 +240,18 @@ const Carousel = () => {
               '@bp3': 'smallDesktop',
               '@bp6': 'desktop',
             }}>
-            Slide 3
+            <ImageContainer>
+              <Image src='/batteri.svg' alt='' width={201} height={47} />
+            </ImageContainer>
+            <ContentContainer>
+              <Divider />
+              <Name>Johan DePaoli, Art Director</Name>
+              <Review>
+                “Batteri har väl sammansatta utbildningar som ger inspiration i
+                det dagliga arbetet. Lärarna kommer från arbetslivet och har
+                stött på samma problem som jag själv”
+              </Review>
+            </ContentContainer>
           </EmblaSlide>
         </EmblaContainer>
       </Embla>
