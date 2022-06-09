@@ -85,14 +85,14 @@ const EmblaSlide = styled('div', {
       smallMobile: {
         marginX: '4%',
         flex: '0 0 291px',
-        height: 460,
+        height: 450,
         paddingBottom: 15,
         paddingX: 22,
       },
       mobile: {
         marginX: '4%',
         flex: '0 0 330px',
-        height: 460,
+
       },
       smallDesktop: {
         marginX: '12%',
@@ -103,7 +103,6 @@ const EmblaSlide = styled('div', {
       desktop: {
         marginX: 'auto',
         flex: '0 0 380px',
-        height: 482,
       },
     },
     gradDir: {
@@ -120,7 +119,7 @@ const EmblaSlide = styled('div', {
 const ImageContainer = styled('div', {
   display: 'flex',
   width: '100%',
-  height: '50%',
+  height: '40%',
   justifyContent: 'center',
   variants: {
     variant: {
@@ -133,7 +132,7 @@ const ContentContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  height: '50%',
+  height: '60%',
   justifyContent: 'flex-start',
   variants: {
     variant: {
