@@ -3,9 +3,11 @@ import React from 'react'
 import { styled } from '../stitches.config'
 
 const CertifiedBoxOuter = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
   backgroundColor: '$greyBg',
   width: '100vw',
-  marginY: 58,
+  marginTop: 58,
 })
 
 const CertifiedBoxInner = styled('div', {
@@ -85,7 +87,7 @@ const ImageBox = styled('div', {
 const CertifiedBar = () => {
   return (
     <CertifiedBoxOuter>
-      <CertifiedBoxInner  variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+      <CertifiedBoxInner variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         <CertifiedText variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           Certifierad av
         </CertifiedText>
