@@ -4,6 +4,7 @@ import useWindowSize from '../modules/windowSize'
 
 import { styled } from '../stitches.config'
 import Image from 'next/image'
+import Button from './Button'
 
 const TestimonialsContainer = styled('div', {
   display: 'flex',
@@ -12,6 +13,7 @@ const TestimonialsContainer = styled('div', {
   width: '100vw',
   backgroundColor: '$blueBg',
   paddingTop: 85,
+  paddingBottom: 104,
   variants: {
     variant: {
       mobile: {},
@@ -44,8 +46,7 @@ const Embla = styled('div', {
     variant: {
       mobile: {
         width: '100vw',
-        marginTop: 46,
-        marginBottom: 25,
+        marginY: 50,
       },
       desktop: {
         maxWidth: '1560px',
@@ -84,14 +85,14 @@ const EmblaSlide = styled('div', {
       smallMobile: {
         marginX: '4%',
         flex: '0 0 291px',
-        height: 371,
+        height: 460,
         paddingBottom: 15,
         paddingX: 22,
       },
       mobile: {
         marginX: '4%',
         flex: '0 0 330px',
-        height: 371,
+        height: 460,
       },
       smallDesktop: {
         marginX: '12%',
@@ -236,6 +237,7 @@ const Carousel = ({data}) => {
           ))}
         </EmblaContainer>
       </Embla>
+      <Button text="hitta din kurs idag" linkTo="/kurser"/>
     </TestimonialsContainer>
   )
 }
