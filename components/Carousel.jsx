@@ -143,24 +143,24 @@ const ContentContainer = styled('div', {
 })
 
 const Divider = styled('span', {
-  border: 'solid white 2px',
+  backgroundColor: '$white',
   width: '33%',
   height: 0,
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
+  border: 'solid $white 1.5px',
 })
+
 const Name = styled('h3', {
-  marginY: 20,
-  fontSize: '$3',
   fontWeight: '$semi',
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        fontSize: '$1',
+        marginY: 16,
+      },
+      desktop: {
+        marginY: 20,
+        fontSize: '$3',
+      },
     },
   },
 })
@@ -168,15 +168,35 @@ const Review = styled('p', {
   fontSize: '$2',
   fontWeight: '$reg',
   lineHeight: 1.5,
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
 })
 
-const Carousel = () => {
+const Carousel = ({data}) => {
+  const testimonials = [
+    {
+      id: 1,
+      name: 'Johan DePaoli, Art Director',
+      review:
+        '"Batteri har väl sammansatta utbildningar som ger inspiration i det dagliga arbetet. Lärarna kommer från arbetslivet och har stött på samma problem som jag själv"',
+      color: 'bluePink',
+      image: '/batteri.svg',
+    },
+    {
+      id: 2,
+      name: 'Karin Ekh',
+      review:
+        '"Batteri har gedigen utbildning som ger färdigheter både i teorin och i praktiken. Dessutom är kursens innehåll kopplat till verkligheten med lösningar som kommer till användning i det dagliga arbetet."',
+      color: 'pinkBlue',
+      image: '/batteri.svg',
+    },
+    {
+      id: 3,
+      name: 'Johan Andersson, Designkoordinator',
+      review:
+        '"Jättetrevligt att kursa hos Batteri, kurserna är bra och att det var väldigt trevliga och ljusa lokaler. Trevlig personal, nästan lite hemtrevligt och inte så strikt som det ofta kan vara i kurs- lokaler, kreativ stämning och man trivs"',
+      color: 'bluePink',
+      image: '/batteri.svg',
+    },
+  ]
   const windowSize = useWindowSize()
   const [viewportRef] = useEmblaCarousel({
     loop: true,
@@ -192,67 +212,28 @@ const Carousel = () => {
         variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
         ref={windowSize.width <= 1160 ? viewportRef : null}>
         <EmblaContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-          <EmblaSlide
-            gradDir='bluePink'
-            variant={{
-              '@initial': 'smallMobile',
-              '@bp2': 'mobile',
-              '@bp3': 'smallDesktop',
-              '@bp6': 'desktop',
-            }}>
-            <ImageContainer>
-              <Image src='/batteri.svg' alt='' width={201} height={47} />
-            </ImageContainer>
-            <ContentContainer>
-              <Divider />
-              <Name>Johan DePaoli, Art Director</Name>
-              <Review>
-                “Batteri har väl sammansatta utbildningar som ger inspiration i
-                det dagliga arbetet. Lärarna kommer från arbetslivet och har
-                stött på samma problem som jag själv”
-              </Review>
-            </ContentContainer>
-          </EmblaSlide>
-          <EmblaSlide
-            gradDir='pinkBlue'
-            variant={{
-              '@initial': 'smallMobile',
-              '@bp2': 'mobile',
-              '@bp3': 'smallDesktop',
-              '@bp6': 'desktop',
-            }}>
-            <ImageContainer>
-              <Image src='/batteri.svg' alt='' width={201} height={47} />
-            </ImageContainer>
-            <ContentContainer>
-              <Divider />
-              <Name>Karin Ekh </Name>
-              <Review>
-              “Batteri har gedigen utbildning som ger färdigheter både i teorin och i praktiken. Dessutom är kursens innehåll kopplat till verkligheten med lösningar som kommer till användning i det dagliga arbetet.”
-              </Review>
-            </ContentContainer>
-          </EmblaSlide>
-          <EmblaSlide
-            gradDir='bluePink'
-            variant={{
-              '@initial': 'smallMobile',
-              '@bp2': 'mobile',
-              '@bp3': 'smallDesktop',
-              '@bp6': 'desktop',
-            }}>
-            <ImageContainer>
-              <Image src='/batteri.svg' alt='' width={201} height={47} />
-            </ImageContainer>
-            <ContentContainer>
-              <Divider />
-              <Name>Johan DePaoli, Art Director</Name>
-              <Review>
-                “Batteri har väl sammansatta utbildningar som ger inspiration i
-                det dagliga arbetet. Lärarna kommer från arbetslivet och har
-                stött på samma problem som jag själv”
-              </Review>
-            </ContentContainer>
-          </EmblaSlide>
+          {testimonials.map((testimonial) => (
+            <EmblaSlide
+              key={testimonial.id}
+              gradDir={testimonial.color}
+              variant={{
+                '@initial': 'smallMobile',
+                '@bp2': 'mobile',
+                '@bp3': 'smallDesktop',
+                '@bp6': 'desktop',
+              }}>
+              <ImageContainer>
+                <Image src={testimonial.image} alt='' width={201} height={47} />
+              </ImageContainer>
+              <ContentContainer>
+                <Divider />
+                <Name variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+                  {testimonial.name}
+                </Name>
+                <Review>{testimonial.review}</Review>
+              </ContentContainer>
+            </EmblaSlide>
+          ))}
         </EmblaContainer>
       </Embla>
     </TestimonialsContainer>

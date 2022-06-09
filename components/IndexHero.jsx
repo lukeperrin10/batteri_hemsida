@@ -175,7 +175,7 @@ const MostPopular = styled('a', {
   },
 })
 
-const IndexHero = () => {
+const IndexHero = (props) => {
   const windowSize = useWindowSize()
   return (
     <Hero>

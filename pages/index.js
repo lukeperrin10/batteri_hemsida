@@ -51,7 +51,6 @@ const Home = ({ categories }) => {
         })}
       </CategoriesBox>
       <CertifiedBar />
-      {/* <Testimonials /> */}
       <Carousel />
     </>
   )
