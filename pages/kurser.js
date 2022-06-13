@@ -11,6 +11,7 @@ const CategoriesBox = styled('div', {
   width: '100vw',
   maxWidth: 1920,
   display: 'flex',
+  marginY: 58,
 
   variants: {
     variant: {
