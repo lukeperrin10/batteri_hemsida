@@ -31,15 +31,14 @@ const CertifiedBoxInner = styled('div', {
 
 const CertifiedText = styled('p', {
   color: '$blueLink',
+  fontWeight: '$semi',
   variants: {
     variant: {
       mobile: {
-        fontWeight: '$semi',
         fontSize: '$4',
         marginBottom: 41,
       },
       desktop: {
-        fontWeight: '$bold',
         fontSize: '$8',
         marginBottom: 54,
       },

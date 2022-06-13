@@ -236,7 +236,7 @@ const Carousel = ({data}) => {
           ))}
         </EmblaContainer>
       </Embla>
-      <Button text="hitta din kurs idag" linkTo="/kurser"/>
+      <Button text="Hitta din kurs idag" linkTo="/kurser"/>
     </TestimonialsContainer>
   )
 }
