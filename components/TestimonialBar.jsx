@@ -2,14 +2,14 @@ import Image from 'next/image'
 import React from 'react'
 import { styled } from '../stitches.config'
 
-const CertifiedBoxOuter = styled('div', {
+const TestimonialBoxOuter = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   backgroundColor: '$blueBg',
   width: '100vw',
 })
 
-const CertifiedBoxInner = styled('div', {
+const TestimonialBoxInner = styled('div', {
   display: 'flex',
   maxWidth: '1500px',
   flexDirection: 'column',
@@ -29,7 +29,7 @@ const CertifiedBoxInner = styled('div', {
   },
 })
 
-const CertifiedText = styled('p', {
+const TestimonialText = styled('p', {
   color: '$blueLight',
   textAlign: 'center',
   marginX: 20,
@@ -89,43 +89,43 @@ const ImageBox = styled('div', {
 
 const TestimonialBar = () => {
   return (
-    <CertifiedBoxOuter>
-      <CertifiedBoxInner variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-        <CertifiedText variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+    <TestimonialBoxOuter>
+      <TestimonialBoxInner variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+        <TestimonialText variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           Vi laddar Adobekompetens genom Batteri
-        </CertifiedText>
+        </TestimonialText>
         <IconContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           <ImageBox variant={{ '@initial': 'mobile', '@bp2': 'desktop' }}>
             <Image
-              alt='Adobe certified mark'
+              alt='Batteri used our service'
               src='/batteri.svg'
               layout='fill'
             />
           </ImageBox>
           <ImageBox variant={{ '@initial': 'mobile', '@bp2': 'desktop' }}>
             <Image
-              alt='Adobe certified mark'
+              alt='Batteri that have used our service'
               src='/batteri.svg'
               layout='fill'
             />
           </ImageBox>
           <ImageBox variant={{ '@initial': 'mobile', '@bp2': 'desktop' }}>
             <Image
-              alt='Adobe certified mark'
+              alt='Batteri that have used our service'
               src='/batteri.svg'
               layout='fill'
             />
           </ImageBox>
           <ImageBox variant={{ '@initial': 'mobile', '@bp2': 'desktop' }}>
             <Image
-              alt='Adobe certified mark'
+              alt='Batteri that have used our service'
               src='/batteri.svg'
               layout='fill'
             />
           </ImageBox>
         </IconContainer>
-      </CertifiedBoxInner>
-    </CertifiedBoxOuter>
+      </TestimonialBoxInner>
+    </TestimonialBoxOuter>
   )
 }
 
