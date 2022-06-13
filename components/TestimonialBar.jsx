@@ -97,28 +97,28 @@ const TestimonialBar = () => {
         <IconContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           <ImageBox variant={{ '@initial': 'mobile', '@bp2': 'desktop' }}>
             <Image
-              alt='Batteri used our service'
+              alt='Customer that has used our service'
               src='/batteri.svg'
               layout='fill'
             />
           </ImageBox>
           <ImageBox variant={{ '@initial': 'mobile', '@bp2': 'desktop' }}>
             <Image
-              alt='Batteri that have used our service'
+              alt='Customer that has used our service'
               src='/batteri.svg'
               layout='fill'
             />
           </ImageBox>
           <ImageBox variant={{ '@initial': 'mobile', '@bp2': 'desktop' }}>
             <Image
-              alt='Batteri that have used our service'
+              alt='Customer that has used our service'
               src='/batteri.svg'
               layout='fill'
             />
           </ImageBox>
           <ImageBox variant={{ '@initial': 'mobile', '@bp2': 'desktop' }}>
             <Image
-              alt='Batteri that have used our service'
+              alt='Customer that has used our service'
               src='/batteri.svg'
               layout='fill'
             />
