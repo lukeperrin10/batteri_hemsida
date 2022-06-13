@@ -1,6 +1,7 @@
 // import '../styles/style.css'
 import { globalStyles, styled } from '../stitches.config'
 import Nav from '../components/navigation/Nav'
+import Footer from '../components/Footer'
 
 const Container = styled('div', {
   display: 'flex',
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }) {
       <Container>
         <Component {...pageProps} />
       </Container>
+      <Footer />
     </>
   )
 }
