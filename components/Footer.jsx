@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { styled } from '../stitches.config'
 
@@ -10,36 +11,47 @@ const FooterContainer = styled('footer', {
   backgroundColor: '$greyBg',
   alignItems: 'center',
   paddingTop: 94,
-  paddingBottom: 40,
+
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        paddingBottom: 120,
+      },
+      desktop: {
+        paddingBottom: 40,
+      },
     },
   },
 })
 const MainContainer = styled('div', {
   display: 'flex',
-  flexDirection: 'row',
   width: '100vw',
-  justifyContent: 'center',
-  columnGap: 250,
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        flexDirection: 'column',
+        paddingX: '5%',
+      },
+      desktop: {
+        flexDirection: 'row',
+        maxWidth: 1300,
+        justifyContent: 'space-between',
+      },
     },
   },
 })
 
 const AddressContainer = styled('div', {
-  width: 260,
   display: 'flex',
   flexDirection: 'column',
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        width: '100%',
+      },
+      desktop: {
+        width: 260,
+      },
     },
   },
 })
@@ -50,95 +62,70 @@ const ImageContainer = styled('div', {
   height: 49,
   marginLeft: -10,
   marginBottom: 20,
+})
+
+const FooterNav = styled('div', {
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        display: 'flex',
+        flexDirection: 'column',
+        width: 260,
+      },
+      desktop: {
+        display: 'none',
+      },
     },
+  },
+})
+
+const Atag = styled('a', {
+  textDecoration: 'none',
+  marginY: 8,
+
+  '&:hover': {
+    textDecoration: 'underline',
   },
 })
 
 const Email = styled('a', {
   fontWeight: '$reg',
   color: '$blueLink',
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
 })
 
 const AktuelltContainer = styled('div', {
   width: 260,
   display: 'flex',
   flexDirection: 'column',
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
 })
 
 const NewsLetterContainer = styled('div', {
   width: 260,
   display: 'flex',
   flexDirection: 'column',
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
 })
 
 const Title = styled('h4', {
   fontSize: '$8',
   fontWeight: '$bold',
   marginBottom: 20,
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
 })
 
 const SubTitle = styled('p', {
   fontWeight: '$bold',
   fontSize: '$3',
   marginBottom: 7,
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
 })
 const Description = styled('p', {
-  fontWeight: '$reg',
   fontSize: '$2',
   lineHeight: 1.7,
   marginBottom: 3,
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
 })
 const Label = styled('Label', {
   fontSize: '$1',
   marginLeft: 0,
   marginTop: 10,
   marginBottom: 5,
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
 })
 const InputBar = styled('input', {
   pillShape: true,
@@ -148,14 +135,8 @@ const InputBar = styled('input', {
   color: '$black',
   fontSize: '$4',
   paddingLeft: 10,
-
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
 })
+
 const InputBtn = styled('a', {
   display: 'flex',
   justifyContent: 'center',
@@ -167,23 +148,20 @@ const InputBtn = styled('a', {
   width: 122,
   height: 45,
   pillShape: true,
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
 })
 
 const BuiltBy = styled('p', {
-  marginTop: 30,
   fontSize: '$1',
   letterSpacing: 1.2,
   fontWeight: '$light',
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        marginTop: 50,
+      },
+      desktop: {
+        marginTop: 30,
+      },
     },
   },
 })
@@ -193,22 +171,62 @@ const CopyRight = styled('p', {
   letterSpacing: 1.1,
   fontSize: '$1',
   fontWeight: '$light',
+})
+
+const Divider = styled('div', {
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        width: '20%',
+        minWidth: 120,
+        height: 1,
+        backgroundColor: '#ffffff5f',
+        marginY: 44,
+        alignSelf: 'center',
+      },
+      tablet: {
+        alignSelf: 'flex-start',
+      },
+      desktop: {
+        display: 'none',
+      },
     },
   },
 })
 
 const Footer = () => {
   return (
-    <FooterContainer>
-      <MainContainer>
-        <AddressContainer>
+    <FooterContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+      <MainContainer variant={{ '@initial': 'mobile', '@bp5': 'desktop' }}>
+        <AddressContainer variant={{ '@initial': 'mobile', '@bp5': 'desktop' }}>
           <ImageContainer>
             <Image src='/batteri.svg' layout='fill' alt='' />
           </ImageContainer>
+          <FooterNav variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+            <Link passHref href='#'>
+              <Atag>Hem</Atag>
+            </Link>
+            <Link passHref href='/kurser'>
+              <Atag>Kurser</Atag>
+            </Link>
+            <Link passHref href='/for-foretag'>
+              <Atag>För företag</Atag>
+            </Link>
+            <Link passHref href='/hitta-hit'>
+              <Atag>Hitta hit</Atag>
+            </Link>
+            <Link passHref href='kontakt'>
+              <Atag>Kontakt</Atag>
+            </Link>
+          </FooterNav>
+          <Divider
+            variant={{
+              '@initial': 'mobile',
+              '@bp2': 'tablet',
+              '@bp3': 'desktop',
+            }}
+
+          />
           <SubTitle>Södra vägen 24</SubTitle>
           <Description>
             412 54 Göteborg
@@ -217,6 +235,13 @@ const Footer = () => {
           </Description>
           <Email href='mailto: info@batteri.se'>E-mail: info@batteri.se</Email>
         </AddressContainer>
+        <Divider
+          variant={{
+            '@initial': 'mobile',
+            '@bp2': 'tablet',
+            '@bp5': 'desktop',
+          }}
+        />
         <AktuelltContainer>
           <Title>Aktuellt</Title>
           <SubTitle>Creative Day 2022</SubTitle>
@@ -224,6 +249,13 @@ const Footer = () => {
             Kunskap och inspiration för dig som arbetar inhouse och på byrå.
           </Description>
         </AktuelltContainer>
+        <Divider
+          variant={{
+            '@initial': 'mobile',
+            '@bp2': 'tablet',
+            '@bp5': 'desktop',
+          }}
+        />
         <NewsLetterContainer>
           <Title>Nyhetsbrev</Title>
           <Description>
@@ -234,7 +266,9 @@ const Footer = () => {
           <InputBtn>Skicka</InputBtn>
         </NewsLetterContainer>
       </MainContainer>
-      <BuiltBy>Built with &#9829; for Batteri by HOP Technology</BuiltBy>
+      <BuiltBy variant={{ '@initial': 'mobile', '@bp5': 'desktop' }}>
+        Built with &#9829; for Batteri by HOP Technology
+      </BuiltBy>
       <CopyRight>© 2022 by Batteri kummunikation</CopyRight>
     </FooterContainer>
   )
