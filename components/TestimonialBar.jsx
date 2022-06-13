@@ -2,16 +2,16 @@ import Image from 'next/image'
 import React from 'react'
 import { styled } from '../stitches.config'
 
-const CertifiedBoxOuter = styled('div', {
+const TestimonialBoxOuter = styled('div', {
   display: 'flex',
   justifyContent: 'center',
-  backgroundColor: '$greyBg',
+  backgroundColor: '$blueBg',
   width: '100vw',
 })
 
-const CertifiedBoxInner = styled('div', {
+const TestimonialBoxInner = styled('div', {
   display: 'flex',
-  maxWidth: '2560px',
+  maxWidth: '1500px',
   flexDirection: 'column',
   alignItems: 'center',
 
@@ -22,26 +22,28 @@ const CertifiedBoxInner = styled('div', {
         paddingBottom: 50,
       },
       desktop: {
-        paddingTop: 42,
+        paddingTop: 75,
         paddingBottom: 100,
       },
     },
   },
 })
 
-const CertifiedText = styled('p', {
-  color: '$blueLink',
+const TestimonialText = styled('p', {
+  color: '$blueLight',
+  textAlign: 'center',
+  marginX: 20,
   variants: {
     variant: {
       mobile: {
         fontWeight: '$semi',
-        fontSize: '$4',
+        fontSize: '$3',
         marginBottom: 41,
       },
       desktop: {
-        fontWeight: '$bold',
-        fontSize: '$8',
-        marginBottom: 54,
+        fontWeight: '$reg',
+        fontSize: '$7',
+        marginBottom: 84,
       },
     },
   },
@@ -56,13 +58,15 @@ const IconContainer = styled('div', {
   variants: {
     variant: {
       mobile: {
+        flexDirection: 'column',
         columnGap: 100,
         rowGap: 30,
         marginX: 20,
       },
       desktop: {
-        columnGap: 150,
-        rowGap: 54,
+        flexDirection: 'row',
+        columnGap: 75,
+        rowGap: 40,
       },
     },
   },
@@ -72,57 +76,57 @@ const ImageBox = styled('div', {
   variants: {
     variant: {
       mobile: {
-        width: 194,
-        height: 78,
+        width: 151,
+        height: 31,
       },
       desktop: {
-        height: 102,
-        width: 253,
+        width: 205,
+        height: 50,
       },
     },
   },
 })
 
-const CertifiedBar = () => {
+const TestimonialBar = () => {
   return (
-    <CertifiedBoxOuter>
-      <CertifiedBoxInner variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-        <CertifiedText variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-          Certifierad av
-        </CertifiedText>
+    <TestimonialBoxOuter>
+      <TestimonialBoxInner variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+        <TestimonialText variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+          Vi laddar Adobekompetens genom Batteri
+        </TestimonialText>
         <IconContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-          <ImageBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+          <ImageBox variant={{ '@initial': 'mobile', '@bp2': 'desktop' }}>
             <Image
-              alt='Adobe certified mark'
+              alt='Customer that has used our service'
               src='/batteri.svg'
               layout='fill'
             />
           </ImageBox>
-          <ImageBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+          <ImageBox variant={{ '@initial': 'mobile', '@bp2': 'desktop' }}>
             <Image
-              alt='Adobe certified mark'
+              alt='Customer that has used our service'
               src='/batteri.svg'
               layout='fill'
             />
           </ImageBox>
-          <ImageBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+          <ImageBox variant={{ '@initial': 'mobile', '@bp2': 'desktop' }}>
             <Image
-              alt='Adobe certified mark'
+              alt='Customer that has used our service'
               src='/batteri.svg'
               layout='fill'
             />
           </ImageBox>
-          <ImageBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+          <ImageBox variant={{ '@initial': 'mobile', '@bp2': 'desktop' }}>
             <Image
-              alt='Adobe certified mark'
+              alt='Customer that has used our service'
               src='/batteri.svg'
               layout='fill'
             />
           </ImageBox>
         </IconContainer>
-      </CertifiedBoxInner>
-    </CertifiedBoxOuter>
+      </TestimonialBoxInner>
+    </TestimonialBoxOuter>
   )
 }
 
-export default CertifiedBar
+export default TestimonialBar

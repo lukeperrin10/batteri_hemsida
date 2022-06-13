@@ -206,7 +206,7 @@ const Carousel = ({data}) => {
   return (
     <TestimonialsContainer>
       <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-        Några citat från tidiage kursdeltagare
+        Några citat från tidigare kursdeltagare
       </Title>
       <Embla
         variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}

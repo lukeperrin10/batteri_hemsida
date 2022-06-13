@@ -8,11 +8,13 @@ import Card from '../components/Card'
 import IndexHero from '../components/IndexHero'
 import CertifiedBar from '../components/CertifiedBar'
 import Carousel from '../components/Carousel'
+import TestimonialBar from '../components/TestimonialBar'
 
 const CategoriesBox = styled('div', {
   width: '100vw',
   maxWidth: 1920,
   display: 'flex',
+  marginY: 58,
 
   variants: {
     variant: {
@@ -38,6 +40,7 @@ const Home = ({ categories }) => {
   return (
     <>
       <IndexHero />
+      <TestimonialBar />
       <CategoriesBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         {categories.map((category, slug) => {
           return (
