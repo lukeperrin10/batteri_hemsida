@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 import getAllCategories from '../lib/get-all-categories'
+import getAllAktuellts from '../lib/get-all-aktuellts'
 import getPageData from '../lib/get-page-data'
 import Card from '../components/Card'
 import CategoriesHero from '../components/CategoriesHero'
@@ -57,11 +58,14 @@ export default Kurser
 export async function getStaticProps({ locale }) {
   const pageData = await getPageData({ locale })
   const { categories } = await getAllCategories({ locale })
+  const { aktuellts } = await getAllAktuellts({ locale })
+
 
   return {
     props: {
       ...pageData,
       categories,
+      aktuellts,
     },
   }
 }

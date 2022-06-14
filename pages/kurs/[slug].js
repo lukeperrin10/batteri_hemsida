@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import CourseHero from '../../components/CourseHero'
 import getAllProducts from '../../lib/get-all-product'
+import getAllAktuellts from '../lib/get-all-aktuellts'
 import getProductBySlug from '../../lib/get-product-slug'
 import HopHelper from '../../modules/helper'
 
@@ -58,11 +59,15 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { product } = await getProductBySlug({ slug: params.slug })
+  const { aktuellts } = await getAllAktuellts({ locale })
 
   return {
     props: {
       product,
+      aktuellts,
     },
   }
 }
 export default Product
+
+

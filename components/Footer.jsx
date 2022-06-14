@@ -121,7 +121,7 @@ const Description = styled('p', {
   lineHeight: 1.7,
   marginBottom: 3,
 })
-const Label = styled('Label', {
+const Label = styled('label', {
   fontSize: '$1',
   marginLeft: 0,
   marginTop: 10,
@@ -194,7 +194,25 @@ const Divider = styled('div', {
   },
 })
 
-const Footer = () => {
+const Footer = ({ aktuellts }) => {
+
+  // =========== Show only one aktuellt ===========
+  const defaultAktuellt = {
+    title: 'Inga nyheter/aktuella saker',
+    description:
+      'Här visas nyheter och aktuella saker, som kommande evanemang m.m.',
+  }
+
+  const trueAktuellt = [defaultAktuellt]
+  const falseAktuellt = []
+
+  aktuellts.forEach((data) => {
+    data.show === true ? trueAktuellt.unshift({ data }) : falseAktuellt.push({ data })
+  })
+
+  const aktuellt = trueAktuellt[0].data
+  // =========== Show only one aktuellt end ===========
+
   return (
     <FooterContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
       <MainContainer variant={{ '@initial': 'mobile', '@bp5': 'desktop' }}>
@@ -215,7 +233,7 @@ const Footer = () => {
             <Link passHref href='/hitta-hit'>
               <Atag>Hitta hit</Atag>
             </Link>
-            <Link passHref href='kontakt'>
+            <Link passHref href='/kontakta-oss'>
               <Atag>Kontakt</Atag>
             </Link>
           </FooterNav>
@@ -225,7 +243,6 @@ const Footer = () => {
               '@bp2': 'tablet',
               '@bp3': 'desktop',
             }}
-
           />
           <SubTitle>Södra vägen 24</SubTitle>
           <Description>
@@ -244,9 +261,9 @@ const Footer = () => {
         />
         <AktuelltContainer>
           <Title>Aktuellt</Title>
-          <SubTitle>Creative Day 2022</SubTitle>
+          <SubTitle>{aktuellt.title}</SubTitle>
           <Description>
-            Kunskap och inspiration för dig som arbetar inhouse och på byrå.
+            {aktuellt.description}
           </Description>
         </AktuelltContainer>
         <Divider

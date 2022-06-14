@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { styled } from '../stitches.config'
 import getPageData from '../lib/get-page-data'
 import getAllCategories from '../lib/get-all-categories'
+import getAllAktuellts from '../lib/get-all-aktuellts'
 import Card from '../components/Card'
 import IndexHero from '../components/IndexHero'
 import CertifiedBar from '../components/CertifiedBar'
@@ -62,11 +63,13 @@ export default Home
 
 export async function getStaticProps({ locale }) {
   const { categories } = await getAllCategories({ locale })
+  const { aktuellts } = await getAllAktuellts({ locale })
   const pageData = await getPageData({ locale })
   return {
     props: {
       ...pageData,
       categories,
+      aktuellts,
     },
   }
 }
