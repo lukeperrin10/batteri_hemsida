@@ -7,11 +7,13 @@ import getCategoryBySlug from '../../lib/get-category-slug'
 import Card from '../../components/Card'
 import CategoryHero from '../../components/CategoryHero'
 import { styled } from '../../stitches.config'
+import TailorACourse from '../../components/TailorACourse'
 
 const CoursesBox = styled('div', {
   width: '100vw',
   maxWidth: 1920,
   display: 'flex',
+  marginY: 58,
 
   variants: {
     variant: {
@@ -49,6 +51,7 @@ const CategoryPage = ({ category }) => {
         return <Card data={course_data} key={index} />
       })}
       </CoursesBox>
+      <TailorACourse/>
     </>
   )
 }
