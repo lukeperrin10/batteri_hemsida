@@ -2,11 +2,17 @@ import React from 'react'
 import getPageData from '../lib/get-page-data'
 import getAllAktuellts from '../lib/get-all-aktuellts'
 
-const ContactUs = () => {
-  return <div>Some contact info for batteri</div>;
-};
 
-export default ContactUs;
+
+const FourOFour = () => {
+  return (
+    <div>Custom 404 error</div>
+  )
+}
+
+export default FourOFour
+
+
 
 export async function getStaticProps({ locale }) {
   const { aktuellts } = await getAllAktuellts({ locale })

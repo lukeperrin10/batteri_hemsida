@@ -2,6 +2,7 @@ import React from 'react'
 
 import getAllCategories from '../../lib/get-all-categories'
 import getPageData from '../../lib/get-page-data'
+import getAllAktuellts from '../../lib/get-all-aktuellts'
 import getCategoryBySlug from '../../lib/get-category-slug'
 import Card from '../../components/Card'
 import CategoryHero from '../../components/CategoryHero'
@@ -72,6 +73,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const pageData = await getPageData()
+  const { aktuellts } = await getAllAktuellts()
   const { category } = await getCategoryBySlug({
     slug: params.slug,
   })
@@ -80,6 +82,7 @@ export async function getStaticProps({ params }) {
     props: {
       category,
       ...pageData,
+      aktuellts,
     },
   }
 }

@@ -263,7 +263,7 @@ const Nav = () => {
             <Link href='/' passHref>
               <CustomLink active={`${hittaHitActive}`}>Hitta Hit</CustomLink>
             </Link>
-            <Link href='/kontakt' passHref>
+            <Link href='/kontakta-oss' passHref>
               <CustomLink active={`${kontaktActive}`}>Kontakt</CustomLink>
             </Link>
           </LinkContainer>

@@ -11,7 +11,7 @@ const Container = styled('div', {
   alignItems: 'center',
 })
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps}) {
   globalStyles()
   return (
     <>
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
       <Container>
         <Component {...pageProps} />
       </Container>
-      <Footer />
+      <Footer  {...pageProps}/>
     </>
   )
 }
