@@ -73,7 +73,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const pageData = await getPageData()
-  const { aktuellts } = await getAllAktuellts({ locale })
+  const { aktuellts } = await getAllAktuellts()
   const { category } = await getCategoryBySlug({
     slug: params.slug,
   })
