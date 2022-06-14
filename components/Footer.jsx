@@ -210,7 +210,7 @@ const Footer = ({ aktuellts }) => {
     data.show === true ? trueAktuellt.unshift({ data }) : falseAktuellt.push({ data })
   })
 
-  const aktuellt = trueAktuellt[0].data
+  const aktuellt = trueAktuellt?.[0].data
   // =========== Show only one aktuellt end ===========
 
   return (
