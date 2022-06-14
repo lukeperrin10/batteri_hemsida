@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import CourseHero from '../../components/CourseHero'
 import getAllProducts from '../../lib/get-all-product'
-import getAllAktuellts from '../lib/get-all-aktuellts'
+import getAllAktuellts from '../../lib/get-all-aktuellts'
 import getProductBySlug from '../../lib/get-product-slug'
 import HopHelper from '../../modules/helper'
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 import getAllCategories from '../../lib/get-all-categories'
 import getPageData from '../../lib/get-page-data'
-import getAllAktuellts from '../lib/get-all-aktuellts'
+import getAllAktuellts from '../../lib/get-all-aktuellts'
 import getCategoryBySlug from '../../lib/get-category-slug'
 import Card from '../../components/Card'
 import CategoryHero from '../../components/CategoryHero'
