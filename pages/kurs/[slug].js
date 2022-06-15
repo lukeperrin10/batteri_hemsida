@@ -5,6 +5,8 @@ import getAllAktuellts from '../../lib/get-all-aktuellts'
 import getProductBySlug from '../../lib/get-product-slug'
 import HopHelper from '../../modules/helper'
 
+import CourseProgram from '../../components/CourseProgram'
+
 const Product = ({ product }) => {
   const coach = product.courseLeaders.map((variant, index) => {
     return (
@@ -21,9 +23,9 @@ const Product = ({ product }) => {
   })
 
   return (
-    <div>
+    <>
       <CourseHero data={product} />
-      <h1>{product.name}</h1>
+      <CourseProgram data={product} />
       <p>
         {product.description}
         <br />
@@ -34,7 +36,7 @@ const Product = ({ product }) => {
         <br />
       </p>
       {coach}
-    </div>
+    </>
   )
 }
 
