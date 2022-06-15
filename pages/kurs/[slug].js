@@ -6,6 +6,38 @@ import getProductBySlug from '../../lib/get-product-slug'
 import HopHelper from '../../modules/helper'
 
 import CourseProgram from '../../components/CourseProgram'
+import { styled } from '../../stitches.config'
+
+const CourseInfo = styled('div', {
+  maxWidth: '2560px',
+  display: 'flex',
+  marginTop: 80,
+  variants: {
+    variant: {
+      mobile: {},
+      desktop: {},
+    },
+  },
+  p: {
+    marginTop: '1rem',
+    color: '$black',
+    '&:first-of-type': {
+      marginTop: 0,
+    },
+  },
+})
+
+const CourseDescription = styled('div', {
+  color: '$black',
+  width: '50%',
+  paddingX: 160,
+  variants: {
+    variant: {
+      mobile: {},
+      desktop: {},
+    },
+  },
+})
 
 const Product = ({ product }) => {
   const coach = product.courseLeaders.map((variant, index) => {
@@ -25,16 +57,20 @@ const Product = ({ product }) => {
   return (
     <>
       <CourseHero data={product} />
-      <CourseProgram data={product} />
-      <p>
+      <CourseInfo>
+        <CourseDescription
+          dangerouslySetInnerHTML={{ __html: product.description.html }}
+        />
+        <CourseProgram data={product} />
+      </CourseInfo>
+      {/* <p>
         {product.description}
         <br />
-        {product.price} SEK
         <br />
         Course Start dates:{' '}
         <select>{HopHelper.addCourseDuration(product)}</select>
         <br />
-      </p>
+      </p> */}
       {coach}
     </>
   )
@@ -71,5 +107,3 @@ export async function getStaticProps({ params }) {
   }
 }
 export default Product
-
-

@@ -12,12 +12,10 @@ const Kursprogram = styled('section', {
   height: 'auto',
   paddingY: 46,
   paddingX: 96,
-  
 })
 
 const Title = styled('h3', {
   color: '$black',
-  marginBottom: 48,
   fontWeight: '$semi',
   fontSize: '$7',
 })
@@ -25,6 +23,7 @@ const Program = styled('div', {
   display: 'flex',
   flexWrap: 'wrap',
   columnGap: 35,
+  marginTop: 48,
   rowGap: 20,
 })
 const ProgramItem = styled('div', {
@@ -48,15 +47,34 @@ const DashedDivider = styled('div', {
   marginY: 50,
   marginLeft: '-10%',
 })
-const Price = styled('div', {})
+const Price = styled('div', {
+  marginBottom: 70,
+})
+const CoursePrice = styled('div', {
+  color: '$black',
+  '&:first-of-type': {
+    marginTop: 8,
+  },
+})
+
+const CenterdContent = styled('div', {
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+})
+const Disclaimer = styled('p', {
+  color: '$black',
+  marginTop: 30,
+})
 
 const CourseProgram = ({ data }) => {
-  const { kursprogram } = data
+  const { kursprogram, price, privatePrice } = data
   const items = kursprogram.map((item, index) => {
     return (
       <ProgramItem key={index}>
         <CheckImageContainer>
-        <Image src='/check.svg' alt='' height={18} width={24} />
+          <Image src='/check.svg' alt='' height={18} width={24} />
         </CheckImageContainer>
         <ProgramItemText>{item}</ProgramItemText>
       </ProgramItem>
@@ -67,8 +85,17 @@ const CourseProgram = ({ data }) => {
       <Title>Kursprogram</Title>
       <Program>{items}</Program>
       <DashedDivider />
-      <Price></Price>
-      <Button text='Boka Kurs' linkTo='/#' />
+      <Price>
+        <Title>Priser</Title>
+        <CoursePrice>Kurs: {price}:-</CoursePrice>
+        {privatePrice ? (
+          <CoursePrice>Privateundervisning: {privatePrice}:-*</CoursePrice>
+        ) : null}
+      </Price>
+      <CenterdContent>
+        <Button text='Boka Kurs' linkTo='/#' />
+        <Disclaimer>*Ev. resor, logi &amp; traktamente tillkommer.</Disclaimer>
+      </CenterdContent>
     </Kursprogram>
   )
 }
