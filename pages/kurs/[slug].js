@@ -3,7 +3,7 @@ import CourseHero from '../../components/CourseHero'
 import getAllProducts from '../../lib/get-all-product'
 import getAllAktuellts from '../../lib/get-all-aktuellts'
 import getProductBySlug from '../../lib/get-product-slug'
-import HopHelper from '../../modules/helper'
+// import HopHelper from '../../modules/helper'
 
 import CourseProgram from '../../components/CourseProgram'
 import { styled } from '../../stitches.config'
@@ -11,11 +11,26 @@ import { styled } from '../../stitches.config'
 const CourseInfo = styled('div', {
   maxWidth: '2560px',
   display: 'flex',
-  marginTop: 80,
+  columnGap: 70,
+  rowGap: 70,
+  marginTop: 70,
+  alignItems: 'center',
+  justifyContent: 'center',
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        rowGap: 40,
+        marginTop: 40,
+      },
+      desktop: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        marginX: 40,
+        rowGap: 70,
+        marginTop: 70,
+      },
     },
   },
   p: {
@@ -29,12 +44,16 @@ const CourseInfo = styled('div', {
 
 const CourseDescription = styled('div', {
   color: '$black',
-  width: '50%',
-  paddingX: 160,
+  width: '100%',
+  maxWidth: 660,
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        width: '80%',
+      },
+      desktop: {
+        width: '100%',
+      },
     },
   },
 })
@@ -57,20 +76,19 @@ const Product = ({ product }) => {
   return (
     <>
       <CourseHero data={product} />
-      <CourseInfo>
+      <CourseInfo variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}>
         <CourseDescription
+          variant={{
+            '@initial': 'mobile',
+            '@bp3': 'desktop',
+          }}
           dangerouslySetInnerHTML={{ __html: product.description.html }}
         />
         <CourseProgram data={product} />
       </CourseInfo>
-      {/* <p>
-        {product.description}
-        <br />
-        <br />
-        Course Start dates:{' '}
-        <select>{HopHelper.addCourseDuration(product)}</select>
-        <br />
-      </p> */}
+
+      {/* Course Start dates:{' '}
+        <select>{HopHelper.addCourseDuration(product)}</select> */}
       {coach}
     </>
   )

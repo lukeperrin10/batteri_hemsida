@@ -8,17 +8,41 @@ const Kursprogram = styled('section', {
   flexDirection: 'column',
   alignItems: 'flex-start',
   backgroundColor: '$lightGreyBg',
-  maxWidth: 727,
-  height: 'auto',
+  width: '80%',
+  maxWidth: 660,
+  height: 'fit-content',
   paddingY: 46,
-  paddingX: 96,
+
+  variants: {
+    variant: {
+      mobile: {
+        paddingX: 30,
+        width: '100%',
+      },
+      desktop: {
+        paddingX: 45,
+        width: '80%',
+      },
+    },
+  },
 })
 
 const Title = styled('h3', {
   color: '$black',
   fontWeight: '$semi',
   fontSize: '$7',
+  variants: {
+    variant: {
+      mobile: {
+        alignSelf: 'center',
+      },
+      desktop: {
+        alignSelf: 'flex-start',
+      },
+    },
+  },
 })
+
 const Program = styled('div', {
   display: 'flex',
   flexWrap: 'wrap',
@@ -26,32 +50,50 @@ const Program = styled('div', {
   marginTop: 48,
   rowGap: 20,
 })
+
 const ProgramItem = styled('div', {
   display: 'flex',
   alignItems: 'center',
   columnGap: 15,
   width: 250,
 })
+
 const CheckImageContainer = styled('div', {
   width: 24,
   height: 18,
 })
+
 const ProgramItemText = styled('p', {
   color: '$black',
   width: 210,
 })
+
 const DashedDivider = styled('div', {
-  width: '120%',
   height: 1,
   backgroundImage: `url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='5' stroke-dasharray='1%2c 16' stroke-dashoffset='2' stroke-linecap='square'/%3e%3c/svg%3e")`,
   marginY: 50,
-  marginLeft: '-10%',
+
+  variants: {
+    variant: {
+      mobile: {
+        width: '100%',
+        marginLeft: '0%',
+      },
+      desktop: {
+        width: '100%',
+        marginLeft: '0%',
+      },
+    },
+  },
 })
+
 const Price = styled('div', {
   marginBottom: 70,
 })
+
 const CoursePrice = styled('div', {
   color: '$black',
+  marginTop: 3,
   '&:first-of-type': {
     marginTop: 8,
   },
@@ -62,10 +104,21 @@ const CenterdContent = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  rowGap: 30,
 })
+
 const Disclaimer = styled('p', {
   color: '$black',
-  marginTop: 30,
+  variants: {
+    variant: {
+      mobile: {
+        fontSize: '$1',
+      },
+      desktop: {
+        fontSize: '$3',
+      },
+    },
+  },
 })
 
 const CourseProgram = ({ data }) => {
@@ -81,10 +134,12 @@ const CourseProgram = ({ data }) => {
     )
   })
   return (
-    <Kursprogram>
-      <Title>Kursprogram</Title>
+    <Kursprogram variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+      <Title variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}>
+        Kursprogram
+      </Title>
       <Program>{items}</Program>
-      <DashedDivider />
+      <DashedDivider variant={{ '@initial': 'mobile', '@bp3': 'desktop' }} />
       <Price>
         <Title>Priser</Title>
         <CoursePrice>Kurs: {price}:-</CoursePrice>
@@ -94,7 +149,9 @@ const CourseProgram = ({ data }) => {
       </Price>
       <CenterdContent>
         <Button text='Boka Kurs' linkTo='/#' />
-        <Disclaimer>*Ev. resor, logi &amp; traktamente tillkommer.</Disclaimer>
+        <Disclaimer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+          *Ev. resor, logi &amp; traktamente tillkommer.
+        </Disclaimer>
       </CenterdContent>
     </Kursprogram>
   )
