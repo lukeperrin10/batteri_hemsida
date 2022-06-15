@@ -16,7 +16,7 @@ const Kursprogram = styled('section', {
   variants: {
     variant: {
       mobile: {
-        paddingX: 30,
+        paddingX: '10%',
         width: '100%',
       },
       desktop: {
@@ -134,7 +134,7 @@ const CourseProgram = ({ data }) => {
     )
   })
   return (
-    <Kursprogram variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+    <Kursprogram variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}>
       <Title variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}>
         Kursprogram
       </Title>

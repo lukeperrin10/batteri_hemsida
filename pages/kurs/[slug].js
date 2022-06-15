@@ -11,9 +11,6 @@ import { styled } from '../../stitches.config'
 const CourseInfo = styled('div', {
   maxWidth: '2560px',
   display: 'flex',
-  columnGap: 70,
-  rowGap: 70,
-  marginTop: 70,
   alignItems: 'center',
   justifyContent: 'center',
   variants: {
@@ -23,6 +20,13 @@ const CourseInfo = styled('div', {
         alignItems: 'center',
         rowGap: 40,
         marginTop: 40,
+        columnGap: 0,
+      },
+      tablet: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        marginX: 40,
+        columnGap: 70,
       },
       desktop: {
         flexDirection: 'row',
@@ -30,6 +34,7 @@ const CourseInfo = styled('div', {
         marginX: 40,
         rowGap: 70,
         marginTop: 70,
+        columnGap: 150,
       },
     },
   },
@@ -76,7 +81,7 @@ const Product = ({ product }) => {
   return (
     <>
       <CourseHero data={product} />
-      <CourseInfo variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}>
+      <CourseInfo variant={{ '@initial': 'mobile', '@bp7': 'tablet', '@bp8': 'desktop' }}>
         <CourseDescription
           variant={{
             '@initial': 'mobile',

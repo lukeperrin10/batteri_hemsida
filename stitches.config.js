@@ -58,7 +58,8 @@ export const { styled, getCssText } = createStitches({
     bp5: '(min-width: 1140px)',
     bp6: '(min-width: 1160px)',
     bp7: '(min-width: 1440px)',
-    bp8: '(min-width: 1920px)',
+    bp8: '(min-width: 1515px)',
+    bp9: '(min-width: 1920px)',
   },
   utils: {
     paddingX: (value) => ({
