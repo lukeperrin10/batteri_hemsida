@@ -9,6 +9,23 @@ import CourseProgram from '../../components/CourseProgram'
 import { styled } from '../../stitches.config'
 import CourseLeader from '../../components/CourseLeader'
 
+const CourseContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  variants: {
+    variant: {
+      mobile: {
+        rowGap: 100,
+      },
+      desktop: {
+        rowGap: 190,
+      },
+    },
+  },
+})
+
 const CourseInfo = styled('div', {
   maxWidth: '2560px',
   display: 'flex',
@@ -64,25 +81,63 @@ const CourseDescription = styled('div', {
   },
 })
 
+const Divider = styled('div', {
+  height: 1,
+  border: '1px solid $grey',
+  variants: {
+    variant: {
+      mobile: {
+        width: '40%',
+      },
+      desktop: {
+        width: '60%',
+      },
+    },
+    display: {
+      hide: {
+        display: 'none',
+      },
+      show: {
+        display: 'inline',
+      },
+    },
+  },
+})
+
 const Product = ({ product }) => {
   return (
     <>
       <CourseHero data={product} />
-      <CourseInfo
-        variant={{ '@initial': 'mobile', '@bp7': 'tablet', '@bp8': 'desktop' }}>
-        <CourseDescription
+      <CourseContainer  variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+        <CourseInfo
           variant={{
             '@initial': 'mobile',
-            '@bp3': 'desktop',
-          }}
-          dangerouslySetInnerHTML={{ __html: product.description.html }}
-        />
-        <CourseProgram data={product} />
-      </CourseInfo>
+            '@bp7': 'tablet',
+            '@bp8': 'desktop',
+          }}>
+          <CourseDescription
+            variant={{
+              '@initial': 'mobile',
+              '@bp3': 'desktop',
+            }}
+            dangerouslySetInnerHTML={{ __html: product.description.html }}
+          />
+          <CourseProgram data={product} />
+        </CourseInfo>
 
-      {/* Course Start dates:{' '}
+        {/* Course Start dates:{' '}
         <select>{HopHelper.addCourseDuration(product)}</select> */}
-      <CourseLeader data={product.courseLeaders} />
+        <Divider
+          variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}
+          display={{ '@initial': 'hide', '@bp3': 'show' }}
+        />
+        <CourseLeader data={product.courseLeaders} />
+        <Divider
+          variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}
+          display={{ '@initial': 'show', '@bp3': 'hide' }}
+        />
+        <p>Hejs</p>
+      </CourseContainer>
     </>
   )
 }
