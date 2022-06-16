@@ -7,6 +7,7 @@ import getProductBySlug from '../../lib/get-product-slug'
 
 import CourseProgram from '../../components/CourseProgram'
 import { styled } from '../../stitches.config'
+import CourseLeader from '../../components/CourseLeader'
 
 const CourseInfo = styled('div', {
   maxWidth: '2560px',
@@ -64,24 +65,11 @@ const CourseDescription = styled('div', {
 })
 
 const Product = ({ product }) => {
-  const coach = product.courseLeaders.map((variant, index) => {
-    return (
-      <div key={index}>
-        <h3>{variant.name}</h3>
-        <Image
-          src={variant.courseLeaderImage.url}
-          alt={variant.name}
-          height={280}
-          width={280}
-        />
-      </div>
-    )
-  })
-
   return (
     <>
       <CourseHero data={product} />
-      <CourseInfo variant={{ '@initial': 'mobile', '@bp7': 'tablet', '@bp8': 'desktop' }}>
+      <CourseInfo
+        variant={{ '@initial': 'mobile', '@bp7': 'tablet', '@bp8': 'desktop' }}>
         <CourseDescription
           variant={{
             '@initial': 'mobile',
@@ -94,7 +82,7 @@ const Product = ({ product }) => {
 
       {/* Course Start dates:{' '}
         <select>{HopHelper.addCourseDuration(product)}</select> */}
-      {coach}
+      <CourseLeader data={product.courseLeaders} />
     </>
   )
 }
