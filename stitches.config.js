@@ -12,6 +12,7 @@ export const { styled, getCssText } = createStitches({
       greyBg: '#343434',
       whiteBg: '#FAFCFF',
       blueBg: '#EBF3F6',
+      lightGreyBg: '#F1F1F3',
 
       white: '#fff',
       black: '#000',
@@ -57,7 +58,8 @@ export const { styled, getCssText } = createStitches({
     bp5: '(min-width: 1140px)',
     bp6: '(min-width: 1160px)',
     bp7: '(min-width: 1440px)',
-    bp8: '(min-width: 1920px)',
+    bp8: '(min-width: 1515px)',
+    bp9: '(min-width: 1920px)',
   },
   utils: {
     paddingX: (value) => ({
