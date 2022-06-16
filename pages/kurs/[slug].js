@@ -8,6 +8,7 @@ import getProductBySlug from '../../lib/get-product-slug'
 import CourseProgram from '../../components/CourseProgram'
 import { styled } from '../../stitches.config'
 import CourseLeader from '../../components/CourseLeader'
+import RecommendedCourses from '../../components/RecommendedCourses'
 
 const CourseContainer = styled('div', {
   display: 'flex',
@@ -26,7 +27,7 @@ const CourseContainer = styled('div', {
   },
 })
 
-const CourseInfo = styled('div', {
+const CourseInfo = styled('section', {
   maxWidth: '2560px',
   display: 'flex',
   alignItems: 'center',
@@ -136,7 +137,7 @@ const Product = ({ product }) => {
           variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}
           display={{ '@initial': 'show', '@bp3': 'hide' }}
         />
-        <p>Hejs</p>
+        <RecommendedCourses data={product.relatedCourses}/>
       </CourseContainer>
     </>
   )
