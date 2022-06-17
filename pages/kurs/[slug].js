@@ -108,7 +108,7 @@ const Divider = styled('div', {
 const Product = ({ product }) => {
   return (
     <>
-      <CourseHero data={product} />
+      <CourseHero data={product} btnText={'Boka kurs'}/>
       <CourseContainer  variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         <CourseInfo
           variant={{
