@@ -118,7 +118,8 @@ const Description = styled('p', {
   },
 })
 
-const CategoriesHero = () => {
+const CategoriesHero = ({ data }) => {
+  const { title, subTitle, description, image, wideImage, gradientColor } = data
   const windowSize = useWindowSize()
   return (
     <Hero>
@@ -128,14 +129,14 @@ const CategoriesHero = () => {
           '&::before': {
             linearGradient: `${
               windowSize.width >= 750 ? '270deg' : '0deg'
-            }, transparent 10%, black 80%`,
+            }, transparent 10%, ${gradientColor} 80%`,
           },
         }}>
         <Image
           src={
             windowSize.width >= 750
-              ? '/index-hero.webp'
-              : '/index-hero-mob.webp'
+              ? `${image}`
+              : `${wideImage}`
           }
           alt=''
           layout='fill'
@@ -144,14 +145,13 @@ const CategoriesHero = () => {
         />
         <Content variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            Kurs kategorier
+            {title}
           </Title>
           <SubTitle variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            Vi erbjuder kurser, event och distansutbildningar
+           {subTitle}
           </SubTitle>
           <Description variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            inom områdena text, copywriting, foto, grafisk design, publicering,
-            webb, UX-design, video och audio.
+            {description}
           </Description>
         </Content>
       </ImageBox>

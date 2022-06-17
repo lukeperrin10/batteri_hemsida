@@ -1,7 +1,9 @@
 import React from 'react'
 import getPageData from '../lib/get-page-data'
 import getAllAktuellts from '../lib/get-all-aktuellts'
+import CategoriesHero from '../components/CategoriesHero'
 import { styled } from '../stitches.config'
+import {kontaktHeroData} from '../lib/static-data'
 
 const IconGrid = styled('div', {
   variants: {
@@ -13,7 +15,11 @@ const IconGrid = styled('div', {
 })
 
 const ContactUs = () => {
-  return <>Kontakt info thingi</>
+  return (
+    <>
+    <CategoriesHero data={kontaktHeroData}/>
+    </>
+  )
 }
 
 export default ContactUs

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import getAllCategories from '../lib/get-all-categories'
 import getAllAktuellts from '../lib/get-all-aktuellts'
 import getPageData from '../lib/get-page-data'
+import {categoriesHeroData} from '../lib/static-data'
 import Card from '../components/Card'
 import CategoriesHero from '../components/CategoriesHero'
 import { styled } from '../stitches.config'
@@ -38,7 +39,7 @@ const ATag = styled('a', {
 const Kurser = ({ categories }) => {
   return (
     <>
-      <CategoriesHero />
+      <CategoriesHero data={categoriesHeroData}/>
       <CategoriesBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         {categories.map((category, slug) => {
           return (
