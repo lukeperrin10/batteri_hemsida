@@ -248,14 +248,14 @@ const Nav = () => {
                 '@bp3': 'smallDesktop',
                 '@bp6': 'desktop',
               }}>
-              Design, Kod & Videoutbildning
+              Design, Kod &amp; Videoutbildning
             </NavText>
           </NavImageContainer>
           <LinkContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
             <Link href='/kurser' passHref>
               <CustomLink active={`${kurserActive}`}>Kurser</CustomLink>
             </Link>
-            <Link href='/' passHref>
+            <Link href='/foretag' passHref>
               <CustomLink active={`${forForetagActive}`}>
                 För Företag
               </CustomLink>
