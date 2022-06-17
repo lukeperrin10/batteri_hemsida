@@ -5,6 +5,7 @@ import { styled } from '../stitches.config'
 import CourseHero from '../components/CourseHero'
 import Image from 'next/image'
 import Button from '../components/Button'
+import { foretagHeroData, foretagInfoData, foretagIconGridData } from '../lib/static-data'
 
 const IconGrid = styled('section', {
   width: '100vw',
@@ -35,32 +36,25 @@ const IconGridItem = styled('div', {
   alignItems: 'center',
   width: 300,
   height: 'fit-content',
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
 })
+
 const IconBox = styled('div', {
   position: 'relative',
-  square: 220,
   variants: {
     variant: {
-      mobile: {},
-      desktop: {},
+      mobile: {
+        square: 160,
+      },
+      desktop: {
+        square: 220,
+      },
     },
   },
 })
 const ItemText = styled('p', {
   textAlign: 'center',
   color: '$black',
-  variants: {
-    variant: {
-      mobile: {},
-      desktop: {},
-    },
-  },
+  fontWeight: '$semi',
 })
 
 const Divider = styled('div', {
@@ -91,6 +85,8 @@ const InfoItem = styled('div', {
 
 const InfoTitle = styled('h3', {
   color: '$blueLight',
+  fontWeight: '$semi',
+  fontSize: '$7',
 })
 
 const InfoContent = styled('p', {
@@ -102,55 +98,11 @@ const ButtonBox = styled('div', {
 })
 
 const ForForetag = () => {
-  const heroData = {
-    name: 'Företagsanpassad Kurs',
-    images: [{ url: '/index-hero-mob.webp' }],
-    wideImage: {
-      url: '/index-hero.webp',
-    },
-    subTitle: 'Anpassa en kurs för ditt företag',
-    gradientColor: {
-      color: {
-        hex: '#000',
-      },
-    },
-  }
 
-  const iconGridData = [
-    {
-      id: 1,
-      text: 'Lorem imsum dolerm irum veni',
-      icon: '/check.svg',
-    },
-    {
-      id: 2,
-      text: 'Lorem imsum dolerm irum veni vineLorem imsum dole',
-      icon: '/batteri.svg',
-    },
-    {
-      id: 3,
-      text: 'Lorem imsum dolerm irum veni vineLorem',
-      icon: '/check.svg',
-    },
-  ]
-
-  const infoData = [
-    {
-      id: 1,
-      title: 'Vi kommer till er',
-      text: 'Oavsett om ni behöver en Excelutbildning för en hel avdelning i Haparanda eller önskar en anpassad ledarskapsutbildning i Ystad så löser vi det. Våra duktiga rådgivare har lång erfarenhet av att skräddarsy och anpassa kursupplägg för att passa just era behov och önskemål.',
-    },
-    {
-      id: 2,
-      title: 'Specifika önskemål',
-      text: 'En företagsanpassad utbildning är perfekt för dig med specifika önskemål eller brådskande behov. Det är ett effektivt alternativ till traditionella utbildningar där upplägget lämpar sig lika väl för ett helt företag som för enstaka personer.',
-    },
-  ]
-
-  const items = iconGridData.map((item, id) => {
+  const items = foretagIconGridData.map((item, id) => {
     return (
       <IconGridItem key={id}>
-        <IconBox>
+        <IconBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           <Image src={item.icon} alt='' layout='fill' />
         </IconBox>
         <ItemText>{item.text}</ItemText>
@@ -158,7 +110,7 @@ const ForForetag = () => {
     )
   })
 
-  const infoItems = infoData.map((item, id) => {
+  const infoItems = foretagInfoData.map((item, id) => {
     return (
       <InfoItem key={id}>
         <InfoTitle>{item.title}</InfoTitle>
@@ -168,7 +120,7 @@ const ForForetag = () => {
   })
   return (
     <>
-      <CourseHero data={heroData} btnText={'Begär Offert'} />
+      <CourseHero data={foretagHeroData} btnText={'Begär Offert'} />
       <IconGrid variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         {items}
       </IconGrid>
