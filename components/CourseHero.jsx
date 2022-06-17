@@ -132,7 +132,7 @@ const Button = styled('a', {
   },
 })
 
-const CourseHero = ({ data }) => {
+const CourseHero = ({ data, btnText }) => {
   const { name, images, wideImage, subTitle, gradientColor } = data
   const windowSize = useWindowSize()
   return (
@@ -162,7 +162,7 @@ const CourseHero = ({ data }) => {
           </SubTitle>
           <Link href={`#`} passHref>
             <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-              Boka kurs
+              {btnText}
             </Button>
           </Link>
         </Content>
