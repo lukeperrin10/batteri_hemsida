@@ -16,17 +16,14 @@ const Marker = styled('div', {
   square: 50,
   backgroundColor: 'red',
 })
-const Loading = styled('h3', {
-  color: '#000',
-})
-const Failure = styled('h3', {
+const StatusText = styled('h3', {
   color: '#000',
 })
 
 const render = (status) => {
-  if (status === Status.LOADING) return <Loading>{status} ..</Loading>
+  if (status === Status.LOADING) return <StatusText>{status} ..</StatusText>
   if (status === Status.FAILURE)
-    return <Failure>{status} ... Please try again later</Failure>
+    return <StatusText>{status} ... Please try again later</StatusText>
   return null
 }
 
