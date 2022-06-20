@@ -9,15 +9,24 @@ import { hittaHitHeroData } from '../lib/static-data'
 import Map from '../components/Map'
 import CategoriesHero from '../components/CategoriesHero'
 
-const MapDiv = styled('div', {
-  square: 450,
+const Content = styled('div', {
+  display: 'flex',
+  marginY: 100,
 })
-const Marker = styled('div', {
-  square: 50,
-  backgroundColor: 'red',
-})
+const MapContainer = styled('div', {})
 const StatusText = styled('h3', {
   color: '#000',
+})
+const AddressBox = styled('div', {})
+const AddressText = styled('p', {
+  color: '$black',
+  fontWeight: '$reg',
+  fontSize: '$2',
+})
+const Email = styled('a', {
+  fontWeight: '$reg',
+  color: '$blueLink',
+  fontSize: '$2',
 })
 
 const render = (status) => {
@@ -34,11 +43,25 @@ const FindUs = () => {
   return (
     <>
       <CategoriesHero data={hittaHitHeroData} />
-      <Wrapper
-        apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
-        render={render}>
-        <Map center={center} zoom={zoom} />
-      </Wrapper>
+      <Content>
+        <MapContainer>
+          <Wrapper
+            apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+            render={render}>
+            <Map center={center} zoom={zoom} />
+          </Wrapper>
+          <AddressBox>
+            <AddressText>
+              Södravägen 24 <br></br>
+              412 54 Göteborg <br></br>
+              Telefon: 031 711 2540 <br></br>
+              <Email href='mailto: info@batteri.se'>
+                E-mail: info@batteri.se
+              </Email>
+            </AddressText>
+          </AddressBox>
+        </MapContainer>
+      </Content>
     </>
   )
 }
