@@ -260,7 +260,7 @@ const Nav = () => {
                 För Företag
               </CustomLink>
             </Link>
-            <Link href='/' passHref>
+            <Link href='/hitta-hit' passHref>
               <CustomLink active={`${hittaHitActive}`}>Hitta Hit</CustomLink>
             </Link>
             <Link href='/kontakta-oss' passHref>
