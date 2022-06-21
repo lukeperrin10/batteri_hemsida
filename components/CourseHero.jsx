@@ -65,17 +65,17 @@ const Content = styled('div', {
 
 const Title = styled('h1', {
   fontWeight: '$bold',
+  marginBottom: 20,
+  marginTop: -60,
 
   variants: {
     variant: {
       mobile: {
-        marginBottom: 34,
         fontSize: '$6',
         lineHeight: 1.4,
         maxWidth: 400,
       },
       desktop: {
-        marginBottom: 44,
         fontSize: '$12',
         maxWidth: 500,
       },

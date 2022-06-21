@@ -63,8 +63,8 @@ const Content = styled('div', {
 })
 
 const Title = styled('h1', {
-  marginTop: 40,
-  marginBottom: 60,
+  marginTop: -60,
+  marginBottom: 20,
   fontWeight: '$bold',
 
   variants: {

@@ -15,6 +15,7 @@
     "cypress": "cypress run --record --key f79557d0-f478-46b8-bf5f-a6c03fd7bcda"
   },
   "dependencies": {
+    "@googlemaps/react-wrapper": "^1.1.35",
     "@stitches/react": "^1.2.8",
     "embla-carousel-react": "^6.2.0",
     "graphql": "^16.5.0",
