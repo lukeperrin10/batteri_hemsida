@@ -215,7 +215,7 @@ const IndexHero = (props) => {
                 Hitta din kurs
               </Button>
             </Link>
-            <Link href={`/kurs/popular`} passHref>
+            <Link href={`/popular`} passHref>
               <MostPopular
                 variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
                 Mest populära kurser 2022
