@@ -3,10 +3,10 @@ import React from 'react'
 import getAllPopularCourses from '../lib/get-all-popular'
 import getPageData from '../lib/get-page-data'
 import getAllAktuellts from '../lib/get-all-aktuellts'
-import Card from '../components/Card'
+import { popularHeroData } from '../lib/static-data'
 import CategoriesHero from '../components/CategoriesHero'
 import { styled } from '../stitches.config'
-import { popularHeroData } from '../lib/static-data'
+import RecommendedCard from '../components/RecommendedCard'
 
 const CoursesBox = styled('div', {
   width: '100vw',
@@ -34,30 +34,47 @@ const CoursesBox = styled('div', {
 const CategoryPage = ({ popularCourses }) => {
   return (
     <>
-      <CategoriesHero data={popularHeroData}/>
+      <CategoriesHero data={popularHeroData} />
       <CoursesBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         {popularCourses[0].products?.map((product, index) => {
           const course_data = {
             slug: product.slug,
             gradientColor: product.gradientColor,
-            isWide: product.isWide,
             image: product.images[0],
-            wideImage: product.wideImage[0],
             name: product.name,
             logo: product.logo,
             description: product.shortDescription,
           }
-          return <Card data={course_data} key={index} />
+          return <RecommendedCard data={course_data} key={index} />
         })}
       </CoursesBox>
     </>
   )
 }
 
+export async function getPaths() {
+  let paths = []
+
+  const { popularCourses } = await getAllPopularCourses()
+  paths = [
+    ...paths,
+    ...popularCourses[0].products.map((product) => ({
+      params: {
+        slug: product.slug,
+      },
+    })),
+  ]
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
+
 export async function getStaticProps() {
   const pageData = await getPageData()
   const { aktuellts } = await getAllAktuellts()
-  const {popularCourses} = await getAllPopularCourses()
+  const { popularCourses } = await getAllPopularCourses()
 
   return {
     props: {
