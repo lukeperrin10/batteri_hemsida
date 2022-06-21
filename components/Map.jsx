@@ -2,7 +2,17 @@ import React, { useEffect } from 'react'
 import { styled } from '../stitches.config'
 
 const MapDiv = styled('div', {
-  square: 450,
+  
+  variants: {
+    variant: {
+      mobile: {
+        square: 300,
+      },
+      desktop: {
+        square: 450,
+      },
+    },
+  },
 })
 
 const Map = ({ center, zoom }) => {
@@ -11,13 +21,13 @@ const Map = ({ center, zoom }) => {
 
     // The map, centered at center prop
     const map = new google.maps.Map(document.getElementById('map'), {
-      zoom: zoom,
-      center: center,
+      zoom,
+      center,
     })
     // The marker, positioned at center prop
     const marker = new google.maps.Marker({
       position: center,
-      map: map,
+      map,
     })
   }
 
@@ -25,7 +35,7 @@ const Map = ({ center, zoom }) => {
     initMap()
   })
 
-  return <MapDiv id='map'></MapDiv>
+  return <MapDiv id='map' variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}></MapDiv>
 }
 
 export default Map

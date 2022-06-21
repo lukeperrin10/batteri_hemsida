@@ -4,21 +4,43 @@ import { styled } from '../stitches.config'
 
 import getPageData from '../lib/get-page-data'
 import getAllAktuellts from '../lib/get-all-aktuellts'
-import { hittaHitHeroData } from '../lib/static-data'
+import { hittaHitHeroData, hittaHitPageData } from '../lib/static-data'
 
 import Map from '../components/Map'
 import CategoriesHero from '../components/CategoriesHero'
 
 const Content = styled('div', {
   display: 'flex',
-  marginY: 100,
+  marginX: 30,
+  columnGap: 180,
+  rowGap: 75,
+  variants: {
+    variant: {
+      mobile: {
+        marginTop: 50,
+        marginBottom: 80,
+        flexDirection: 'column-reverse',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      desktop: {
+        marginY: 100,
+        alignItems: 'flex-start',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+      },
+    },
+  },
 })
 const MapContainer = styled('div', {})
 const StatusText = styled('h3', {
   color: '#000',
 })
-const AddressBox = styled('div', {})
+const AddressBox = styled('div', {
+  marginTop: 7,
+})
 const AddressText = styled('p', {
+  lineHeight: 1.5,
   color: '$black',
   fontWeight: '$reg',
   fontSize: '$2',
@@ -27,6 +49,15 @@ const Email = styled('a', {
   fontWeight: '$reg',
   color: '$blueLink',
   fontSize: '$2',
+})
+const Description = styled('div', {
+  maxWidth: 700,
+})
+const DescriptionText = styled('p', {
+  fontWeight: '$reg',
+  color: '$black',
+  fontSize: '$3',
+  lineHeight: 1.5,
 })
 
 const render = (status) => {
@@ -39,11 +70,11 @@ const render = (status) => {
 const FindUs = () => {
   const center = { lat: 57.6980118, lng: 11.9833662 }
   const zoom = 16
-
+  const { description, address } = hittaHitPageData
   return (
     <>
       <CategoriesHero data={hittaHitHeroData} />
-      <Content>
+      <Content variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}>
         <MapContainer>
           <Wrapper
             apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
@@ -52,15 +83,25 @@ const FindUs = () => {
           </Wrapper>
           <AddressBox>
             <AddressText>
-              Södravägen 24 <br></br>
-              412 54 Göteborg <br></br>
-              Telefon: 031 711 2540 <br></br>
-              <Email href='mailto: info@batteri.se'>
-                E-mail: info@batteri.se
+              {address.street} <br></br>
+              {address.postcode} <br></br>
+              Telefon: {address.phone} <br></br>
+              <Email href={`mailto: ${address.email}`}>
+                E-mail: {address.email}
               </Email>
             </AddressText>
           </AddressBox>
         </MapContainer>
+        <Description>
+          <DescriptionText>
+            {description.p1}
+            <br/>
+            <br/>
+            {description.p2}
+            <br/>
+            {description.p3}
+          </DescriptionText>
+        </Description>
       </Content>
     </>
   )
