@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { styled } from '../stitches.config'
-import Button from './/Button'
+import BookCourseModal from './BookCourseModal'
 
 const Kursprogram = styled('section', {
   display: 'flex',
@@ -122,7 +122,7 @@ const Disclaimer = styled('p', {
 })
 
 const CourseProgram = ({ data }) => {
-  const { kursprogram, price, privatePrice } = data
+  const { name, kursprogram, price, privatePrice } = data
   const items = kursprogram.map((item, index) => {
     return (
       <ProgramItem key={index}>
@@ -148,7 +148,7 @@ const CourseProgram = ({ data }) => {
         ) : null}
       </Price>
       <CenterdContent>
-        <Button text='Boka Kurs' linkTo='/#' />
+        <BookCourseModal btnText={'Boka kurs'} courseName={name} />
         <Disclaimer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           *Ev. resor, logi &amp; traktamente tillkommer.
         </Disclaimer>

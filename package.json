@@ -16,12 +16,14 @@
   },
   "dependencies": {
     "@googlemaps/react-wrapper": "^1.1.35",
+    "@radix-ui/react-dialog": "^0.1.7",
+    "@radix-ui/react-icons": "^1.1.1",
     "@stitches/react": "^1.2.8",
     "embla-carousel-react": "^6.2.0",
     "graphql": "^16.5.0",
     "graphql-request": "^4.2.0",
     "next": "12.1.0",
-    "react": "^18.1.0",
+    "react": "^17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {

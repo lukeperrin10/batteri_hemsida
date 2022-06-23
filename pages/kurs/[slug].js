@@ -139,6 +139,7 @@ const Product = ({ product }) => {
         />
         <RecommendedCourses data={product.relatedCourses}/>
       </CourseContainer>
+
     </>
   )
 }
