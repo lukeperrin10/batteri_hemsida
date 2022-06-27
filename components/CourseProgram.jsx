@@ -148,7 +148,7 @@ const CourseProgram = ({ data }) => {
         ) : null}
       </Price>
       <CenterdContent>
-        <BookCourseModal btnText={'Boka kurs'} courseName={name} />
+        <BookCourseModal btnText='Boka kurs' courseName={name} />
         <Disclaimer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           *Ev. resor, logi &amp; traktamente tillkommer.
         </Disclaimer>

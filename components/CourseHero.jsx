@@ -161,9 +161,12 @@ const CourseHero = ({ data, btnText }) => {
           <SubTitle variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
             {subTitle}
           </SubTitle>
-          <Link href={`#`} passHref>
-          <BookCourseModal btnText={btnText} flexAlignment='flex-start' color="#000" courseName={name}/>
-          </Link>
+          <BookCourseModal
+            btnText={btnText}
+            flexAlignment='flex-start'
+            color='#000'
+            courseName={name}
+          />
         </Content>
       </ImageBox>
     </Hero>
