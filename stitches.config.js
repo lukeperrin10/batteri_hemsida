@@ -102,13 +102,13 @@ export const globalStyles = globalCss({
     margin: 0,
     padding: 0,
     boxSizing: 'border-box',
-    color: '$white',
     fontFamily: '$openSans',
     fontWeight: '$reg',
     
   },
-
+  
   'body': {
+    color: '$white',
     overflowX: 'hidden',
   }
 

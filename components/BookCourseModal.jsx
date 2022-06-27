@@ -2,6 +2,8 @@ import React from 'react'
 import { styled, overlayShow, contentShow } from '../stitches.config'
 import { Cross2Icon } from '@radix-ui/react-icons'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
+import Select from './Select'
+
 
 const StyledOverlay = styled(DialogPrimitive.Overlay, {
   backgroundColor: '#00000099',
@@ -146,6 +148,7 @@ const Button = styled('button', {
   fontWeight: '$semi',
   textDecoration: 'none',
   border: 'none',
+  color: '#fff',
   transition: 'transform 200ms',
   '@media (prefers-reduced-motion)': {
     transition: 'none',
@@ -183,7 +186,8 @@ const BookCourseModal = ({ btnText, courseName }) => (
       <Form>
       <Fieldset>
         <Label htmlFor='occasion'>Tillfälle*</Label>
-        <Input id='occasion' placeholder='Tillfälle' />
+        {/* <Input id='occasion' placeholder='Tillfälle' /> */}
+        <Select/>
       </Fieldset>
       <Fieldset>
         <Label htmlFor='name'>För- och Efternamn*</Label>
