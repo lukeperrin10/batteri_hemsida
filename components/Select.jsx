@@ -13,7 +13,7 @@ const StyledTrigger = styled(SelectPrimitive.SelectTrigger, {
   alignItems: 'center',
   justifyContent: 'flex-start',
   borderRadius: 4,
-  fontSize: 13,
+  fontSize: 16,
   lineHeight: 1,
   height: 35,
   gap: 5,
@@ -33,7 +33,7 @@ const StyledContent = styled(SelectPrimitive.Content, {
   borderRadius: 6,
   boxShadow:
     '0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)',
-  width: '100%',
+  width: 'calc(100% -10px)',
 })
 
 const StyledViewport = styled(SelectPrimitive.Viewport, {
@@ -42,7 +42,7 @@ const StyledViewport = styled(SelectPrimitive.Viewport, {
 
 const StyledItem = styled(SelectPrimitive.Item, {
   all: 'unset',
-  fontSize: 13,
+  fontSize: 16,
   lineHeight: 1,
   color: '$black',
   borderRadius: 3,
