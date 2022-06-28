@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { styled } from '../stitches.config'
 import useWindowSize from '../modules/windowSize'
+import Button from './Button'
 
 const Hero = styled('div', {
   maxWidth: '2560px',
@@ -119,40 +120,9 @@ const LinkContainer = styled('div', {
   },
 })
 
-const Button = styled('a', {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: '$blueDark',
-  pillShape: true,
-  fontSize: '$4',
-  fontWeight: '$semi',
-  textDecoration: 'none',
-  transition: 'transform 200ms',
-  '@media (prefers-reduced-motion)': {
-    transition: 'none',
-  },
-
-  variants: {
-    variant: {
-      mobile: {
-        padding: '15px 32px',
-      },
-
-      desktop: {
-        padding: '20px 35px',
-        '&:hover': {
-          cursor: 'pointer',
-          backgroundColor: '$blue',
-          transform: 'scale(1.02)',
-        },
-      },
-    },
-  },
-})
-
 const MostPopular = styled('a', {
   transition: 'transform 200ms',
+  color: '$white',
 
   '@media (prefers-reduced-motion)': {
     transition: 'none',
@@ -210,11 +180,7 @@ const IndexHero = (props) => {
             </BoldText>
           </Title>
           <LinkContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            <Link href={`/kurser`} passHref>
-              <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-                Hitta din kurs
-              </Button>
-            </Link>
+            <Button linkTo='/kurser' text='Hitta din kurs' />
             <Link href={`/popular`} passHref>
               <MostPopular
                 variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
