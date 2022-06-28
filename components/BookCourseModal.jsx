@@ -4,7 +4,6 @@ import { Cross2Icon } from '@radix-ui/react-icons'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import Select from './Select'
 
-
 const StyledOverlay = styled(DialogPrimitive.Overlay, {
   backgroundColor: '#00000099',
   position: 'fixed',
@@ -39,7 +38,7 @@ function Content({ children, ...props }) {
   return (
     <DialogPrimitive.Portal>
       <StyledOverlay />
-      <StyledContent  {...props}>{children}</StyledContent>
+      <StyledContent {...props}>{children}</StyledContent>
     </DialogPrimitive.Portal>
   )
 }
@@ -172,70 +171,72 @@ const Button = styled('button', {
   },
 })
 
-const BookCourseModal = ({ btnText, courseName }) => (
-  <Dialog >
-    <DialogTrigger asChild >
-      <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-        {btnText}
-      </Button>
-    </DialogTrigger>
-    <DialogContent >
-      <DialogTitle>
-        Boka kurs - <br></br> {courseName}
-      </DialogTitle>
-      <Form>
-      <Fieldset>
-        <Label htmlFor='occasion'>Tillfälle*</Label>
-        {/* <Input id='occasion' placeholder='Tillfälle' /> */}
-        <Select/>
-      </Fieldset>
-      <Fieldset>
-        <Label htmlFor='name'>För- och Efternamn*</Label>
-        <Input id='name' placeholder='Förnamn Efternamn' />
-      </Fieldset>
-      <Fieldset>
-        <Label htmlFor='email'>Email*</Label>
-        <Input id='email' placeholder='din@email.com' />
-      </Fieldset>
-      <Fieldset>
-        <Label htmlFor='address'>Adress*</Label>
-        <Input id='address' placeholder='Din adress' />
-      </Fieldset>
-      <Fieldset>
-        <Label htmlFor='phone'>Telefon*</Label>
-        <Input id='phone' placeholder='031 711 25 40' />
-      </Fieldset>
-      <Fieldset>
-        <Label htmlFor='company'>Företag</Label>
-        <Input id='company' placeholder='Företagest namn' />
-      </Fieldset>
-      <Fieldset>
-        <Label htmlFor='billing'>Ev. Fakturaadress</Label>
-        <Input id='billing' placeholder='Ev. Fakturaadress' />
-      </Fieldset>
-      <Fieldset>
-        <Label htmlFor='kurs'>Kurs typ</Label>
-        <Input id='kurs' placeholder='Vanlig / Privat' />
-      </Fieldset>
-      <Fieldset>
-        <Label htmlFor='message'>Ev. Meddelande</Label>
-        <TextArea id='message' placeholder='Ditt meddelande' />
-      </Fieldset>
-      </Form>
-      <ButtonContainer>
+const BookCourseModal = ({ btnText, courseName, courseDates }) => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+          {btnText}
+        </Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogTitle>
+          Boka kurs - <br></br> {courseName}
+        </DialogTitle>
+        <Form>
+          <Fieldset>
+            <Label htmlFor='occasion'>Tillfälle*</Label>
+            {/* <Input id='occasion' placeholder='Tillfälle' /> */}
+            <Select courseDates={courseDates} />
+          </Fieldset>
+          <Fieldset>
+            <Label htmlFor='name'>För- och Efternamn*</Label>
+            <Input id='name' placeholder='Förnamn Efternamn' />
+          </Fieldset>
+          <Fieldset>
+            <Label htmlFor='email'>Email*</Label>
+            <Input id='email' placeholder='din@email.com' />
+          </Fieldset>
+          <Fieldset>
+            <Label htmlFor='address'>Adress*</Label>
+            <Input id='address' placeholder='Din adress' />
+          </Fieldset>
+          <Fieldset>
+            <Label htmlFor='phone'>Telefon*</Label>
+            <Input id='phone' placeholder='031 711 25 40' />
+          </Fieldset>
+          <Fieldset>
+            <Label htmlFor='company'>Företag</Label>
+            <Input id='company' placeholder='Företagest namn' />
+          </Fieldset>
+          <Fieldset>
+            <Label htmlFor='billing'>Ev. Fakturaadress</Label>
+            <Input id='billing' placeholder='Ev. Fakturaadress' />
+          </Fieldset>
+          <Fieldset>
+            <Label htmlFor='kurs'>Kurs typ</Label>
+            <Input id='kurs' placeholder='Vanlig / Privat' />
+          </Fieldset>
+          <Fieldset>
+            <Label htmlFor='message'>Ev. Meddelande</Label>
+            <TextArea id='message' placeholder='Ditt meddelande' />
+          </Fieldset>
+        </Form>
+        <ButtonContainer>
+          <DialogClose asChild>
+            <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+              Boka
+            </Button>
+          </DialogClose>
+        </ButtonContainer>
         <DialogClose asChild>
-          <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            Boka
-          </Button>
+          <IconButton aria-label='Close'>
+            <Cross2Icon />
+          </IconButton>
         </DialogClose>
-      </ButtonContainer>
-      <DialogClose asChild>
-        <IconButton aria-label='Close'>
-          <Cross2Icon />
-        </IconButton>
-      </DialogClose>
-    </DialogContent>
-  </Dialog>
-)
+      </DialogContent>
+    </Dialog>
+  )
+}
 
 export default BookCourseModal

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { styled } from '../stitches.config'
 import useWindowSize from '../modules/windowSize'
 import BookCourseModal from './BookCourseModal'
+import HopHelper from '../modules/helper'
 
 const Hero = styled('div', {
   maxWidth: '2560px',
@@ -163,9 +164,8 @@ const CourseHero = ({ data, btnText }) => {
           </SubTitle>
           <BookCourseModal
             btnText={btnText}
-            flexAlignment='flex-start'
-            color='#000'
             courseName={name}
+            courseDates={data.courseDuration ? HopHelper.addCourseDuration(data) : null}
           />
         </Content>
       </ImageBox>

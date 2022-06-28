@@ -123,11 +123,8 @@ const Product = ({ product }) => {
             }}
             dangerouslySetInnerHTML={{ __html: product.description.html }}
           />
-          <CourseProgram data={product} />
+          <CourseProgram data={product}/>
         </CourseInfo>
-
-        {/* Course Start dates:{' '}
-        <select>{HopHelper.addCourseDuration(product)}</select> */}
         <Divider
           variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}
           display={{ '@initial': 'hide', '@bp3': 'show' }}

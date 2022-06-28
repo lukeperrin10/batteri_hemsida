@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { styled } from '../stitches.config'
 import BookCourseModal from './BookCourseModal'
+import HopHelper from '../modules/helper'
 
 const Kursprogram = styled('section', {
   display: 'flex',
@@ -148,7 +149,7 @@ const CourseProgram = ({ data }) => {
         ) : null}
       </Price>
       <CenterdContent>
-        <BookCourseModal btnText='Boka kurs' courseName={name} />
+        <BookCourseModal btnText='Boka kurs' courseName={name} courseDates={HopHelper.addCourseDuration(data)}/>
         <Disclaimer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           *Ev. resor, logi &amp; traktamente tillkommer.
         </Disclaimer>

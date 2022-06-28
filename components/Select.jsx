@@ -119,60 +119,43 @@ export const SelectScrollDownButton = StyledScrollDownButton
 // Your app...
 const Box = styled('div', {})
 
-export const Select = () => (
-  <Box>
-    <SelectRoot defaultValue='blueberry'>
-      <SelectTrigger aria-label='Datum för tillfälle'>
-        <SelectValue />
-        <SelectIcon>
-          <ChevronDownIcon />
-        </SelectIcon>
-      </SelectTrigger>
-      <SelectContent>
-        <SelectScrollUpButton>
-          <ChevronUpIcon />
-        </SelectScrollUpButton>
-        <SelectViewport>
-          <SelectGroup>
-            <SelectLabel>Tillfälle</SelectLabel>
-            <SelectItem value='apple'>
-              <SelectItemText>Apple</SelectItemText>
-              <SelectItemIndicator>
-                <CheckIcon />
-              </SelectItemIndicator>
-            </SelectItem>
-            <SelectItem value='banana'>
-              <SelectItemText>Banana</SelectItemText>
-              <SelectItemIndicator>
-                <CheckIcon />
-              </SelectItemIndicator>
-            </SelectItem>
-            <SelectItem value='blueberry'>
-              <SelectItemText>Blueberry</SelectItemText>
-              <SelectItemIndicator>
-                <CheckIcon />
-              </SelectItemIndicator>
-            </SelectItem>
-            <SelectItem value='grapes'>
-              <SelectItemText>Grapes</SelectItemText>
-              <SelectItemIndicator>
-                <CheckIcon />
-              </SelectItemIndicator>
-            </SelectItem>
-            <SelectItem value='pineapple'>
-              <SelectItemText>Pineapple</SelectItemText>
-              <SelectItemIndicator>
-                <CheckIcon />
-              </SelectItemIndicator>
-            </SelectItem>
-          </SelectGroup>
-        </SelectViewport>
-        <SelectScrollDownButton>
-          <ChevronDownIcon />
-        </SelectScrollDownButton>
-      </SelectContent>
-    </SelectRoot>
-  </Box>
-)
+export const Select = ({ courseDates }) => {
+  const dates = courseDates.map((date, index) => {
+    return (
+      <SelectItem value={date} key={index}>
+        <SelectItemText>{date}</SelectItemText>
+        <SelectItemIndicator>
+          <CheckIcon />
+        </SelectItemIndicator>
+      </SelectItem>
+    )
+  })
+  return (
+    <Box>
+      <SelectRoot defaultValue='blueberry'>
+        <SelectTrigger aria-label='Datum för tillfälle'>
+          <SelectValue />
+          <SelectIcon>
+            <ChevronDownIcon />
+          </SelectIcon>
+        </SelectTrigger>
+        <SelectContent>
+          <SelectScrollUpButton>
+            <ChevronUpIcon />
+          </SelectScrollUpButton>
+          <SelectViewport>
+            <SelectGroup>
+              <SelectLabel>Tillfälle</SelectLabel>
+              {dates}
+            </SelectGroup>
+          </SelectViewport>
+          <SelectScrollDownButton>
+            <ChevronDownIcon />
+          </SelectScrollDownButton>
+        </SelectContent>
+      </SelectRoot>
+    </Box>
+  )
+}
 
 export default Select
