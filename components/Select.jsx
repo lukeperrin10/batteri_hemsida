@@ -49,7 +49,6 @@ const StyledItem = styled(SelectPrimitive.Item, {
   display: 'flex',
   alignItems: 'center',
   height: 25,
-  // width: '100px',
   padding: '0 35px 0 25px',
   position: 'relative',
   userSelect: 'none',
@@ -132,7 +131,7 @@ export const Select = ({ courseDates }) => {
   })
   return (
     <Box>
-      <SelectRoot defaultValue='blueberry'>
+      <SelectRoot defaultValue={courseDates[0]}>
         <SelectTrigger aria-label='Datum för tillfälle'>
           <SelectValue />
           <SelectIcon>
