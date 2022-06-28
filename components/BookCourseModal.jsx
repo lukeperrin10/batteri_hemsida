@@ -2,6 +2,7 @@ import React from 'react'
 import { styled, overlayShow, contentShow } from '../stitches.config'
 import { Cross2Icon } from '@radix-ui/react-icons'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
+import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import Select from './Select'
 
 const StyledOverlay = styled(DialogPrimitive.Overlay, {
@@ -54,12 +55,42 @@ const StyledTitle = styled(DialogPrimitive.Title, {
   border: 'none',
 })
 
+const StyledRadio = styled(RadioGroupPrimitive.Item, {
+  all: 'unset',
+  backgroundColor: '$white',
+  width: 25,
+  height: 25,
+  borderRadius: '100%',
+  boxShadow: `0 0 0 1px #707070`,
+  '&:hover': { boxShadow: `0 0 0 2px #707070` },
+  '&:focus': { boxShadow: `0 0 0 2px #707070` },
+})
+const StyledIndicator = styled(RadioGroupPrimitive.Indicator, {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '100%',
+  height: '100%',
+  position: 'relative',
+  '&::after': {
+    content: '""',
+    display: 'block',
+    width: 11,
+    height: 11,
+    borderRadius: '50%',
+    backgroundColor: '$blueLink',
+  },
+})
+
 // Exports
 export const Dialog = DialogPrimitive.Root
 export const DialogTrigger = DialogPrimitive.Trigger
 export const DialogContent = Content
 export const DialogTitle = StyledTitle
 export const DialogClose = DialogPrimitive.Close
+export const RadioGroup = RadioGroupPrimitive.Root
+export const RadioGroupRadio = StyledRadio
+export const RadioGroupIndicator = StyledIndicator
 
 // Your app...
 
@@ -85,7 +116,7 @@ const Form = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   gap: 10,
-  marginY: 10,
+  marginY: 25,
 })
 
 const Fieldset = styled('fieldset', {
@@ -117,6 +148,25 @@ const Input = styled('input', {
 
   '&:focus': { boxShadow: '0 0 0 2px grey' },
 })
+
+const RadioGroupContainer = styled('div', {
+  display: 'flex',
+  flexWrap: 'wrap',
+  columnGap: 50,
+  marginY: 6,
+})
+const RadioItemContainer = styled('div', {
+  display: 'flex',
+  flexWrap: 'wrap',
+  columnGap: 50,
+  rowGap: 10,
+})
+
+const RadioItem = styled('div', {
+  display: 'flex',
+  columnGap: 10,
+})
+
 const TextArea = styled('textarea', {
   all: 'unset',
   width: '96%',
@@ -136,6 +186,18 @@ const ButtonContainer = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   marginTop: 25,
+
+  variants: {
+    variant: {
+      mobile: {
+        marginBottom: 70,
+      },
+
+      desktop: {
+        marginBottom: 25,
+      },
+    },
+  },
 })
 
 const Button = styled('button', {
@@ -185,44 +247,66 @@ const BookCourseModal = ({ btnText, courseName, courseDates }) => {
         </DialogTitle>
         <Form>
           <Fieldset>
-            <Label htmlFor='occasion'>Tillfälle*</Label>
+            <Label htmlFor='occasion'>Tillfälle:*</Label>
             {/* <Input id='occasion' placeholder='Tillfälle' /> */}
             <Select courseDates={courseDates} />
           </Fieldset>
           <Fieldset>
-            <Label htmlFor='name'>För- och Efternamn*</Label>
+            <Label htmlFor='name'>För- och Efternamn:*</Label>
             <Input id='name' placeholder='Förnamn Efternamn' />
           </Fieldset>
           <Fieldset>
-            <Label htmlFor='email'>Email*</Label>
+            <Label htmlFor='email'>Email:*</Label>
             <Input id='email' placeholder='din@email.com' />
           </Fieldset>
           <Fieldset>
-            <Label htmlFor='address'>Adress*</Label>
+            <Label htmlFor='address'>Adress:*</Label>
             <Input id='address' placeholder='Din adress' />
           </Fieldset>
           <Fieldset>
-            <Label htmlFor='phone'>Telefon*</Label>
+            <Label htmlFor='phone'>Telefon:*</Label>
             <Input id='phone' placeholder='031 711 25 40' />
           </Fieldset>
           <Fieldset>
-            <Label htmlFor='company'>Företag</Label>
+            <Label htmlFor='company'>Företag:</Label>
             <Input id='company' placeholder='Företagest namn' />
           </Fieldset>
           <Fieldset>
-            <Label htmlFor='billing'>Ev. Fakturaadress</Label>
+            <Label htmlFor='billing'>Ev. Fakturaadress:</Label>
             <Input id='billing' placeholder='Ev. Fakturaadress' />
           </Fieldset>
           <Fieldset>
-            <Label htmlFor='kurs'>Kurs typ</Label>
-            <Input id='kurs' placeholder='Vanlig / Privat' />
+            <RadioGroup
+              id='sort'
+              defaultValue='normal'
+              aria-label='Typ av kurs'>
+              <RadioGroupContainer>
+                <Label htmlFor='sort' css={{ marginBottom: '6px' }}>
+                  Typ av kurs:
+                </Label>
+                <RadioItemContainer>
+                  <RadioItem>
+                    <RadioGroupRadio value='normal' id='r1'>
+                      <RadioGroupIndicator />
+                    </RadioGroupRadio>
+                    <Label htmlFor='r1'>Normal</Label>
+                  </RadioItem>
+                  <RadioItem>
+                    <RadioGroupRadio value='privat' id='r2'>
+                      <RadioGroupIndicator />
+                    </RadioGroupRadio>
+                    <Label htmlFor='r2'>Privat</Label>
+                  </RadioItem>
+                </RadioItemContainer>
+              </RadioGroupContainer>
+            </RadioGroup>
           </Fieldset>
           <Fieldset>
-            <Label htmlFor='message'>Ev. Meddelande</Label>
+            <Label htmlFor='message'>Ev. Meddelande:</Label>
             <TextArea id='message' placeholder='Ditt meddelande' />
           </Fieldset>
         </Form>
-        <ButtonContainer>
+        <ButtonContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           <DialogClose asChild>
             <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
               Boka
