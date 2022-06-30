@@ -11,6 +11,7 @@ const CustomButton = styled('a', {
   fontSize: '$4',
   fontWeight: '$semi',
   textDecoration: 'none',
+  color: '$white',
   transition: 'transform 200ms',
   '@media (prefers-reduced-motion)': {
     transition: 'none',

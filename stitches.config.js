@@ -24,6 +24,7 @@ export const { styled, getCssText } = createStitches({
       blueLink: '#009DFF',
 
       pink: '#DD16E5',
+      red: '#ff0000aa',
 
       Id: '#FF1C5C',
       Ai: '#FF6F0B',
@@ -101,14 +102,24 @@ export const globalStyles = globalCss({
     margin: 0,
     padding: 0,
     boxSizing: 'border-box',
-    color: '$white',
     fontFamily: '$openSans',
     fontWeight: '$reg',
     
   },
-
+  
   'body': {
+    color: '$white',
     overflowX: 'hidden',
   }
 
 })
+
+export const overlayShow = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+});
+
+export const contentShow = keyframes({
+  '0%': { opacity: 0, transform: 'translate(-50%, -48%) scale(.96)' },
+  '100%': { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
+});

@@ -2,6 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { styled } from '../stitches.config'
 import useWindowSize from '../modules/windowSize'
+import BookCourseModal from './BookCourseModal'
+import HopHelper from '../modules/helper'
 
 const Hero = styled('div', {
   maxWidth: '2560px',
@@ -160,11 +162,11 @@ const CourseHero = ({ data, btnText }) => {
           <SubTitle variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
             {subTitle}
           </SubTitle>
-          <Link href={`#`} passHref>
-            <Button variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-              {btnText}
-            </Button>
-          </Link>
+          <BookCourseModal
+            btnText={btnText}
+            courseName={name}
+            courseDates={data.courseDuration ? HopHelper.addCourseDuration(data) : null}
+          />
         </Content>
       </ImageBox>
     </Hero>

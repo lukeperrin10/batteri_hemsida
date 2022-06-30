@@ -111,6 +111,7 @@ const LinkContainer = styled('div', {
 const CustomLink = styled('a', {
   fontSize: '$3',
   textDecoration: 'none',
+  color: '$white',
 
   '&:hover': {
     cursor: 'pointer',

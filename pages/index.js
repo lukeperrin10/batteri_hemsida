@@ -11,6 +11,8 @@ import CertifiedBar from '../components/CertifiedBar'
 import Carousel from '../components/Carousel'
 import TestimonialBar from '../components/TestimonialBar'
 
+import BookCourseModal from '../components/BookCourseModal'
+
 const CategoriesBox = styled('div', {
   width: '100vw',
   maxWidth: 1920,
