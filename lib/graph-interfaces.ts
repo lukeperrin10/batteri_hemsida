@@ -58,15 +58,15 @@ export interface TCourseLeader {
 }
 
 export interface TRelated {
-    products: Array<{
-      id: string
-      name: string
-      slug: string
-      shortDescription: string
-      images: Array<{ url: string }>
-      logo: Array<{ url: string }>
-      gradientColor: Array<{ color: Array<{ hex: string }> }>
-    }>
+  products: Array<{
+    id: string
+    name: string
+    slug: string
+    shortDescription: string
+    images: Array<{ url: string }>
+    logo: Array<{ url: string }>
+    gradientColor: Array<{ color: Array<{ hex: string }> }>
+  }>
 }
 
 export interface TPopular {
@@ -83,7 +83,7 @@ export interface TProductCard {
     price: number
     slug: string
     shortDescription: string
-    courseLeaders: Array<{courseLeader: TCourseLeader}>
+    courseLeaders: Array<{ courseLeader: TCourseLeader }>
     images: Array<{ url: string }>
     wideImage: Array<{ url: string }>
     logo: Array<{ url: string }>
@@ -104,7 +104,7 @@ export interface TProduct {
     courseDuration: Array<number>
     relatedCourses: TRelated
     courseLeaders: TCourseLeader
-    description: Array<{html: string}>
+    description: Array<{ html: string }>
     images: Array<{ url: string }>
     wideImage: Array<{ url: string }>
     gradientColor: Array<{ color: Array<{ hex: string }> }>
@@ -114,4 +114,10 @@ export interface TProduct {
       slug: string
     }>
   }>
+}
+
+// ================ Get page data Query types ================
+export interface TPageData {
+  footerCategories: TCategory
+  navigationCategory: Array<{ categories: TCategory}>
 }
