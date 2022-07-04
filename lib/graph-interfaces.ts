@@ -1,4 +1,4 @@
-export interface AAktuellt {
+export interface TAktuellt {
   aktuellts: {
     title: string
     description: string
@@ -7,7 +7,7 @@ export interface AAktuellt {
   }
 }
 
-export interface ImageData {
+export interface TImage {
   image: {
     id: string
     height: number
@@ -16,7 +16,7 @@ export interface ImageData {
   }
 }
 
-export interface ACategories {
+export interface TCategories {
   categories: {
     id: string
     description: string
@@ -24,14 +24,14 @@ export interface ACategories {
     name: string
     slug: string
     isWide: boolean
-    image: ImageData
-    wideImage: ImageData
-    logo: ImageData
+    image: TImage
+    wideImage: TImage
+    logo: TImage
     gradientColor: Array<{ color: Array<{ hex: string }> }>
   }
 }
 
-export interface CourseLeaderData {
+export interface TCourseLeader {
   courseLeader: {
     id: string
     name: string
@@ -41,9 +41,7 @@ export interface CourseLeaderData {
   }
 }
 
-export interface APopular {
-  popularCourses: {
-    id: string
+export interface TRelated {
     products: Array<{
       id: string
       name: string
@@ -53,17 +51,23 @@ export interface APopular {
       logo: Array<{ url: string }>
       gradientColor: Array<{ color: Array<{ hex: string }> }>
     }>
+}
+
+export interface TPopular {
+  popularCourses: {
+    id: string
+    products: TRelated
   }
 }
 
-export interface ProductData {
+export interface TProductCard {
   products: {
     id: string
     name: string
     price: number
     slug: string
     shortDescription: string
-    courseLeaders: Array<{courseLeader: CourseLeaderData}>
+    courseLeaders: Array<{courseLeader: TCourseLeader}>
     images: Array<{ url: string }>
     wideImage: Array<{ url: string }>
     logo: Array<{ url: string }>
@@ -71,17 +75,27 @@ export interface ProductData {
   }
 }
 
-export interface ProductCardData {
-  products: {
+export interface TProduct {
+  products: Array<{
     id: string
     name: string
+    subTitle: string
     price: number
+    privatePrice: number
     slug: string
-    shortDescription: string
-    courseLeaders: Array<{courseLeader: CourseLeaderData}>
+    kursprogram: Array<string>
+    dates: Array<string>
+    courseDuration: Array<number>
+    relatedCourses: TRelated
+    courseLeaders: TCourseLeader
+    description: Array<{html: string}>
     images: Array<{ url: string }>
     wideImage: Array<{ url: string }>
-    logo: Array<{ url: string }>
     gradientColor: Array<{ color: Array<{ hex: string }> }>
-  }
+    localizations: Array<{
+      locale: string
+      name: string
+      slug: string
+    }>
+  }>
 }

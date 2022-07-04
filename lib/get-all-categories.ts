@@ -1,6 +1,6 @@
 import graphcmsClient, { gql } from './graphcms-client'
 import { CategoryFragment } from './graphql-fragments'
-import { ACategories } from './graph-Interfaces'
+import { TCategories } from './graph-Interfaces'
 
 export const getAllCategoriesQuery = gql`
   query getAllCategories() {
@@ -12,7 +12,7 @@ export const getAllCategoriesQuery = gql`
 `
 
 async function getAllCategories() {
-  const { categories } = await graphcmsClient.request<ACategories>(getAllCategoriesQuery, {})
+  const { categories } = await graphcmsClient.request<TCategories>(getAllCategoriesQuery, {})
   return { categories }
 }
 

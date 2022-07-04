@@ -1,6 +1,6 @@
 import graphcmsClient, { gql } from './graphcms-client'
 import { RelatedCourseFragment } from './graphql-fragments'
-import { APopular } from './graph-Interfaces'
+import { TPopular } from './graph-Interfaces'
 
 export const getAllPopularQuery = gql`
   query AllPopularProducts {
@@ -15,7 +15,7 @@ export const getAllPopularQuery = gql`
 `
 
 async function getAllPopularCourses() {
-  const { popularCourses } = await graphcmsClient.request<APopular>(getAllPopularQuery, {})
+  const { popularCourses } = await graphcmsClient.request<TPopular>(getAllPopularQuery, {})
 
   return {
     popularCourses,

@@ -1,5 +1,5 @@
 import graphcmsClient, { gql } from './graphcms-client'
-import { AAktuellt } from './graph-Interfaces'
+import { TAktuellt } from './graph-Interfaces'
 
 export const getAllAktuelltsQuery = gql`
   query getAllAktuellts() {
@@ -13,7 +13,7 @@ export const getAllAktuelltsQuery = gql`
 `
 
 async function getAllAktuellts() {
-  const { aktuellts } = await graphcmsClient.request<AAktuellt>(
+  const { aktuellts } = await graphcmsClient.request<TAktuellt>(
     getAllAktuelltsQuery,
     {}
   )

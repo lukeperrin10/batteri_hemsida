@@ -1,5 +1,6 @@
 import graphcmsClient, { gql } from './graphcms-client'
 import { ProductFragment } from './graphql-fragments'
+import { TProduct } from './graph-Interfaces'
 
 export const getProductsSlugQuery = gql`
   query CollectionSlugQuery($slug: String!) {
@@ -19,7 +20,7 @@ export const getProductsSlugQuery = gql`
 async function getProductBySlug({ slug }) {
   const {
     products: [product],
-  } = await graphcmsClient.request(getProductsSlugQuery, {
+  } = await graphcmsClient.request<TProduct>(getProductsSlugQuery, {
     slug,
   })
 
