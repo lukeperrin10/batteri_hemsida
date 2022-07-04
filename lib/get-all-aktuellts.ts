@@ -11,8 +11,17 @@ export const getAllAktuelltsQuery = gql`
   }
 `
 
+interface TData {
+  aktuellts: {
+    title: string
+    description: string
+    show: boolean
+    id: string
+  }
+}
+
 async function getAllAktuellts() {
-  const { aktuellts } = await graphcmsClient.request(getAllAktuelltsQuery, {})
+  const { aktuellts } = await graphcmsClient.request<TData>(getAllAktuelltsQuery, {})
   return { aktuellts }
 }
 
