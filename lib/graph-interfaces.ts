@@ -36,8 +36,8 @@ export interface CourseLeaderData {
     id: string
     name: string
     profession: string
-    courseLeaderImage: Array<{url: string}>
-    courseLeaderAbout: Array<{html: string}>
+    courseLeaderImage: Array<{ url: string }>
+    courseLeaderAbout: Array<{ html: string }>
   }
 }
 
@@ -49,9 +49,39 @@ export interface APopular {
       name: string
       slug: string
       shortDescription: string
-      images: Array<{url: string}>
-      logo: Array<{url: string}>
+      images: Array<{ url: string }>
+      logo: Array<{ url: string }>
       gradientColor: Array<{ color: Array<{ hex: string }> }>
     }>
+  }
+}
+
+export interface ProductData {
+  products: {
+    id: string
+    name: string
+    price: number
+    slug: string
+    shortDescription: string
+    courseLeaders: Array<{courseLeader: CourseLeaderData}>
+    images: Array<{ url: string }>
+    wideImage: Array<{ url: string }>
+    logo: Array<{ url: string }>
+    gradientColor: Array<{ color: Array<{ hex: string }> }>
+  }
+}
+
+export interface ProductCardData {
+  products: {
+    id: string
+    name: string
+    price: number
+    slug: string
+    shortDescription: string
+    courseLeaders: Array<{courseLeader: CourseLeaderData}>
+    images: Array<{ url: string }>
+    wideImage: Array<{ url: string }>
+    logo: Array<{ url: string }>
+    gradientColor: Array<{ color: Array<{ hex: string }> }>
   }
 }

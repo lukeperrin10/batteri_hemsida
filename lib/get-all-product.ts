@@ -1,5 +1,6 @@
 import graphcmsClient, { gql } from './graphcms-client'
 import { ProductCardFragment } from './graphql-fragments'
+import { ProductCardData } from './graph-Interfaces'
 
 export const getAllProductsQuery = gql`
   query AllProductsQuery() {
@@ -12,7 +13,7 @@ export const getAllProductsQuery = gql`
 `
 
 async function getAllProducts() {
-  const { products } = await graphcmsClient.request(getAllProductsQuery, {})
+  const { products } = await graphcmsClient.request<ProductCardData>(getAllProductsQuery, {})
 
   return {
     products,
