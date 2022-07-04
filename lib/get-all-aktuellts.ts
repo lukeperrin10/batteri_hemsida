@@ -1,4 +1,5 @@
 import graphcmsClient, { gql } from './graphcms-client'
+import { AAktuellt } from './graph-Interfaces'
 
 export const getAllAktuelltsQuery = gql`
   query getAllAktuellts() {
@@ -11,17 +12,11 @@ export const getAllAktuelltsQuery = gql`
   }
 `
 
-interface TData {
-  aktuellts: {
-    title: string
-    description: string
-    show: boolean
-    id: string
-  }
-}
-
 async function getAllAktuellts() {
-  const { aktuellts } = await graphcmsClient.request<TData>(getAllAktuelltsQuery, {})
+  const { aktuellts } = await graphcmsClient.request<AAktuellt>(
+    getAllAktuelltsQuery,
+    {}
+  )
   return { aktuellts }
 }
 

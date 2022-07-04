@@ -14,9 +14,9 @@ export default FiveHundred
 
 
 
-export async function getStaticProps({ locale }) {
-  const { aktuellts } = await getAllAktuellts({ locale })
-  const pageData = await getPageData({ locale })
+export async function getStaticProps() {
+  const { aktuellts } = await getAllAktuellts()
+  const pageData = await getPageData()
   return {
     props: {
       ...pageData,
