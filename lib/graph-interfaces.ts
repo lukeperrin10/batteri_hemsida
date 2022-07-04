@@ -31,6 +31,22 @@ export interface TCategories {
   }
 }
 
+export interface TCategory {
+  categories: Array<{
+    id: string
+    description: string
+    subTitleLength: number
+    name: string
+    slug: string
+    isWide: boolean
+    image: TImage
+    wideImage: TImage
+    logo: TImage
+    gradientColor: Array<{ color: Array<{ hex: string }> }>
+    products: TProductCard
+  }>
+}
+
 export interface TCourseLeader {
   courseLeader: {
     id: string
