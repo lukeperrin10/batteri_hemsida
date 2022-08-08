@@ -1,9 +1,13 @@
 import React from 'react'
+import { GetStaticProps } from 'next'
+import Image from 'next/image'
+
+import type { NextPage } from 'next'
+
 import getPageData from '../lib/get-page-data'
 import getAllAktuellts from '../lib/get-all-aktuellts'
 import { styled } from '../stitches.config'
 import CourseHero from '../components/CourseHero'
-import Image from 'next/image'
 import Button from '../components/Button'
 import { foretagHeroData, foretagInfoData, foretagIconGridData } from '../lib/static-data'
 
@@ -97,7 +101,7 @@ const ButtonBox = styled('div', {
   marginBottom: 125,
 })
 
-const ForForetag = () => {
+const ForForetag: NextPage = () => {
 
   const items = foretagIconGridData.map((item, id) => {
     return (
@@ -124,7 +128,7 @@ const ForForetag = () => {
       <IconGrid variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         {items}
       </IconGrid>
-      <Divider variant={{ '@initial': 'mobile', '@bp3': 'desktop' }} />
+      <Divider />
       <InfoSection>{infoItems}</InfoSection>
       <ButtonBox>
         <Button linkTo='/#' text='Begär offert' />
@@ -135,9 +139,9 @@ const ForForetag = () => {
 
 export default ForForetag
 
-export async function getStaticProps({ locale }) {
-  const { aktuellts } = await getAllAktuellts({ locale })
-  const pageData = await getPageData({ locale })
+export const getStaticProps: GetStaticProps = async () => {
+  const { aktuellts } = await getAllAktuellts()
+  const pageData = await getPageData()
   return {
     props: {
       ...pageData,
