@@ -1,4 +1,4 @@
-import { TCategory } from './graph-Interfaces'
+import { TCategory } from './graph-interfaces'
 import graphcmsClient, { gql } from './graphcms-client'
 import { CategoryFragment, ProductCardFragment } from './graphql-fragments'
 

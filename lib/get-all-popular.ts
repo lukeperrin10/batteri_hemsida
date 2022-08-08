@@ -1,6 +1,6 @@
 import graphcmsClient, { gql } from './graphcms-client'
 import { RelatedCourseFragment } from './graphql-fragments'
-import { TPopular } from './graph-Interfaces'
+import { TPopular } from './graph-interfaces'
 
 export const getAllPopularQuery = gql`
   query AllPopularProducts {

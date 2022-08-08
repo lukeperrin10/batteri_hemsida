@@ -1,6 +1,6 @@
 import graphcmsClient, { gql } from './graphcms-client'
 import { ProductCardFragment } from './graphql-fragments'
-import { TProductCard } from './graph-Interfaces'
+import { TProductCard } from './graph-interfaces'
 
 export const getAllProductsQuery = gql`
   query AllProductsQuery() {

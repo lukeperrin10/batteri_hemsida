@@ -1,5 +1,8 @@
+import type { NextPage } from 'next'
 import React from 'react'
 import Link from 'next/link'
+import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
+import { TCategories } from '../lib/graph-interfaces'
 
 import { styled } from '../stitches.config'
 import getPageData from '../lib/get-page-data'
@@ -12,6 +15,10 @@ import Carousel from '../components/Carousel'
 import TestimonialBar from '../components/TestimonialBar'
 
 import BookCourseModal from '../components/BookCourseModal'
+
+interface Locale {
+  locales: {}
+}
 
 const CategoriesBox = styled('div', {
   width: '100vw',
@@ -39,7 +46,7 @@ const ATag = styled('a', {
   textDecoration: 'none',
 })
 
-const Home = ({ categories }) => {
+const Home: NextPage = ({ categories }: TCategories) => {
   return (
     <>
       <IndexHero />
@@ -63,10 +70,10 @@ const Home = ({ categories }) => {
 
 export default Home
 
-export async function getStaticProps({ locale }) {
-  const { categories } = await getAllCategories({ locale })
-  const { aktuellts } = await getAllAktuellts({ locale })
-  const pageData = await getPageData({ locale })
+export const getStaticProps: GetStaticProps = async ( {locale} ) => {
+  const { categories }: TCategories = await getAllCategories()
+  const { aktuellts } = await getAllAktuellts()
+  const pageData = await getPageData()
   return {
     props: {
       ...pageData,

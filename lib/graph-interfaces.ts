@@ -3,13 +3,13 @@ export interface TAktuellt {
     title: string
     description: string
     show: boolean
-    id: string
+    readonly id: string
   }
 }
 
 export interface TImage {
   image: {
-    id: string
+    readonly id: string
     height: number
     url: string
     width: number
@@ -17,8 +17,8 @@ export interface TImage {
 }
 
 export interface TCategories {
-  categories: {
-    id: string
+  categories: Array<{
+    readonly id: string
     description: string
     subTitleLength: number
     name: string
@@ -27,13 +27,13 @@ export interface TCategories {
     image: TImage
     wideImage: TImage
     logo: TImage
-    gradientColor: Array<{ color: Array<{ hex: string }> }>
-  }
+    gradientColor: { color: { hex: string } }
+  }>
 }
 
 export interface TCategory {
   categories: Array<{
-    id: string
+    readonly id: string
     description: string
     subTitleLength: number
     name: string
@@ -42,82 +42,82 @@ export interface TCategory {
     image: TImage
     wideImage: TImage
     logo: TImage
-    gradientColor: Array<{ color: Array<{ hex: string }> }>
+    gradientColor: { color: { hex: string } }
     products: TProductCard
   }>
 }
 
 export interface TCourseLeader {
   courseLeader: {
-    id: string
+    readonly id: string
     name: string
     profession: string
-    courseLeaderImage: Array<{ url: string }>
-    courseLeaderAbout: Array<{ html: string }>
+    courseLeaderImage:{ url: string }
+    courseLeaderAbout: { html: string }
   }
 }
 
 export interface TRelated {
-  products: Array<{
-    id: string
+  products:{
+    readonly id: string
     name: string
     slug: string
     shortDescription: string
-    images: Array<{ url: string }>
-    logo: Array<{ url: string }>
-    gradientColor: Array<{ color: Array<{ hex: string }> }>
-  }>
+    images: { url: string }
+    logo: { url: string }
+    gradientColor: { color: { hex: string } }
+  }
 }
 
 export interface TPopular {
   popularCourses: {
-    id: string
+    readonly id: string
     products: TRelated
   }
 }
 
 export interface TProductCard {
   products: {
-    id: string
+    readonly id: string
     name: string
     price: number
     slug: string
     shortDescription: string
-    courseLeaders: Array<{ courseLeader: TCourseLeader }>
-    images: Array<{ url: string }>
-    wideImage: Array<{ url: string }>
-    logo: Array<{ url: string }>
-    gradientColor: Array<{ color: Array<{ hex: string }> }>
+    courseLeaders: { courseLeader: TCourseLeader }
+    images: { url: string }
+    wideImage:  {url: string }
+    logo: { url: string }
+    gradientColor: { color: { hex: string } }
   }
 }
 
 export interface TProduct {
   products: Array<{
-    id: string
+    readonly id: string
     name: string
     subTitle: string
     price: number
     privatePrice: number
     slug: string
-    kursprogram: Array<string>
-    dates: Array<string>
-    courseDuration: Array<number>
+    kursprogram: string[]
+    dates: string[]
+    courseDuration: number[]
     relatedCourses: TRelated
     courseLeaders: TCourseLeader
-    description: Array<{ html: string }>
-    images: Array<{ url: string }>
-    wideImage: Array<{ url: string }>
-    gradientColor: Array<{ color: Array<{ hex: string }> }>
-    localizations: Array<{
+    description: { html: string }
+    images: { url: string }
+    wideImage: { url: string }
+    gradientColor: { color: { hex: string }}
+    localizations: {
       locale: string
       name: string
       slug: string
-    }>
+    }
   }>
 }
 
 // ================ Get page data Query types ================
 export interface TPageData {
   footerCategories: TCategory
-  navigationCategory: Array<{ categories: TCategory}>
+  navigationCategory: { categories: TCategory}
 }

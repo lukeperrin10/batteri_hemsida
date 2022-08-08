@@ -1,6 +1,6 @@
 import graphcmsClient, { gql } from './graphcms-client'
 import { ProductFragment } from './graphql-fragments'
-import { TProduct } from './graph-Interfaces'
+import { TProduct } from './graph-interfaces'
 
 export const getProductsSlugQuery = gql`
   query CollectionSlugQuery($slug: String!) {

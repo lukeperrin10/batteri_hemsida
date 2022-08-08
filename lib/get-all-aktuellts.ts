@@ -1,5 +1,5 @@
 import graphcmsClient, { gql } from './graphcms-client'
-import { TAktuellt } from './graph-Interfaces'
+import { TAktuellt } from './graph-interfaces'
 
 export const getAllAktuelltsQuery = gql`
   query getAllAktuellts() {

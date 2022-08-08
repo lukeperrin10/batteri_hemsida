@@ -1,3 +1,5 @@
+import type * as Stitches from '@stitches/react';
+
 import { createStitches, globalCss, keyframes } from '@stitches/react'
 
 export const { styled, getCssText } = createStitches({
@@ -64,29 +66,29 @@ export const { styled, getCssText } = createStitches({
     bp9: '(min-width: 1920px)',
   },
   utils: {
-    paddingX: (value) => ({
+    paddingX: (value: Stitches.PropertyValue<'paddingLeft'> | Stitches.PropertyValue<'paddingRight'> ) => ({
       paddingLeft: value,
       paddingRight: value,
     }),
-    paddingY: (value) => ({
+    paddingY: (value: Stitches.PropertyValue<'paddingTop'> | Stitches.PropertyValue<'paddingBottom'>) => ({
       paddingTop: value,
       paddingBottom: value,
     }),
-    marginX: (value) => ({
+    marginX: (value: Stitches.PropertyValue<'marginLeft'> | Stitches.PropertyValue<'marginRight'>) => ({
       marginLeft: value,
       marginRight: value,
     }),
-    marginY: (value) => ({
+    marginY: (value: Stitches.PropertyValue<'marginTop'> | Stitches.PropertyValue<'marginBottom'>) => ({
       marginTop: value,
       marginBottom: value,
     }),
-    linearGradient: (value) => ({
+    linearGradient: (value: Stitches.PropertyValue<'backgroundImage'>) => ({
       backgroundImage: `linear-gradient(${value})`,
     }),
-    dropShadow: (value) => ({
+    dropShadow: (value: Stitches.PropertyValue<'filter'>) => ({
       filter: `drop-shadow(${value})`,
     }),
-    square: (value) => ({
+    square: (value: Stitches.PropertyValue<'width'> | Stitches.PropertyValue<'height'>) => ({
       width: value,
       height: value,
     }),
@@ -94,7 +96,7 @@ export const { styled, getCssText } = createStitches({
       borderRadius: 90000,
     }),
   },
-  conditions: {},
+  // conditions: {},
 })
 
 export const globalStyles = globalCss({

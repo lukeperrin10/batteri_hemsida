@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react'
 
+type WindowSize = {
+  width: number
+  height: number
+}
+
 export default function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match
   // More info: https://joshwcomeau.com/react/the-perils-of-rehydration/
-  const [windowSize, setWindowSize] = useState({
+  const [windowSize, setWindowSize] = useState<WindowSize | void>({
     width: undefined,
     height: undefined,
   })
@@ -12,7 +17,7 @@ export default function useWindowSize() {
     // only execute all the code below in client side
     if (typeof window !== 'undefined') {
       // Handler to call on window resize
-      function handleResize() {
+      const handleResize = () => {
         // Set window width/height to state
         setWindowSize({
           width: window.innerWidth,
@@ -32,3 +37,29 @@ export default function useWindowSize() {
   }, []) // Empty array ensures that effect is only run on mount
   return windowSize
 }
+
+let highscore: number | boolean;
+
+const stuff: number[] | string[] = []
+
+type SkillLevel = "Beginner" | "Intermediate" | "Advanced" | "Expert"
+
+type SkiSchoolStudent = {
+  name: string
+  age: number
+  sport: "ski" | "snowboard"
+  level: SkillLevel
+}
+
+type RGB = {
+  r: number
+  g: number
+  b: number
+}
+type HSL = {
+  h: number
+  s: number
+  l: number
+}
+
+const colors: (RGB | HSL)[] = []

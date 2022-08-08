@@ -1,6 +1,6 @@
 import graphcmsClient, { gql } from './graphcms-client'
 import { CategoryFragment } from './graphql-fragments'
-import { TPageData } from './graph-Interfaces'
+import { TPageData } from './graph-interfaces'
 
 export const getPageDataQuery = gql`
   query PageDataQuery() {
@@ -25,7 +25,7 @@ async function getPageData() {
 
   return {
     footer: { categories: footerCategories},
-    navigation: { pages: [...navigationCategory] },
+    navigation: { pages: navigationCategory },
   }
 }
 

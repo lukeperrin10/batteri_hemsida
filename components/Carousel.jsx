@@ -170,7 +170,7 @@ const Review = styled('p', {
   lineHeight: 1.5,
 })
 
-const Carousel = ({data}) => {
+const Carousel = () => {
   const testimonials = [
     {
       id: 1,

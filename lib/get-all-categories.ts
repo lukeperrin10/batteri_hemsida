@@ -1,6 +1,6 @@
 import graphcmsClient, { gql } from './graphcms-client'
 import { CategoryFragment } from './graphql-fragments'
-import { TCategories } from './graph-Interfaces'
+import { TCategories } from './graph-interfaces'
 
 export const getAllCategoriesQuery = gql`
   query getAllCategories() {
