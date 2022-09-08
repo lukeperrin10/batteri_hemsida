@@ -1,4 +1,5 @@
 import React from 'react'
+import type { GetStaticProps, NextPage } from 'next'
 import getPageData from '../lib/get-page-data'
 import getAllAktuellts from '../lib/get-all-aktuellts'
 import CategoriesHero from '../components/CategoriesHero'
@@ -155,7 +156,7 @@ const ButtonBox = styled('div', {
   marginBottom: 125,
 })
 
-const ContactUs = () => {
+const ContactUs: NextPage = () => {
   return (
     <>
       <CategoriesHero data={kontaktHeroData} />
@@ -213,9 +214,9 @@ const ContactUs = () => {
 
 export default ContactUs
 
-export async function getStaticProps({ locale }) {
-  const { aktuellts } = await getAllAktuellts({ locale })
-  const pageData = await getPageData({ locale })
+export const getStaticProps: GetStaticProps = async () => {
+  const { aktuellts } = await getAllAktuellts()
+  const pageData = await getPageData()
   return {
     props: {
       ...pageData,
