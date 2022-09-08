@@ -1,6 +1,9 @@
 import React from 'react'
+import { GetStaticProps } from 'next'
 import { Wrapper, Status } from '@googlemaps/react-wrapper'
 import { styled } from '../stitches.config'
+
+import type { NextPage } from 'next'
 
 import getPageData from '../lib/get-page-data'
 import getAllAktuellts from '../lib/get-all-aktuellts'
@@ -60,14 +63,14 @@ const DescriptionText = styled('p', {
   lineHeight: 1.5,
 })
 
-const render = (status) => {
+const render = (status: string) => {
   if (status === Status.LOADING) return <StatusText>{status} ..</StatusText>
   if (status === Status.FAILURE)
     return <StatusText>{status} ... Please try again later</StatusText>
   return null
 }
 
-const FindUs = () => {
+const FindUs: NextPage = () => {
   const center = { lat: 57.6980118, lng: 11.9833662 }
   const zoom = 16
   const { description, address } = hittaHitPageData
@@ -109,9 +112,9 @@ const FindUs = () => {
 
 export default FindUs
 
-export async function getStaticProps({ locale }) {
-  const pageData = await getPageData({ locale })
-  const { aktuellts } = await getAllAktuellts({ locale })
+export const getStaticProps: GetStaticProps = async () => {
+  const pageData = await getPageData()
+  const { aktuellts } = await getAllAktuellts()
   return {
     props: {
       ...pageData,
