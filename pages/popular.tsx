@@ -1,4 +1,5 @@
 import React from 'react'
+import { GetStaticProps } from 'next'
 
 import getAllPopularCourses from '../lib/get-all-popular'
 import getPageData from '../lib/get-page-data'
@@ -7,6 +8,9 @@ import { popularHeroData } from '../lib/static-data'
 import CategoriesHero from '../components/CategoriesHero'
 import { styled } from '../stitches.config'
 import RecommendedCard from '../components/RecommendedCard'
+
+import type { NextPage } from 'next'
+import { TPopular } from '../lib/graph-interfaces'
 
 const CoursesBox = styled('div', {
   width: '100vw',
@@ -31,7 +35,7 @@ const CoursesBox = styled('div', {
   },
 })
 
-const CategoryPage = ({ popularCourses }) => {
+const CategoryPage: NextPage = ({ popularCourses }: TPopular) => {
   return (
     <>
       <CategoriesHero data={popularHeroData} />
@@ -52,7 +56,7 @@ const CategoryPage = ({ popularCourses }) => {
   )
 }
 
-export async function getPaths() {
+export const getPaths = async () => {
   let paths = []
 
   const { popularCourses } = await getAllPopularCourses()
@@ -71,7 +75,7 @@ export async function getPaths() {
   }
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const pageData = await getPageData()
   const { aktuellts } = await getAllAktuellts()
   const { popularCourses } = await getAllPopularCourses()
