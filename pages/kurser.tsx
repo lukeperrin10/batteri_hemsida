@@ -1,13 +1,17 @@
 import React from 'react'
 import Link from 'next/link'
+import { GetStaticProps } from 'next'
 
+import { styled } from '../stitches.config'
+import CategoriesHero from '../components/CategoriesHero'
+import Card from '../components/Card'
 import getAllCategories from '../lib/get-all-categories'
 import getAllAktuellts from '../lib/get-all-aktuellts'
 import getPageData from '../lib/get-page-data'
-import {categoriesHeroData} from '../lib/static-data'
-import Card from '../components/Card'
-import CategoriesHero from '../components/CategoriesHero'
-import { styled } from '../stitches.config'
+import { categoriesHeroData } from '../lib/static-data'
+
+import type { NextPage } from 'next'
+import { TCategories } from '../lib/graph-interfaces'
 
 const CategoriesBox = styled('div', {
   width: '100vw',
@@ -36,10 +40,11 @@ const ATag = styled('a', {
   textDecoration: 'none',
 })
 
-const Kurser = ({ categories }) => {
+
+const Kurser: NextPage = ({ categories }: TCategories) => {
   return (
     <>
-      <CategoriesHero data={categoriesHeroData}/>
+      <CategoriesHero data={categoriesHeroData} />
       <CategoriesBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         {categories.map((category, slug) => {
           return (
@@ -56,11 +61,10 @@ const Kurser = ({ categories }) => {
 }
 export default Kurser
 
-export async function getStaticProps({ locale }) {
-  const pageData = await getPageData({ locale })
-  const { categories } = await getAllCategories({ locale })
-  const { aktuellts } = await getAllAktuellts({ locale })
-
+export const getStaticProps: GetStaticProps = async () => {
+  const pageData = await getPageData()
+  const { categories } = await getAllCategories()
+  const { aktuellts } = await getAllAktuellts()
 
   return {
     props: {
