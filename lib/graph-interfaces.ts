@@ -32,7 +32,7 @@ export interface TCategories {
 }
 
 export interface TCategory {
-  categories: Array<{
+  category: {
     readonly id: string
     description: string
     subTitleLength: number
@@ -43,8 +43,19 @@ export interface TCategory {
     wideImage: TImage
     logo: TImage
     gradientColor: { color: { hex: string } }
-    products: TProductCard
-  }>
+    products: Array<{
+      readonly id: string
+      name: string
+      price: number
+      slug: string
+      shortDescription: string
+      courseLeaders: { courseLeader: TCourseLeader }
+      images: { url: string }
+      wideImage:  {url: string }
+      logo: { url: string }
+      gradientColor: { color: { hex: string } }
+    }>
+  }
 }
 
 export interface TCourseLeader {
@@ -77,7 +88,7 @@ export interface TPopular {
 }
 
 export interface TProductCard {
-  products: {
+  products: Array<{
     readonly id: string
     name: string
     price: number
@@ -88,11 +99,11 @@ export interface TProductCard {
     wideImage:  {url: string }
     logo: { url: string }
     gradientColor: { color: { hex: string } }
-  }
+  }>
 }
 
 export interface TProduct {
-  products: Array<{
+  products: {
     readonly id: string
     name: string
     subTitle: string
@@ -113,7 +124,7 @@ export interface TProduct {
       name: string
       slug: string
     }
-  }>
+  }
 }
 
 // ================ Get page data Query types ================

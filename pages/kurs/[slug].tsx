@@ -9,6 +9,9 @@ import CourseProgram from '../../components/CourseProgram'
 import { styled } from '../../stitches.config'
 import CourseLeader from '../../components/CourseLeader'
 import RecommendedCourses from '../../components/RecommendedCourses'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import type { NextPage } from 'next'
+import { TCategories, TCategory, TProduct } from '../../lib/graph-interfaces'
 
 const CourseContainer = styled('div', {
   display: 'flex',
@@ -105,10 +108,10 @@ const Divider = styled('div', {
   },
 })
 
-const Product = ({ product }) => {
+const Product: NextPage = ({ products }: TProduct) => {
   return (
     <>
-      <CourseHero data={product} btnText={'Boka kurs'}/>
+      <CourseHero data={products} btnText={'Boka kurs'}/>
       <CourseContainer  variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         <CourseInfo
           variant={{
@@ -121,27 +124,27 @@ const Product = ({ product }) => {
               '@initial': 'mobile',
               '@bp3': 'desktop',
             }}
-            dangerouslySetInnerHTML={{ __html: product.description.html }}
+            dangerouslySetInnerHTML={{ __html: products.description.html }}
           />
-          <CourseProgram data={product}/>
+          <CourseProgram data={products}/>
         </CourseInfo>
         <Divider
           variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}
           display={{ '@initial': 'hide', '@bp3': 'show' }}
         />
-        <CourseLeader data={product.courseLeaders} />
+        <CourseLeader data={products.courseLeaders} />
         <Divider
           variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}
           display={{ '@initial': 'show', '@bp3': 'hide' }}
         />
-        <RecommendedCourses data={product.relatedCourses}/>
+        <RecommendedCourses data={products.relatedCourses}/>
       </CourseContainer>
 
     </>
   )
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   let paths = []
 
   const { products } = await getAllProducts()
@@ -160,7 +163,7 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { product } = await getProductBySlug({ slug: params.slug })
   const { aktuellts } = await getAllAktuellts()
 

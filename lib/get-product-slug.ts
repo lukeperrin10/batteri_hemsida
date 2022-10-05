@@ -19,7 +19,7 @@ export const getProductsSlugQuery = gql`
 
 async function getProductBySlug({ slug }) {
   const {
-    products: [product],
+    products: product,
   } = await graphcmsClient.request<TProduct>(getProductsSlugQuery, {
     slug,
   })

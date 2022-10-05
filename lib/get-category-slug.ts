@@ -3,7 +3,7 @@ import graphcmsClient, { gql } from './graphcms-client'
 import { CategoryFragment, ProductCardFragment } from './graphql-fragments'
 
 export const getCategorySlugQuery = gql`
-  query CategorySlugQuery($slug: String!) {
+  query CategorySlugQuery($slug: String) {
     categories(where: { slug: $slug }) {
       ...CategoryFragment
       products {
@@ -17,7 +17,7 @@ export const getCategorySlugQuery = gql`
 
 async function getCategoryBySlug({ slug }) {
   const {
-    categories: [category],
+    category: category,
   } = await graphcmsClient.request<TCategory>(getCategorySlugQuery, {
     slug,
   })
