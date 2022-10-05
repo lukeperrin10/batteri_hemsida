@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { styled } from '../stitches.config'
 import useWindowSize from '../modules/windowSize'
+import { TCategory } from '../lib/graph-interfaces'
 
 const Hero = styled('div', {
   maxWidth: '2560px',
@@ -118,12 +119,22 @@ const Description = styled('p', {
   },
 })
 
+interface IData {
+  data: TCategory
+}
+
 const CategoryHero = ({ data }) => {
-  const { name, description, gradientColor, image, wideImage, subTitleLength } =
+    const { name, description, gradientColor, image, wideImage, subTitleLength } =
     data
   const windowSize = useWindowSize()
-  const subTitle = description.split(' ').slice(0, subTitleLength).join(' ')
-  const desc = description.split(' ').slice(subTitleLength, -1).join(' ')
+  const subTitle = description
+    .split(' ')
+    .slice(0, subTitleLength)
+    .join(' ')
+  const desc = description
+    .split(' ')
+    .slice(subTitleLength, -1)
+    .join(' ') 
   return (
     <Hero>
       <ImageBox
@@ -132,11 +143,12 @@ const CategoryHero = ({ data }) => {
           '&::before': {
             linearGradient: `${
               windowSize.width >= 750 ? '270deg' : '0deg'
-            }, transparent 10%, ${gradientColor?.color.hex} 80%`,
+            }, transparent 10%, ${data.gradientColor?.color.hex} 80%`,
           },
-        }}>
+        }}
+      >
         <Image
-          src={windowSize.width >= 750 ? wideImage.url : image.url}
+          src={windowSize.width >= 750 ? data.wideImage.url : data.image.url}
           alt=''
           layout='fill'
           objectFit='cover'

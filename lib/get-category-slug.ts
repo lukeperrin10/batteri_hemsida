@@ -1,4 +1,4 @@
-import { TCategory } from './graph-interfaces'
+import { TCategories } from './graph-interfaces'
 import graphcmsClient, { gql } from './graphcms-client'
 import { CategoryFragment, ProductCardFragment } from './graphql-fragments'
 
@@ -17,14 +17,12 @@ export const getCategorySlugQuery = gql`
 
 async function getCategoryBySlug({ slug }) {
   const {
-    category: category,
-  } = await graphcmsClient.request<TCategory>(getCategorySlugQuery, {
-    slug,
-  })
-
+    categories: [category],
+  } = await graphcmsClient.request<TCategories>(getCategorySlugQuery, { slug })
   return {
     category,
   }
 }
+
 
 export default getCategoryBySlug

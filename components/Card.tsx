@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { styled } from '../stitches.config'
 import { useRouter } from 'next/router'
 import useWindowSize from '../modules/windowSize'
+import { IProduct, TCategory } from '../lib/graph-interfaces'
 
 const CardContent = styled('div', {
   display: 'flex',
@@ -147,10 +148,14 @@ const ImageBox = styled('div', {
   },
 })
 
-const Card = ({ data }) => {
+interface ICard {
+  data: TCategory
+}
+
+const Card = ({ data }: ICard) => {
   const windowSize = useWindowSize()
   const router = useRouter()
-  const {
+  /*   const {
     slug,
     gradientColor,
     isWide,
@@ -159,41 +164,43 @@ const Card = ({ data }) => {
     name,
     logo,
     description,
-  } = data
+  } = data */
+
   switch (router.route) {
     case '/kurser/[slug]':
       return (
         <>
-          <Link href={`/kurs/${slug}`} passHref>
+          <Link href={`/kurs/${data.slug}`} passHref>
             <CardContent
               variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
               css={{
                 width:
-                  isWide === true && windowSize.width >= 1140
+                  data.isWide === true && windowSize.width >= 1140
                     ? 1140
-                    : isWide !== true && windowSize.width >= 1140
+                    : data.isWide !== true && windowSize.width >= 1140
                     ? 530
                     : windowSize.width <= 1139 && windowSize.width >= 750
                     ? 530
                     : 319,
                 height: windowSize.width >= 750 ? 618 : 374,
                 '&::before': {
-                  linearGradient: `0deg, ${gradientColor?.color.hex} 10%, transparent 80%`,
+                  linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
                 },
-              }}>
+              }}
+            >
               <ImageBox>
                 <Image
                   src={
-                    isWide && windowSize.width >= 1140
-                      ? wideImage?.url
-                      : image?.url
+                    data.isWide && windowSize.width >= 1140
+                      ? data.wideImage?.url
+                      : data.images[0].url
                   }
                   priority
-                  alt={name}
+                  alt={data.name}
                   width={
-                    isWide && windowSize.width >= 1140
+                    data.isWide && windowSize.data.width >= 1140
                       ? 1140
-                      : isWide !== true && windowSize.width >= 1140
+                      : data.isWide !== true && windowSize.width >= 1140
                       ? 530
                       : windowSize.width <= 1139 && windowSize.width >= 750
                       ? 530
@@ -204,8 +211,8 @@ const Card = ({ data }) => {
               </ImageBox>
               <LogoIcon variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
                 <Image
-                  src={logo?.url ? logo?.url : '/batteri.svg'}
-                  alt={name}
+                  src={data.logo?.url ? data.logo?.url : '/batteri.svg'}
+                  alt={data.name}
                   width={74}
                   height={74}
                   priority
@@ -213,11 +220,12 @@ const Card = ({ data }) => {
               </LogoIcon>
               <Divider variant={{ '@initial': 'mobile', '@bp3': 'desktop' }} />
               <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-                {name}
+                {data.name}
               </Title>
               <Description
-                variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-                {description}
+                variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
+              >
+                {data.description}
               </Description>
             </CardContent>
           </Link>
@@ -227,36 +235,37 @@ const Card = ({ data }) => {
     default:
       return (
         <>
-          <Link href={`/kurser/${slug}`} passHref>
+          <Link href={`/kurser/${data.slug}`} passHref>
             <CardContent
               variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
               css={{
                 width:
-                  isWide === true && windowSize.width >= 1140
+                  data.isWide === true && windowSize.width >= 1140
                     ? 1140
-                    : isWide !== true && windowSize.width >= 1140
+                    : data.isWide !== true && windowSize.width >= 1140
                     ? 530
                     : windowSize.width <= 1139 && windowSize.width >= 750
                     ? 530
                     : 319,
                 height: windowSize.width >= 750 ? 618 : 374,
                 '&::before': {
-                  linearGradient: `0deg, ${gradientColor?.color.hex} 10%, transparent 80%`,
+                  linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
                 },
-              }}>
+              }}
+            >
               <ImageBox>
                 <Image
                   priority
                   src={
-                    isWide && windowSize.width >= 1140
-                      ? wideImage?.url
-                      : image?.url
+                    data.isWide && windowSize.width >= 1140
+                      ? data.wideImage?.url
+                      : data.images[0].url
                   }
-                  alt={name}
+                  alt={data.name}
                   width={
-                    isWide && windowSize.width >= 1140
+                    data.isWide && windowSize.width >= 1140
                       ? 1140
-                      : isWide !== true && windowSize.width >= 1140
+                      : data.isWide !== true && windowSize.width >= 1140
                       ? 530
                       : windowSize.width <= 1139 && windowSize.width >= 750
                       ? 530
@@ -268,19 +277,20 @@ const Card = ({ data }) => {
               <LogoIcon variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
                 <Image
                   priority
-                  src={logo?.url ? logo?.url : '/batteri.svg'}
-                  alt={name}
+                  src={data.logo?.url ? data.logo?.url : '/batteri.svg'}
+                  alt={data.name}
                   height={74}
                   width={74}
                 />
               </LogoIcon>
               <Divider variant={{ '@initial': 'mobile', '@bp3': 'desktop' }} />
               <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-                {name}
+                {data.name}
               </Title>
               <Description
-                variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-                {description}
+                variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
+              >
+                {data.description}
               </Description>
             </CardContent>
           </Link>

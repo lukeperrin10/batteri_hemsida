@@ -36,28 +36,26 @@ const CoursesBox = styled('div', {
   },
 })
 
-const CategoryPage: NextPage = ({ category }: TCategory) => {
-  return (
-    <>
-      {/* <CategoryHero data={category}/> */}
-      <CoursesBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-      {/* {category.products.map((product, index) => {
-        const course_data = {
-          slug: product.slug,
-          gradientColor: product.gradientColor,
-          // isWide: product.isWide,
-          image: product.images[0],
-          wideImage: product.wideImage[0],
-          name: product.name,
-          logo: product.logo,
-          description: product.shortDescription,
-        }
-        return <Card data={course_data} key={index} />
-      })} */}
-      </CoursesBox>
-      <TailorACourse/>
-    </>
-  )
+interface ICategory {
+  category: TCategory
+}
+
+const CategoryPage: NextPage = ({ category }: ICategory) => {
+  if (Array.isArray(category.products)) {
+    const info = category.products.map((product, i) => {
+      return <Card data={product} key={i} />
+    })
+
+    return (
+      <>
+        <CategoryHero data={category} />
+        <CoursesBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+          {info}
+        </CoursesBox>
+        <TailorACourse />
+      </>
+    )
+  }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -68,7 +66,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   paths = [
     ...paths,
     ...categories.map((category) => ({
-      params: { slug: category.slug },
+      params: {
+        slug: category.slug,
+      },
     })),
   ]
 
@@ -80,16 +80,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const pageData = await getPageData()
+  const { category } = await getCategoryBySlug({ slug: params.slug })
   const { aktuellts } = await getAllAktuellts()
-  const { category } = await getCategoryBySlug({
-    slug: params.slug,
-  })
 
   return {
     props: {
+      aktuellts,
       category,
       ...pageData,
-      aktuellts,
     },
   }
 }

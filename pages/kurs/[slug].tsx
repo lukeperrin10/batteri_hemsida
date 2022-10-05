@@ -108,38 +108,38 @@ const Divider = styled('div', {
   },
 })
 
-const Product: NextPage = ({ products }: TProduct) => {
+const Product: NextPage = ({ product }: TProduct) => {
   return (
     <>
-      <CourseHero data={products} btnText={'Boka kurs'}/>
-      <CourseContainer  variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+      <CourseHero data={product} btnText={'Boka kurs'} />
+      <CourseContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         <CourseInfo
           variant={{
             '@initial': 'mobile',
             '@bp7': 'tablet',
             '@bp8': 'desktop',
-          }}>
+          }}
+        >
           <CourseDescription
             variant={{
               '@initial': 'mobile',
               '@bp3': 'desktop',
             }}
-            dangerouslySetInnerHTML={{ __html: products.description.html }}
+            dangerouslySetInnerHTML={{ __html: product.description.html }}
           />
-          <CourseProgram data={products}/>
+          <CourseProgram data={product} />
         </CourseInfo>
         <Divider
           variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}
           display={{ '@initial': 'hide', '@bp3': 'show' }}
         />
-        <CourseLeader data={products.courseLeaders} />
+        <CourseLeader data={product.courseLeaders} />
         <Divider
           variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}
           display={{ '@initial': 'show', '@bp3': 'hide' }}
         />
-        <RecommendedCourses data={products.relatedCourses}/>
+        <RecommendedCourses data={product.relatedCourses} />
       </CourseContainer>
-
     </>
   )
 }
