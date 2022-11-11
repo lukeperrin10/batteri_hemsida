@@ -157,7 +157,7 @@ const Card = ({ data }: ICard) => {
   console.log(data)
   const windowSize = useWindowSize()
   const router = useRouter()
-   const {
+  const {
     slug,
     gradientColor,
     isWide,
@@ -195,7 +195,7 @@ const Card = ({ data }: ICard) => {
                   src={
                     data.isWide && windowSize.width >= 1140
                       ? data.wideImage?.url
-                      : data.image[0].url
+                      : data.images[0].url ? data.images[0].url : data.image.url
                   }
                   priority
                   alt={data.name}
@@ -255,12 +255,12 @@ const Card = ({ data }: ICard) => {
               }}
             >
               <ImageBox>
-          {/*       <Image
+                <Image
                   priority
                   src={
                     data.isWide && windowSize.width >= 1140
                       ? data.wideImage?.url
-                      : data.image[0]?.url
+                      : data.image?.url ? data.image.url : data.images[0].url
                   }
                   alt={data.name}
                   width={
@@ -273,7 +273,7 @@ const Card = ({ data }: ICard) => {
                           : 319
                   }
                   height={windowSize.width >= 750 ? 618 : 374}
-                /> */}
+                />
               </ImageBox>
               <LogoIcon variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
                 <Image

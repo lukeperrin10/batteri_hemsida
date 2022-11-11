@@ -105,7 +105,6 @@ export interface TProductCard {
 }
 
 export interface TProducts {
-  products: {
     readonly id: string
     name: string
     subTitle: string
@@ -126,7 +125,6 @@ export interface TProducts {
       name: string
       slug: string
     }
-  }
 }
 
 // ================ Get page data Query types ================
