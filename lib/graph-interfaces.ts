@@ -36,11 +36,13 @@ export interface TCategory {
   name: string
   slug: string
   isWide: boolean
-  images: TImage
+  images?: TImage
   wideImage: TImage
   logo: TImage
   gradientColor: { color: { hex: string } }
-  products: IProduct
+  products?: IProduct
+  width?: number
+  image: TImage
 }
 
 export interface IProduct {
@@ -130,5 +132,5 @@ export interface TProducts {
 // ================ Get page data Query types ================
 export interface TPageData {
   footerCategories: TCategory
-  navigationCategory: { categories: TCategory }
+  navigationCategory: [ categories: TCategory ]
 }

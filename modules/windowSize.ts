@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react'
+import { TCategory } from '../lib/graph-interfaces'
 
-type WindowSize = {
-  width: number
+export interface WindowSize  {
+  width: number 
   height: number
+  data?: TCategory
 }
 
 export default function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match
   // More info: https://joshwcomeau.com/react/the-perils-of-rehydration/
-  const [windowSize, setWindowSize] = useState<WindowSize | void>({
+  const [windowSize, setWindowSize] = useState<WindowSize | null>({
     width: undefined,
     height: undefined,
   })
