@@ -25,7 +25,7 @@ async function getPageData() {
 
   return {
     footer: { categories: footerCategories},
-    navigation: { pages: navigationCategory },
+    navigation: { pages: [...navigationCategory] },
   }
 }
 
