@@ -59,7 +59,7 @@ const Cards = styled('div', {
 })
 
 interface IRecommendedCourses {
-  data: IProduct[]
+  data: IProduct
 }
 
 const RecommendedCourses = ({ data }: IRecommendedCourses) => {
@@ -69,6 +69,7 @@ const RecommendedCourses = ({ data }: IRecommendedCourses) => {
         Liknande kurser
       </Title>
       <Cards variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+        {/* @ts-ignore */}
         {data.map((product, index: number) => {
           const course_data = {
             slug: product.slug,
