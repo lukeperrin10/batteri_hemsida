@@ -1,3 +1,5 @@
+import React from "react"
+
 export interface TAktuellt {
   aktuellts: {
     title: string
@@ -115,7 +117,7 @@ export interface TProducts {
     courseDuration: number[]
     relatedCourses: TRelated
     courseLeaders: TCourseLeader
-    description: { html: string }
+    description: React.ReactNode
     images: { url: string }
     image?: {url: string}
     wideImage: { url: string }

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { styled } from '../stitches.config'
 import useWindowSize from '../modules/windowSize'
-import { TCategories, TCategory, TProducts } from '../lib/graph-interfaces'
+import { TProducts } from '../lib/graph-interfaces'
 
 const Hero = styled('div', {
   maxWidth: '2560px',
