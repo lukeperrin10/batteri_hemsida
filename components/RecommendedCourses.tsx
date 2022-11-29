@@ -1,4 +1,5 @@
 import React from 'react'
+import { IProduct } from '../lib/graph-interfaces'
 import { styled } from '../stitches.config'
 import RecommendedCard from './RecommendedCard'
 
@@ -57,12 +58,18 @@ const Cards = styled('div', {
   },
 })
 
-const RecommendedCourses = ({ data }) => {
+interface IRecommendedCourses {
+  data: IProduct[]
+}
+
+const RecommendedCourses = ({ data }: IRecommendedCourses) => {
   return (
     <RecommendedSection variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-      <Title  variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>Liknande kurser</Title>
+      <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+        Liknande kurser
+      </Title>
       <Cards variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-        {data?.map((product, index) => {
+        {data.map((product, index: number) => {
           const course_data = {
             slug: product.slug,
             gradientColor: product.gradientColor,

@@ -1,8 +1,6 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { styled } from '../stitches.config'
 import useWindowSize from '../modules/windowSize'
-import Button from './Button'
 
 const Hero = styled('div', {
   maxWidth: '2560px',
@@ -64,24 +62,29 @@ const Content = styled('div', {
   },
 })
 
-const LogoIcon = styled('div', {
+const Title = styled('h1', {
+  marginTop: -60,
+  marginBottom: 20,
+  fontWeight: '$bold',
+
   variants: {
     variant: {
       mobile: {
-        square: 54,
+        fontSize: '$6',
+        lineHeight: 1.4,
+        maxWidth: 400,
       },
       desktop: {
-        square: 74,
+        fontSize: '$12',
+        maxWidth: 500,
       },
     },
   },
 })
 
-const Title = styled('h1', {
-  marginTop: 40,
-  marginBottom: 60,
+const SubTitle = styled('h2', {
   fontWeight: '$semi',
-
+  marginBottom: 8,
   variants: {
     variant: {
       mobile: {
@@ -91,78 +94,50 @@ const Title = styled('h1', {
       },
       desktop: {
         fontSize: '$7',
-        maxWidth: 500,
+        maxWidth: 700,
       },
     },
   },
 })
 
-const BoldText = styled('span', {
-  fontWeight: '$bold',
-})
-
-const LinkContainer = styled('div', {
-  display: 'flex',
-  zIndex: 2,
+const Description = styled('p', {
+  fontWeight: '$reg',
   variants: {
     variant: {
       mobile: {
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        rowGap: 20,
-      },
-      desktop: {
-        columnGap: 29,
-        flexDirection: 'row',
-        alignItems: 'center',
-      },
-    },
-  },
-})
-
-const MostPopular = styled('a', {
-  transition: 'transform 200ms',
-  color: '$white',
-
-  '@media (prefers-reduced-motion)': {
-    transition: 'none',
-  },
-
-  variants: {
-    variant: {
-      mobile: {
-        fontSize: '$2',
+        fontSize: '$3',
+        lineHeight: 1.4,
+        maxWidth: 400,
       },
       desktop: {
         fontSize: '$3',
-
-        '&:hover': {
-          cursor: 'pointer',
-          transform: 'scale(1.02)',
-        },
+        maxWidth: 500,
+        lineHeight: 1.34,
       },
     },
   },
 })
 
-const IndexHero = (props) => {
+const CategoriesHero = ({ data }) => {
+  const { title, subTitle, description, image, wideImage, gradientColor } = data
   const windowSize = useWindowSize()
   return (
     <Hero>
       <ImageBox
+      //@ts-ignore
         variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
         css={{
           '&::before': {
             linearGradient: `${
               windowSize.width >= 750 ? '270deg' : '0deg'
-            }, transparent 10%, black 80%`,
+            }, transparent 10%, ${gradientColor} 80%`,
           },
         }}>
         <Image
           src={
             windowSize.width >= 750
-              ? '/index-hero.webp'
-              : '/index-hero-mob.webp'
+              ? `${image}`
+              : `${wideImage}`
           }
           alt=''
           layout='fill'
@@ -170,28 +145,19 @@ const IndexHero = (props) => {
           priority
         />
         <Content variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-          <LogoIcon>
-            <Image src='/batteri.svg' alt='' width={75} height={75} priority />
-          </LogoIcon>
           <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            Sveriges mest erfarna kursutbildare inom{' '}
-            <BoldText css={{ fontWeight: '$bold' }}>
-              Adobe Creative Suite.
-            </BoldText>
+            {title}
           </Title>
-          <LinkContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            <Button linkTo='/kurser' text='Hitta din kurs' />
-            <Link href={`/popular`} passHref>
-              <MostPopular
-                variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-                Mest populära kurser 2022
-              </MostPopular>
-            </Link>
-          </LinkContainer>
+          <SubTitle variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+           {subTitle}
+          </SubTitle>
+          <Description variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+            {description}
+          </Description>
         </Content>
       </ImageBox>
     </Hero>
   )
 }
 
-export default IndexHero
+export default CategoriesHero

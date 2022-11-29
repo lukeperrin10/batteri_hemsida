@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import { TCourseLeader } from '../lib/graph-interfaces'
 import { styled } from '../stitches.config'
 
 const CourseLeaderSection = styled('section', {
@@ -119,27 +120,31 @@ const About = styled('div', {
   },
 })
 
-const CourseLeader = ({ data }) => {
-  const { courseLeaderAbout, courseLeaderImage, name, profession } = data[0]
+interface ICourseLeader  {
+  data: TCourseLeader
+}
+
+const CourseLeader = ({ data }: ICourseLeader) => {
+ 
   return (
     <CourseLeaderSection variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}>
       <NameAndImage variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         <ImageContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-          <Image src={courseLeaderImage.url} alt='' layout='fill' />
+          <Image src={data[0].courseLeaderImage.url} alt='' layout='fill' />
         </ImageContainer>
         <NameContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
             Kurs ledare
           </Title>
           <Name variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            {name}
+            {data[0].name}
           </Name>
           <Name variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            {profession}
+            {data[0].profession}
           </Name>
         </NameContainer>
       </NameAndImage>
-      <About dangerouslySetInnerHTML={{ __html: courseLeaderAbout.html }} />
+      <About dangerouslySetInnerHTML={{ __html: data[0].courseLeaderAbout.html }} />
     </CourseLeaderSection>
   )
 }

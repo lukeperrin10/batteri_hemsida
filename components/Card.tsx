@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { styled } from '../stitches.config'
 import { useRouter } from 'next/router'
 import useWindowSize from '../modules/windowSize'
-import { IProduct, TCategory } from '../lib/graph-interfaces'
+import { TCategory } from '../lib/graph-interfaces'
 
 const CardContent = styled('div', {
   display: 'flex',
@@ -152,22 +152,9 @@ interface ICard {
   data: TCategory
 }
 
-
 const Card = ({ data }: ICard) => {
-  console.log(data)
   const windowSize = useWindowSize()
   const router = useRouter()
-   const {
-    slug,
-    gradientColor,
-    isWide,
-    image,
-    wideImage,
-    name,
-    logo,
-    description,
-  } = data
-  console.log(router.route)
   switch (router.route) {
     case '/kurser/[slug]':
       return (
@@ -180,10 +167,10 @@ const Card = ({ data }: ICard) => {
                   data.isWide === true && windowSize.width >= 1140
                     ? 1140
                     : data.isWide !== true && windowSize.width >= 1140
-                      ? 530
-                      : windowSize.width <= 1139 && windowSize.width >= 750
-                        ? 530
-                        : 319,
+                    ? 530
+                    : windowSize.width <= 1139 && windowSize.width >= 750
+                    ? 530
+                    : 319,
                 height: windowSize.width >= 750 ? 618 : 374,
                 '&::before': {
                   linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
@@ -195,7 +182,7 @@ const Card = ({ data }: ICard) => {
                   src={
                     data.isWide && windowSize.width >= 1140
                       ? data.wideImage?.url
-                      : data.image[0].url
+                      : data.images[0].url
                   }
                   priority
                   alt={data.name}
@@ -203,10 +190,10 @@ const Card = ({ data }: ICard) => {
                     data.isWide && windowSize.data.width >= 1140
                       ? 1140
                       : data.isWide !== true && windowSize.width >= 1140
-                        ? 530
-                        : windowSize.width <= 1139 && windowSize.width >= 750
-                          ? 530
-                          : 319
+                      ? 530
+                      : windowSize.width <= 1139 && windowSize.width >= 750
+                      ? 530
+                      : 319
                   }
                   height={windowSize.width >= 750 ? 618 : 374}
                 />
@@ -244,10 +231,10 @@ const Card = ({ data }: ICard) => {
                   data.isWide === true && windowSize.width >= 1140
                     ? 1140
                     : data.isWide !== true && windowSize.width >= 1140
-                      ? 530
-                      : windowSize.width <= 1139 && windowSize.width >= 750
-                        ? 530
-                        : 319,
+                    ? 530
+                    : windowSize.width <= 1139 && windowSize.width >= 750
+                    ? 530
+                    : 319,
                 height: windowSize.width >= 750 ? 618 : 374,
                 '&::before': {
                   linearGradient: `0deg, ${data.gradientColor?.color.hex} 10%, transparent 80%`,
@@ -255,25 +242,25 @@ const Card = ({ data }: ICard) => {
               }}
             >
               <ImageBox>
-          {/*       <Image
+                <Image
                   priority
                   src={
                     data.isWide && windowSize.width >= 1140
                       ? data.wideImage?.url
-                      : data.image[0]?.url
+                      : data.image.url
                   }
                   alt={data.name}
                   width={
                     data.isWide && windowSize.width >= 1140
                       ? 1140
                       : data.isWide !== true && windowSize.width >= 1140
-                        ? 530
-                        : windowSize.width <= 1139 && windowSize.width >= 750
-                          ? 530
-                          : 319
+                      ? 530
+                      : windowSize.width <= 1139 && windowSize.width >= 750
+                      ? 530
+                      : 319
                   }
                   height={windowSize.width >= 750 ? 618 : 374}
-                /> */}
+                />
               </ImageBox>
               <LogoIcon variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
                 <Image

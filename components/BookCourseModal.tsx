@@ -3,7 +3,7 @@ import { styled, overlayShow, contentShow } from '../stitches.config'
 import { Cross2Icon } from '@radix-ui/react-icons'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
-import Select from './Select'
+import { Select } from './Select'
 
 const StyledOverlay = styled(DialogPrimitive.Overlay, {
   backgroundColor: '#00000099',
@@ -233,7 +233,17 @@ const Button = styled('button', {
   },
 })
 
-const BookCourseModal = ({ btnText, courseName, courseDates }) => {
+interface IBookCourseProps {
+  btnText: string
+  courseName: string
+  courseDates: string[]
+}
+
+const BookCourseModal = ({
+  btnText,
+  courseName,
+  courseDates,
+}: IBookCourseProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -279,7 +289,8 @@ const BookCourseModal = ({ btnText, courseName, courseDates }) => {
             <RadioGroup
               id='sort'
               defaultValue='normal'
-              aria-label='Typ av kurs'>
+              aria-label='Typ av kurs'
+            >
               <RadioGroupContainer>
                 <Label htmlFor='sort' css={{ marginBottom: '6px' }}>
                   Typ av kurs:

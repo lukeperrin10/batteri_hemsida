@@ -11,7 +11,7 @@ import CourseLeader from '../../components/CourseLeader'
 import RecommendedCourses from '../../components/RecommendedCourses'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import type { NextPage } from 'next'
-import { TCategories, TCategory, TProduct } from '../../lib/graph-interfaces'
+import { TCategories, TCategory, TProducts } from '../../lib/graph-interfaces'
 
 const CourseContainer = styled('div', {
   display: 'flex',
@@ -108,7 +108,11 @@ const Divider = styled('div', {
   },
 })
 
-const Product: NextPage = ({ product }: TProduct) => {
+interface IProduct {
+  product: TProducts
+}
+
+const Product: NextPage = ({ product }: IProduct) => {
   return (
     <>
       <CourseHero data={product} btnText={'Boka kurs'} />

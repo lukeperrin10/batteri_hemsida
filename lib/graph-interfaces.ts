@@ -30,19 +30,19 @@ export interface TCategories {
 }
 
 export interface TCategory {
-  readonly id: string
-  description: string
-  subTitleLength: number
-  name: string
-  slug: string
-  isWide: boolean
+  readonly id?: string
+  description?: string
+  subTitleLength?: number
+  name?: string
+  slug?: string
+  isWide?: boolean
   images?: TImage
-  wideImage: TImage
-  logo: TImage
-  gradientColor: { color: { hex: string } }
+  wideImage?: TImage
+  logo?: TImage
+  gradientColor?: { color: { hex: string } }
   products?: IProduct
   width?: number
-  image: TImage
+  image?: TImage
 }
 
 export interface IProduct {
@@ -61,14 +61,12 @@ export interface IProduct {
 
 
 export interface TCourseLeader {
-  courseLeader: {
     readonly id: string
     name: string
     profession: string
     courseLeaderImage: { url: string }
     courseLeaderAbout: { html: string }
   }
-}
 
 export interface TRelated {
   products: {
@@ -105,7 +103,6 @@ export interface TProductCard {
 }
 
 export interface TProducts {
-  products: {
     readonly id: string
     name: string
     subTitle: string
@@ -127,7 +124,6 @@ export interface TProducts {
       slug: string
     }
   }
-}
 
 // ================ Get page data Query types ================
 export interface TPageData {

@@ -2,8 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { styled } from '../stitches.config'
 import useWindowSize from '../modules/windowSize'
-import BookCourseModal from './BookCourseModal'
-import HopHelper from '../modules/helper'
+import Button from './Button'
 
 const Hero = styled('div', {
   maxWidth: '2560px',
@@ -65,53 +64,66 @@ const Content = styled('div', {
   },
 })
 
+const LogoIcon = styled('div', {
+  variants: {
+    variant: {
+      mobile: {
+        square: 54,
+      },
+      desktop: {
+        square: 74,
+      },
+    },
+  },
+})
+
 const Title = styled('h1', {
-  fontWeight: '$bold',
-  marginBottom: 20,
-  marginTop: -60,
+  marginTop: 40,
+  marginBottom: 60,
+  fontWeight: '$semi',
 
   variants: {
     variant: {
       mobile: {
-        fontSize: '$6',
+        fontSize: '$4',
         lineHeight: 1.4,
         maxWidth: 400,
       },
       desktop: {
-        fontSize: '$12',
+        fontSize: '$7',
         maxWidth: 500,
       },
     },
   },
 })
 
-const SubTitle = styled('h2', {
-  fontWeight: '$semi',
+const BoldText = styled('span', {
+  fontWeight: '$bold',
+})
+
+const LinkContainer = styled('div', {
+  display: 'flex',
+  zIndex: 2,
   variants: {
     variant: {
       mobile: {
-        marginBottom: 42,
-        fontSize: '$3',
-        lineHeight: 1.4,
-        maxWidth: 400,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        rowGap: 20,
       },
       desktop: {
-        marginBottom: 44,
-        fontSize: '$7',
-        maxWidth: 700,
+        columnGap: 29,
+        flexDirection: 'row',
+        alignItems: 'center',
       },
     },
   },
 })
 
-const Button = styled('a', {
-  alignSelf: 'flex-start',
-  backgroundColor: '$blueDark',
-  pillShape: true,
-  fontSize: '$4',
-  fontWeight: '$semi',
-  textDecoration: 'none',
+const MostPopular = styled('a', {
   transition: 'transform 200ms',
+  color: '$white',
+
   '@media (prefers-reduced-motion)': {
     transition: 'none',
   },
@@ -119,14 +131,13 @@ const Button = styled('a', {
   variants: {
     variant: {
       mobile: {
-        padding: '15px 45px',
+        fontSize: '$2',
       },
-
       desktop: {
-        padding: '15px 65px',
+        fontSize: '$3',
+
         '&:hover': {
           cursor: 'pointer',
-          backgroundColor: '$blue',
           transform: 'scale(1.02)',
         },
       },
@@ -134,43 +145,54 @@ const Button = styled('a', {
   },
 })
 
-const CourseHero = ({ data, btnText }) => {
-  const { name, images, wideImage, subTitle, gradientColor } = data
+const IndexHero = () => {
   const windowSize = useWindowSize()
   return (
     <Hero>
       <ImageBox
+      //@ts-ignore
         variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
         css={{
           '&::before': {
             linearGradient: `${
               windowSize.width >= 750 ? '270deg' : '0deg'
-            }, transparent 10%, ${gradientColor?.color.hex} 80%`,
+            }, transparent 10%, black 80%`,
           },
         }}>
         <Image
-          src={windowSize.width >= 750 ? wideImage.url : images?.[0].url}
+          src={
+            windowSize.width >= 750
+              ? '/index-hero.webp'
+              : '/index-hero-mob.webp'
+          }
           alt=''
           layout='fill'
           objectFit='cover'
           priority
         />
         <Content variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+          <LogoIcon>
+            <Image src='/batteri.svg' alt='' width={75} height={75} priority />
+          </LogoIcon>
           <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            {name}
+            Sveriges mest erfarna kursutbildare inom{' '}
+            <BoldText css={{ fontWeight: '$bold' }}>
+              Adobe Creative Suite.
+            </BoldText>
           </Title>
-          <SubTitle variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            {subTitle}
-          </SubTitle>
-          <BookCourseModal
-            btnText={btnText}
-            courseName={name}
-            courseDates={data.courseDuration ? HopHelper.addCourseDuration(data) : null}
-          />
+          <LinkContainer variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+            <Button linkTo='/kurser' text='Hitta din kurs' />
+            <Link href={`/popular`} passHref>
+              <MostPopular
+                variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+                Mest populära kurser 2022
+              </MostPopular>
+            </Link>
+          </LinkContainer>
         </Content>
       </ImageBox>
     </Hero>
   )
 }
 
-export default CourseHero
+export default IndexHero

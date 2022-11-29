@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { styled } from '../stitches.config'
 import useWindowSize from '../modules/windowSize'
+import { TCategory } from '../lib/graph-interfaces'
 
 const CardContent = styled('div', {
   display: 'flex',
@@ -146,7 +147,11 @@ const ImageBox = styled('div', {
   },
 })
 
-const Card = ({ data }) => {
+interface IRecommendedCard {
+  data: TCategory
+}
+
+const Card = ({ data }: IRecommendedCard) => {
   const windowSize = useWindowSize()
   const {
     slug,

@@ -1,6 +1,10 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { styled } from '../stitches.config'
 import useWindowSize from '../modules/windowSize'
+import BookCourseModal from './BookCourseModal'
+import HopHelper from '../modules/helper'
+import { TProducts } from '../lib/graph-interfaces'
 
 const Hero = styled('div', {
   maxWidth: '2560px',
@@ -63,9 +67,9 @@ const Content = styled('div', {
 })
 
 const Title = styled('h1', {
-  marginTop: -60,
-  marginBottom: 20,
   fontWeight: '$bold',
+  marginBottom: 20,
+  marginTop: -60,
 
   variants: {
     variant: {
@@ -84,15 +88,16 @@ const Title = styled('h1', {
 
 const SubTitle = styled('h2', {
   fontWeight: '$semi',
-  marginBottom: 8,
   variants: {
     variant: {
       mobile: {
-        fontSize: '$4',
+        marginBottom: 42,
+        fontSize: '$3',
         lineHeight: 1.4,
         maxWidth: 400,
       },
       desktop: {
+        marginBottom: 44,
         fontSize: '$7',
         maxWidth: 700,
       },
@@ -100,44 +105,58 @@ const SubTitle = styled('h2', {
   },
 })
 
-const Description = styled('p', {
-  fontWeight: '$reg',
+const Button = styled('a', {
+  alignSelf: 'flex-start',
+  backgroundColor: '$blueDark',
+  pillShape: true,
+  fontSize: '$4',
+  fontWeight: '$semi',
+  textDecoration: 'none',
+  transition: 'transform 200ms',
+  '@media (prefers-reduced-motion)': {
+    transition: 'none',
+  },
+
   variants: {
     variant: {
       mobile: {
-        fontSize: '$3',
-        lineHeight: 1.4,
-        maxWidth: 400,
+        padding: '15px 45px',
       },
+
       desktop: {
-        fontSize: '$3',
-        maxWidth: 500,
-        lineHeight: 1.34,
+        padding: '15px 65px',
+        '&:hover': {
+          cursor: 'pointer',
+          backgroundColor: '$blue',
+          transform: 'scale(1.02)',
+        },
       },
     },
   },
 })
 
-const CategoriesHero = ({ data }) => {
-  const { title, subTitle, description, image, wideImage, gradientColor } = data
+interface ICourseHero {
+  btnText: string
+  data: TProducts
+}
+
+const CourseHero = ({ data, btnText }: ICourseHero) => {
+  const { name, images, wideImage, subTitle, gradientColor } = data
   const windowSize = useWindowSize()
   return (
     <Hero>
       <ImageBox
+      //@ts-ignore
         variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
         css={{
           '&::before': {
             linearGradient: `${
               windowSize.width >= 750 ? '270deg' : '0deg'
-            }, transparent 10%, ${gradientColor} 80%`,
+            }, transparent 10%, ${gradientColor?.color.hex} 80%`,
           },
         }}>
         <Image
-          src={
-            windowSize.width >= 750
-              ? `${image}`
-              : `${wideImage}`
-          }
+          src={windowSize.width >= 750 ? wideImage.url : images?.[0].url}
           alt=''
           layout='fill'
           objectFit='cover'
@@ -145,18 +164,20 @@ const CategoriesHero = ({ data }) => {
         />
         <Content variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           <Title variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            {title}
+            {name}
           </Title>
           <SubTitle variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-           {subTitle}
+            {subTitle}
           </SubTitle>
-          <Description variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-            {description}
-          </Description>
+          <BookCourseModal
+            btnText={btnText}
+            courseName={name}
+            courseDates={data.courseDuration ? HopHelper.addCourseDuration(data) : null}
+          />
         </Content>
       </ImageBox>
     </Hero>
   )
 }
 
-export default CategoriesHero
+export default CourseHero

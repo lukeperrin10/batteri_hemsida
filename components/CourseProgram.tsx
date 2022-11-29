@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { styled } from '../stitches.config'
 import BookCourseModal from './BookCourseModal'
 import HopHelper from '../modules/helper'
+import { TProducts } from '../lib/graph-interfaces'
 
 const Kursprogram = styled('section', {
   display: 'flex',
@@ -122,7 +123,11 @@ const Disclaimer = styled('p', {
   },
 })
 
-const CourseProgram = ({ data }) => {
+interface ICourseProgram {
+  data: TProducts
+}
+
+const CourseProgram = ({ data }: ICourseProgram) => {
   const { name, kursprogram, price, privatePrice } = data
   const items = kursprogram.map((item, index) => {
     return (

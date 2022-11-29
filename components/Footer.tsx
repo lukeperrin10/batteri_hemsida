@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { styled } from '../stitches.config'
+import { TAktuellt } from '../lib/graph-interfaces'
 
 const FooterContainer = styled('footer', {
   display: 'flex',
@@ -194,8 +195,11 @@ const Divider = styled('div', {
   },
 })
 
-const Footer = ({ aktuellts }) => {
+interface IAktuellts {
+  aktuellts: TAktuellt
+}
 
+const Footer = ({ aktuellts }: IAktuellts) => {
   // =========== Show only one aktuellt ===========
   const defaultAktuellt = {
     title: 'Inga nyheter/aktuella saker',
@@ -206,10 +210,15 @@ const Footer = ({ aktuellts }) => {
   const trueAktuellt = [defaultAktuellt]
   const falseAktuellt = []
 
+  //@ts-ignore
   aktuellts.forEach((data) => {
-    data.show === true ? trueAktuellt.unshift({ data }) : falseAktuellt.push({ data })
+    //@ts-ignore
+    data.show === true
+    //@ts-ignore
+      ? trueAktuellt.unshift({ data })
+      : falseAktuellt.push({ data })
   })
-
+  //@ts-ignore
   const aktuellt = trueAktuellt?.[0].data
   // =========== Show only one aktuellt end ===========
 
@@ -262,9 +271,7 @@ const Footer = ({ aktuellts }) => {
         <AktuelltContainer>
           <Title>Aktuellt</Title>
           <SubTitle>{aktuellt.title}</SubTitle>
-          <Description>
-            {aktuellt.description}
-          </Description>
+          <Description>{aktuellt.description}</Description>
         </AktuelltContainer>
         <Divider
           variant={{

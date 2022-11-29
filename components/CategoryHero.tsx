@@ -123,7 +123,7 @@ interface IData {
   data: TCategory
 }
 
-const CategoryHero = ({ data }) => {
+const CategoryHero = ({ data }: IData) => {
     const { name, description, gradientColor, image, wideImage, subTitleLength } =
     data
   const windowSize = useWindowSize()
@@ -138,6 +138,7 @@ const CategoryHero = ({ data }) => {
   return (
     <Hero>
       <ImageBox
+      //@ts-ignore
         variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
         css={{
           '&::before': {

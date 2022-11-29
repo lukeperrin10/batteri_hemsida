@@ -35,7 +35,12 @@ const CustomButton = styled('a', {
   },
 })
 
-const Button = ({ text, linkTo }) => {
+interface IButton {
+  text: string
+  linkTo: string
+}
+
+const Button = ({ text, linkTo }: IButton) => {
   return (
     <Link href={linkTo} passHref>
       <CustomButton variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>

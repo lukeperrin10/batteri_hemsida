@@ -237,6 +237,7 @@ const Nav = () => {
                     placeholder='empty'
                     src='/batteri.svg'
                     layout='fill'
+                    //@ts-ignore
                     as='img/svg'
                     alt='Batteri logo'
                   />

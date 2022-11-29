@@ -118,7 +118,11 @@ export const SelectScrollDownButton = StyledScrollDownButton
 // Your app...
 const Box = styled('div', {})
 
-export const Select = ({ courseDates }) => {
+interface ICourseDates {
+  courseDates: string[]
+}
+
+export const Select = ({ courseDates }: ICourseDates) => {
   const dates = courseDates.map((date, index) => {
     return (
       <SelectItem value={date} key={index}>
@@ -157,4 +161,3 @@ export const Select = ({ courseDates }) => {
   )
 }
 
-export default Select

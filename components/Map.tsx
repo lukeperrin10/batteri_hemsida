@@ -15,16 +15,23 @@ const MapDiv = styled('div', {
   },
 })
 
-const Map = ({ center, zoom }) => {
+interface IMapProps {
+  center: string
+  zoom: string
+}
+
+const Map = ({ center, zoom }: IMapProps) => {
   // Initialize and add the map
   const initMap = () => {
 
     // The map, centered at center prop
+     //@ts-ignore
     const map = new google.maps.Map(document.getElementById('map'), {
       zoom,
       center,
     })
     // The marker, positioned at center prop
+     //@ts-ignore
     const marker = new google.maps.Marker({
       position: center,
       map,

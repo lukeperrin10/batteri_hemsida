@@ -215,6 +215,7 @@ const Carousel = () => {
           {testimonials.map((testimonial) => (
             <EmblaSlide
               key={testimonial.id}
+              // @ts-ignore
               gradDir={testimonial.color}
               variant={{
                 '@initial': 'smallMobile',
