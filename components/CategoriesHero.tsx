@@ -129,7 +129,7 @@ const CategoriesHero = ({ data }: ICatergoriesHero) => {
   return (
     <Hero>
       <ImageBox
-      //@ts-ignore
+        //@ts-ignore
         variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
         css={{
           '&::before': {
@@ -137,13 +137,10 @@ const CategoriesHero = ({ data }: ICatergoriesHero) => {
               windowSize.width >= 750 ? '270deg' : '0deg'
             }, transparent 10%, ${gradientColor} 80%`,
           },
-        }}>
+        }}
+      >
         <Image
-          src={
-            windowSize.width >= 750
-              ? `${image}`
-              : `${wideImage}`
-          }
+          src={windowSize.width >= 750 ? `${image}` : `${wideImage}`}
           alt=''
           layout='fill'
           objectFit='cover'
@@ -154,9 +151,10 @@ const CategoriesHero = ({ data }: ICatergoriesHero) => {
             {title}
           </Title>
           <SubTitle variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
-           {subTitle}
+            {subTitle}
           </SubTitle>
           <Description variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+            {/* @ts-ignore */}
             {description}
           </Description>
         </Content>
