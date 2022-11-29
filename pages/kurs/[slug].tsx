@@ -143,6 +143,7 @@ const Product: NextPage = ({ product }: IProduct) => {
           variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}
           display={{ '@initial': 'show', '@bp3': 'hide' }}
         />
+        {/* @ts-ignore */}
         <RecommendedCourses data={product.relatedCourses} />
       </CourseContainer>
     </>
