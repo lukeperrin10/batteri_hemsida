@@ -129,6 +129,7 @@ const Product: NextPage = ({ product }: IProduct) => {
               '@initial': 'mobile',
               '@bp3': 'desktop',
             }}
+            //@ts-ignore
             dangerouslySetInnerHTML={{ __html: product.description.html }}
           />
           <CourseProgram data={product} />
