@@ -124,6 +124,7 @@ const ForForetag: NextPage = () => {
   })
   return (
     <>
+    {/* @ts-ignore */}
       <CourseHero data={foretagHeroData} btnText={'Begär Offert'} />
       <IconGrid variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         {items}

@@ -76,12 +76,14 @@ const FindUs: NextPage = () => {
   const { description, address } = hittaHitPageData
   return (
     <>
+      {/* @ts-ignore */}
       <CategoriesHero data={hittaHitHeroData} />
       <Content variant={{ '@initial': 'mobile', '@bp7': 'desktop' }}>
         <MapContainer>
           <Wrapper
             apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
-            render={render}>
+            render={render}
+          >
             <Map center={center} zoom={zoom} />
           </Wrapper>
           <AddressBox>
@@ -98,10 +100,10 @@ const FindUs: NextPage = () => {
         <Description>
           <DescriptionText>
             {description.p1}
-            <br/>
-            <br/>
+            <br />
+            <br />
             {description.p2}
-            <br/>
+            <br />
             {description.p3}
           </DescriptionText>
         </Description>

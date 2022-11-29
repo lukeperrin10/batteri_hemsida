@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { styled } from '../stitches.config'
 import useWindowSize from '../modules/windowSize'
+import { TCategories, TCategory, TProducts } from '../lib/graph-interfaces'
 
 const Hero = styled('div', {
   maxWidth: '2560px',
@@ -118,7 +119,11 @@ const Description = styled('p', {
   },
 })
 
-const CategoriesHero = ({ data }) => {
+interface ICatergoriesHero {
+  data: TProducts
+}
+
+const CategoriesHero = ({ data }: ICatergoriesHero) => {
   const { title, subTitle, description, image, wideImage, gradientColor } = data
   const windowSize = useWindowSize()
   return (

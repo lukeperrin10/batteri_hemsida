@@ -38,6 +38,7 @@ const CoursesBox = styled('div', {
 const CategoryPage: NextPage = ({ popularCourses }: TPopular) => {
   return (
     <>
+      {/* @ts-ignore */}
       <CategoriesHero data={popularHeroData} />
       <CoursesBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         {popularCourses[0].products?.map((product, index) => {

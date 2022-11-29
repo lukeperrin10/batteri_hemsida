@@ -105,6 +105,7 @@ export interface TProductCard {
 export interface TProducts {
     readonly id: string
     name: string
+    title?: string
     subTitle: string
     price: number
     privatePrice: number
@@ -116,6 +117,7 @@ export interface TProducts {
     courseLeaders: TCourseLeader
     description: { html: string }
     images: { url: string }
+    image?: {url: string}
     wideImage: { url: string }
     gradientColor: { color: { hex: string } }
     localizations: {

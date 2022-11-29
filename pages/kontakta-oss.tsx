@@ -113,10 +113,10 @@ const Management = styled('div', {
   variants: {
     variant: {
       mobile: {
-flexDirection: 'column',
-},
-desktop: {
-  flexDirection: 'row',
+        flexDirection: 'column',
+      },
+      desktop: {
+        flexDirection: 'row',
       },
     },
   },
@@ -159,6 +159,7 @@ const ButtonBox = styled('div', {
 const ContactUs: NextPage = () => {
   return (
     <>
+      {/* @ts-ignore */}
       <CategoriesHero data={kontaktHeroData} />
       <ContactInfo>
         <ContactInfoItem>
@@ -187,7 +188,8 @@ const ContactUs: NextPage = () => {
         <Management variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
           <ManagementItem>
             <ManagementImage
-              variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+              variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
+            >
               <Image src='/girl.webp' alt='' layout='fill' />
             </ManagementImage>
             <ManagementText>
@@ -196,7 +198,8 @@ const ContactUs: NextPage = () => {
           </ManagementItem>
           <ManagementItem>
             <ManagementImage
-              variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
+              variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}
+            >
               <Image src='/girl.webp' alt='' layout='fill' />
             </ManagementImage>
             <ManagementText>

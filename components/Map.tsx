@@ -16,8 +16,11 @@ const MapDiv = styled('div', {
 })
 
 interface IMapProps {
-  center: string
-  zoom: string
+  center: {
+    lat: number
+    lng: number
+  }
+  zoom: number
 }
 
 const Map = ({ center, zoom }: IMapProps) => {

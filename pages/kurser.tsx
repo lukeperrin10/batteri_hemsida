@@ -44,6 +44,7 @@ const ATag = styled('a', {
 const Kurser: NextPage = ({ categories }: TCategories) => {
   return (
     <>
+          {/* @ts-ignore */}
       <CategoriesHero data={categoriesHeroData} />
       <CategoriesBox variant={{ '@initial': 'mobile', '@bp3': 'desktop' }}>
         {categories.map((category, slug) => {
