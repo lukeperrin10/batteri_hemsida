@@ -63,12 +63,12 @@ export interface IProduct {
 
 
 export interface TCourseLeader {
-    readonly id: string
-    name: string
-    profession: string
-    courseLeaderImage: { url: string }
-    courseLeaderAbout: { html: string }
-  }
+  readonly id: string
+  name: string
+  profession: string
+  courseLeaderImage: { url: string }
+  courseLeaderAbout: { html: string }
+}
 
 export interface TRelated {
   products: {
@@ -105,32 +105,32 @@ export interface TProductCard {
 }
 
 export interface TProducts {
-    readonly id: string
+  readonly id: string
+  name: string
+  title?: string
+  subTitle: string
+  price: number
+  privatePrice: number
+  slug: string
+  kursprogram: string[]
+  dates: string[]
+  courseDuration: number[]
+  relatedCourses: TRelated
+  courseLeaders: TCourseLeader
+  description: React.ReactNode | { html: string }
+  images: { url: string }
+  image?: { url: string }
+  wideImage: { url: string }
+  gradientColor: { color: { hex: string } }
+  localizations: {
+    locale: string
     name: string
-    title?: string
-    subTitle: string
-    price: number
-    privatePrice: number
     slug: string
-    kursprogram: string[]
-    dates: string[]
-    courseDuration: number[]
-    relatedCourses: TRelated
-    courseLeaders: TCourseLeader
-    description: React.ReactNode
-    images: { url: string }
-    image?: {url: string}
-    wideImage: { url: string }
-    gradientColor: { color: { hex: string } }
-    localizations: {
-      locale: string
-      name: string
-      slug: string
-    }
   }
+}
 
 // ================ Get page data Query types ================
 export interface TPageData {
   footerCategories: TCategory
-  navigationCategory: [ categories: TCategory ]
+  navigationCategory: [categories: TCategory]
 }
