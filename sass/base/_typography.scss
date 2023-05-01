@@ -1,0 +1,22 @@
+
+.nav-link {
+  font-family: clip, sans-serif;
+}
+
+p {
+  font-family: consolas, sans-serif;
+  font-size: 3.7rem;
+  line-height: 7.4rem;
+  @include respond(tab-land) {
+    font-size: 3rem;
+    line-height: 6rem;
+  }
+  @include respond(tab-port) {
+    font-size: 2.7rem;
+    line-height: 5.4rem;
+  }
+  @include respond(phone) {
+    font-size: 2rem;
+    line-height: 4rem;
+  }
+}
